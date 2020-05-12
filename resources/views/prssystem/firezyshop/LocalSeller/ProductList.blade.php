@@ -85,7 +85,7 @@
 .header{
     color : #808080;
     margin-left:10%;
-    margin-top:15px;
+    margin-top:16px;
 }
 
 .picture{
