@@ -2,7 +2,7 @@
 
 <article class="product-miniature js-product-miniature" data-id-product="1" data-id-product-attribute="1" itemscope="" itemtype="http://schema.org/Product">
 <div class="thumbnail-container">
-<a href="{{url('/seller/201301/longlifefurniture/')}}" class="thumbnail product-thumbnail">
+<a href="{{url('seller/'.$sellerItem['pincode'].'/'.$sellerItem['businessusername'])}}" class="thumbnail product-thumbnail">
 	<img style="height: 250px; width: 250px" 
 	src="{{config('global.SELLER_NEW_STORAGE_DIR').'/250X250/'.$sellerItem['image_thumb']}}" 
 	alt="{{$sellerItem['business_name']}}" 
