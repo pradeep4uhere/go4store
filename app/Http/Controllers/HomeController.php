@@ -38,7 +38,61 @@ class HomeController extends Master
 	
 
     
-  
+    function allSellerTypeInPincodeArea(Request $request,$pincode,$name,$id){
+        $metaTags = array();
+        //Set Meta Section Data
+        $pincode = $this->getPinCode();
+    
+        $metaTitle = "Go4Shop- Your Own Online Shop";
+        $metaDesc = 'Go4shop offer you to sell your own products online. The best online local near you store in India. Best way buy or sell your products here.';
+        $metaKeywords = 'online grocery,vegetable store, Furniture shops, online local seller in Noida, Greater Noida, delhi, buy groceries, vegitables and many more from local shop';
+        $pageImage    = self::getLogo();
+        $pageUrl      = self::getURL();
+        $section      = 'Buy and Sell';
+        $category     = 'Online Supermarket';
+        $tag          = 'Online, Supermarket,Seller, Buyer';
+        $article      = 'Near Online Supermarket';
+
+        $metaTags['title']        =$metaTitle;
+        $metaTags['description']  =$metaDesc;
+        $metaTags['keywords']     =$metaKeywords;
+        $metaTags['pageimage']    =$pageImage;
+        $metaTags['pageurl']      =$pageUrl;
+        $metaTags['section']      =$section;
+        $metaTags['category']     =$category;
+        $metaTags['tag']          =$tag;
+        $metaTags['article']      =$article;
+        $metaTags['publishedTime']='';
+        $metaTags['modifiedTime'] ='';
+        $metaTags['twittersite']  ='';
+        $metaTags['urlimage']     =$pageImage;
+        $metaTags['url']          =$pageUrl.'/user/register';
+        $metaTags['sitename']     =self::getAppName();
+        
+        //Get All Store Type Into Zipcode Location
+        $storeTypeArr = StoreType::where('status','=','1')->get()->toArray();
+
+        //Get All Seller List
+
+        if($id>0){
+            $seller = Seller::where('status','=',1)->where('store_type_id','=',$id)->with('StoreType')->with('SellerImage')->paginate(Master::getPageItemCount());
+        }else{
+        $seller = Seller::where('status','=',1)->with('StoreType')->with('SellerImage')->paginate(Master::getPageItemCount());
+        }
+
+        //Feature Sellers
+        $featureSeller = Seller::where('status','=',1)->with('StoreType')->with('SellerImage')->paginate(Master::getPageItemCount());
+
+        return view(Master::loadFrontTheme('firezyshop.LocalSeller.index'),array(
+            'metaTags'=>$metaTags,
+            'seller'=>$seller,
+            'featureSeller'=>$featureSeller,
+            'storeTypeArr'=>$storeTypeArr,
+            'perPageItem'=>Master::getPageItemCount(),
+            'pincode'=>$pincode,
+            'storeType'=>$name
+        ));
+  }
 
 
     function savepincode(Request $request){

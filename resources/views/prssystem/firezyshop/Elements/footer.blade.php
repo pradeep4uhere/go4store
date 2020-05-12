@@ -215,10 +215,10 @@
 <div id="overlay" style="display:none;" ></div>
 <div id="overlayForm" class="newsletter-main" style="display:none;">
   <div class="tm-newsletter-popup-close">
-    <a class="tm_close" href="javascript:void(0)">
+  <!--   <a class="tm_close" href="javascript:void(0)">
       <i class="material-icons">clear</i>
     </a>
-
+ -->
   </div>
   <div class="left-block">
         <div class="tm-newsletter-popup">
@@ -229,7 +229,7 @@
       <div class="inner">
   
       <div class="clearfix newsletter-content">
-        <div class="innerbox-newsletter"><h3 class="newsletter_title">MY LOCATION</h3><div class="newsletter-text"><p>Get instant updates about our new seller and promos! Special offers  for your nearest seller in your location.</p></div></div>
+        <div class="innerbox-newsletter"><h3 class="newsletter_title">YOUR PINCODE</h3><div class="newsletter-text"><p>Get instant updates about our new seller and promos! Special offers  for your nearest seller in your location.</p></div></div>
       </div>
       <div class="newsletter-form">
         <form action="{{route('savepincode')}}" method="POST">

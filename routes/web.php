@@ -211,9 +211,11 @@
 
     //New Design URL Route Here
     Route::get('/', 'HomeController@index')->name('homePage');
+    Route::get('/shoptype/{pincode}/{name}/{id}', 'HomeController@allSellerTypeInPincodeArea')->name('shoptype');
     Route::get('/seller/{pincode}/', 'HomeController@allSeller')->name('allSeller');
     Route::get('/seller/{pincode}/{longlif}', 'Seller\SellerController@sellerview')->name('sellerView');
     Route::get('/detail/{slug}/{id}', 'Product\ProductController@details')->name('details');
+
     Route::get('/cartpage', 'HomeController@cartList')->name('cartList');
     Route::get('/checkoutinitpage','HomeController@CheckOutInitPage')->name('CheckOutInitPage');
     // Route::get('/choosepaymentpage','HomeController@ChoosePayment')->name('choosepayment');
@@ -241,4 +243,6 @@
     Route::get('/allfaqs', 'Page\PageController@allfaqs')->name('allfaqs');
     Route::get('/contactus', 'Page\PageController@contactus')->name('contactuspage');
     Route::post('/contactus', 'Page\PageController@contactus')->name('contactuspage');
+
+    
     

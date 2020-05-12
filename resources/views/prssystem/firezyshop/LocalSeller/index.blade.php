@@ -14,7 +14,7 @@
 
 
 @include('prssystem.firezyshop.LocalSeller.FeatureSeller.featureSeller',array(
-	'sellerArr'=>$seller,
+	'sellerArr'=>$featureSeller,
 	'storeTypeArr'=>$storeTypeArr,
 ))
 

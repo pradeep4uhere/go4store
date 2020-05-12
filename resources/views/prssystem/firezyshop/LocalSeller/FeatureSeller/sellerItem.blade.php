@@ -5,15 +5,16 @@
 <a href="{{url('/seller/201301/longlifefurniture/')}}" class="thumbnail product-thumbnail">
 	<img style="height: 250px; width: 250px" 
 	src="{{config('global.SELLER_NEW_STORAGE_DIR').'/250X250/'.$sellerItem['image_thumb']}}" 
-	alt="Curabitur Dolor Nunc..." 
+	alt="{{$sellerItem['business_name']}}" 
 	data-full-size-image-url="{{config('global.SELLER_NEW_STORAGE_DIR').'/250X250/'.$sellerItem['image_thumb']}}"
-	onerror="this.onerror=null;this.src='{{ Config('global.THEME_URL_FRONT_IMAGE') }}/default250x250.jpg';">
+	onerror="this.onerror=null;this.src='{{ Config('global.THEME_URL_FRONT_IMAGE') }}/{{env('NO_IMAGE')}}';">
 	
 	<img style="width:'100%'" 
 		class="replace-2x img_1 img-responsive" 
 		src="{{config('global.THEME_FRONT_IMAGE')}}/380-home_default.jpg" 
 		data-full-size-image-url="{{config('global.THEME_FRONT_IMAGE')}}/380-home_default.jpg" 
-		alt=""
+		alt="{{$sellerItem['business_name']}}"
+		onerror="this.onerror=null;this.src='{{ Config('global.THEME_URL_FRONT_IMAGE') }}/{{env('NO_IMAGE')}}';"
 	>
 </a>
 <ul class="product-flags" style="display: block;">

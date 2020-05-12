@@ -7,13 +7,13 @@
 	src="{{config('global.SELLER_NEW_STORAGE_DIR').'/250X250/'.$sellerItem['image_thumb']}}" 
 	alt="Curabitur Dolor Nunc..." 
 	data-full-size-image-url="{{config('global.SELLER_NEW_STORAGE_DIR').'/250X250/'.$sellerItem['image_thumb']}}"
-	onerror="this.onerror=null;this.src='{{ Config('global.THEME_URL_FRONT_IMAGE') }}/default250x250.jpg';">
+	onerror="this.onerror=null;this.src='{{ Config('global.THEME_URL_FRONT_IMAGE') }}/{{env('NO_IMAGE')}}';">
 	
 	<img style="width:'100%'" 
 		class="replace-2x img_1 img-responsive" 
 		src="{{config('global.SELLER_NEW_STORAGE_DIR').'/250X250/'.$sellerItem['image_thumb']}}" 
 		data-full-size-image-url="{{config('global.SELLER_NEW_STORAGE_DIR').'/250X250/'.$sellerItem['image_thumb']}}" 
-		alt=""
+		alt="" onerror="this.onerror=null;this.src='{{ Config('global.THEME_URL_FRONT_IMAGE') }}/{{env('NO_IMAGE')}}';"
 	>
 </a>
 <ul class="product-flags" style="display: block;">

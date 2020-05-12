@@ -62,6 +62,7 @@ class SellerController extends Master
        $this->imageName=NULL;
     }
 	
+    
 
 
     /*
@@ -233,6 +234,7 @@ class SellerController extends Master
 	*@Description: View Seller Prifole
 	*/
 	public function sellerview(Request $request, $pincode,$seller,$catId=null){
+
       $pincode = $this->getPinCode();
       if($request->ajax()) {
         if($seller!=''){
@@ -298,7 +300,7 @@ class SellerController extends Master
         }else{
           $pageImage = self::getLogo();
         }
-        $pageUrl = self::getURL().'/seller/'.$seller['pincode'].'/'.$seller['businessname']);
+        $pageUrl = self::getURL().'/seller/'.$seller['pincode'].'/'.$seller['businessname'];
         $createdAtStr = $seller['created_at'];
         $updatedAtStr = $seller['updated_at'];
         $section      = 'Seller';

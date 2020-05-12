@@ -8,7 +8,7 @@
 <div id="left-column" class="col-xs-12 col-sm-4 col-md-3 hb-animate-element top-to-bottom">
 <div class="block-categories block" style="display: block;">
    <h4 class="block_title hidden-md-down">
-      <i class="fa fa-filter"></i>&nbsp;shop by category
+      <i class="fa fa-filter"></i>&nbsp;Seller by category
    </h4>
    <h4 class="block_title hidden-lg-up" data-target="#block_categories_toggle" data-toggle="collapse">
     <a href="#">Home</a>
@@ -24,7 +24,10 @@
       <?php if(!empty($storeTypeArr)){ ?>
       <?php foreach($storeTypeArr as $item){ ?>
       <li data-depth="0">
-        <a href="{{str_slug($item['name'])}}">{{$item['name']}}</a>
+        <a href="{{route('shoptype',
+          ['pincode'=>$pincode['pincode'],
+           'name'=>str_slug($item['name']),
+           'id'=>$item['id']])}}">{{$item['name']}}</a>
       </li>
       <?php }} ?>
     </ul>
@@ -103,19 +106,24 @@
   <div class="products">
     <ul class="product_list gridcount grid"> <!-- removed product_grid-->
           <!--Seller Item Here-->
-          <?php if(!empty($sellerArr)){ ?>    
+          <?php //dd($sellerArr->count());
+                if($sellerArr->count()>0){ ?>    
           <?php foreach($sellerArr as $sellerItem){?>
           <li class="product_item col-xs-12 col-sm-6 col-md-6 col-lg-3">
             @include('prssystem.firezyshop.LocalSeller.sellerlistItem',['sellerItem'=>$sellerItem])
           </li>
           <?php } ?>
-          <?php } ?>
+          <?php }else{ ?>
           <!--Seller Item Ends-->
+          <li>
+            <div class="alert alert-danger"><b>No {{studly_case($storeType)}} Seller found in this {{$pincode['pincode']}} location</b></div>
+          </li>
+          <?php } ?>
           </ul>
   </div>
   </div>
 
-  
+  <?php if($seller->total()>0){ ?>
   <nav class="pagination row">
   <div class="col-md-3">
     Showing 1-{{$perPageItem}} of {{$seller->total()}} item(s)
@@ -124,6 +132,7 @@
     {{ $seller->links('prssystem.firezyshop.pagination') }}
   </div>
 </nav>
+<?php } ?>
 </div>
 </div>
 </section>
