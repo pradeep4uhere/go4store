@@ -1,7 +1,7 @@
 <div class="container">
 <section id="featureProduct" class="featured-products clearfix">
 	<div class="side-banner">
-			<h2 class="h1 products-section-title text-uppercase">Featured Sellers in 201301</h2>
+			<h2 class="h1 products-section-title text-uppercase">Featured Sellers in {{$pincode['pincode']}}</h2>
 			<div class="side-para">Best Seller Nearest at your door step, don't go out, just find your seller and order now.</div>
 			<div class="side-button">
 				<a class="all-product-link pull-xs-left pull-md-right h4" href="#">View All</a>

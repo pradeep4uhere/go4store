@@ -21,10 +21,11 @@
 			@foreach($storeTypeArr as $item) 
 			@if($count<10)
 			<li>
-				<a href="{{url($item['name'])}}" title="{{$item['name']}}">{{$item['name']}}</a></li>
-			<li>
+				<a href="{{route('shoptype',['pincode'=>$pincode['pincode'], 'name'=>str_slug($item['name']),
+           					'id'=>$item['id']])}}">{{$item['name']}}</a>
+			</li>
 			<?php $count++;?>
 			@endif
 			@endforeach
 			</ul>
-</div>
+	</div>

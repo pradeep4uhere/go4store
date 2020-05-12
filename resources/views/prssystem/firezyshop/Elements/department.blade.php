@@ -55,7 +55,7 @@
 		<li>
 			<div class="categoryblock1 categoryblock item">
 			<div class="block_content">
-			<a href="?id_category=6&amp;controller=category&amp;id_lang=1">
+			<a href="#">
 			<div class="categoryimage_bg">
 				<div class="categoryimage">
 					<img src="{{config('global.THEME_FRONT_IMAGE')}}/category/grocery.png" alt="" class="img-responsive">
@@ -76,7 +76,7 @@
 		<li>
 			<div class="categoryblock1 categoryblock item">
 			<div class="block_content">
-			<a href="?id_category=6&amp;controller=category&amp;id_lang=1">
+			<a href="#">
 			<div class="categoryimage_bg">
 				<div class="categoryimage">
 					<img src="{{config('global.THEME_FRONT_IMAGE')}}/category/furniture.png" alt="" class="img-responsive">
@@ -97,7 +97,7 @@
 		<li>
 			<div class="categoryblock1 categoryblock item">
 			<div class="block_content">
-			<a href="?id_category=6&amp;controller=category&amp;id_lang=1">
+			<a href="#">
 			<div class="categoryimage_bg">
 				<div class="categoryimage">
 					<img src="{{config('global.THEME_FRONT_IMAGE')}}/category/chicken.jpeg" alt="" class="img-responsive">
@@ -118,7 +118,7 @@
 		<li>
 			<div class="categoryblock1 categoryblock item">
 			<div class="block_content">
-			<a href="?id_category=6&amp;controller=category&amp;id_lang=1">
+			<a href="#">
 			<div class="categoryimage_bg">
 				<div class="categoryimage">
 					<img src="{{config('global.THEME_FRONT_IMAGE')}}/category/vegitable.jpeg" alt="" class="img-responsive">
@@ -139,7 +139,7 @@
 		<li>
 			<div class="categoryblock1 categoryblock item">
 			<div class="block_content">
-			<a href="?id_category=6&amp;controller=category&amp;id_lang=1">
+			<a href="#">
 			<div class="categoryimage_bg">
 				<div class="categoryimage">
 					<img src="{{config('global.THEME_FRONT_IMAGE')}}/category/breakfast.png" alt="" class="img-responsive">
@@ -160,7 +160,7 @@
 		<li>
 			<div class="categoryblock1 categoryblock item">
 			<div class="block_content">
-			<a href="?id_category=6&amp;controller=category&amp;id_lang=1">
+			<a href="#">
 			<div class="categoryimage_bg">
 				<div class="categoryimage">
 					<img src="{{config('global.THEME_FRONT_IMAGE')}}/category/resturant.png" alt="" class="img-responsive">
@@ -181,7 +181,7 @@
 		<li>
 			<div class="categoryblock1 categoryblock item">
 			<div class="block_content">
-			<a href="?id_category=6&amp;controller=category&amp;id_lang=1">
+			<a href="#">
 			<div class="categoryimage_bg">
 				<div class="categoryimage">
 					<img src="{{config('global.THEME_FRONT_IMAGE')}}/category/tiffinservice.jpg" alt="" class="img-responsive">
@@ -190,7 +190,7 @@
 			</a>
 			<div class="categorylist">
 			<div class="cate-heading">
-				<a href="?id_category=6&amp;controller=category&amp;id_lang=1">Tiffin</a>
+				<a href="#">Tiffin</a>
 			</div>
 			</div>
 			</div>
