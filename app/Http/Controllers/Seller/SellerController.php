@@ -342,6 +342,7 @@ class SellerController extends Master
         //dd($lsitArr);
 		return view(Master::loadFrontTheme('firezyshop.LocalSeller.ProductList'),array(
 				'seller'=>$seller,
+        'featureSeller'=>$seller,
 				'productDetails'=>$productList,
         'productList'=>$lsitArr,
         'metaTags'=>$metaTags,
