@@ -173,6 +173,7 @@ class HomeController extends Master
 		return view(Master::loadFrontTheme('firezyshop.LocalSeller.index'),array(
             'metaTags'=>$metaTags,
             'seller'=>$seller,
+            'featureSeller'=>$seller,
             'storeTypeArr'=>$storeTypeArr,
             'perPageItem'=>Master::getPageItemCount(),
             'pincode'=>$pincode
