@@ -1,0 +1,312 @@
+/********************************************************
+			Templatemela Custom Styles
+********************************************************/
+.tm-carousel {
+  display: none;
+  position: relative;
+  float: left;
+  width: 100%;
+  margin: 0;
+  -ms-touch-action: pan-y;
+}
+.owl-carousel .owl-wrapper {
+  display: none;
+  position: relative;
+  -webkit-transform: translate3d(0px, 0px, 0px);
+    -moz-transform: translate3d(0px, 0px, 0px);
+    -ms-transform: translate3d(0px, 0px, 0px);
+    -o-transform: translate3d(0px, 0px, 0px);
+    transform: translate3d(0px, 0px, 0px);
+}
+.owl-carousel .owl-wrapper:after {
+  content: ".";
+  display: block;
+  clear: both;
+  visibility: hidden;
+  line-height: 0;
+  height: 0;
+}
+.owl-carousel .owl-wrapper-outer {
+  overflow: hidden;
+  position: relative;
+  float: left;
+  width: 100%;
+}
+.owl-carousel .owl-wrapper-outer.autoHeight {
+  -webkit-transition: height 500ms ease-in-out;
+  -moz-transition: height 500ms ease-in-out;
+  -ms-transition: height 500ms ease-in-out;
+  -o-transition: height 500ms ease-in-out;
+  transition: height 500ms ease-in-out;
+}
+.owl-carousel .owl-item {
+  float: left;
+}
+.owl-carousel .owl-item .manu_image a {
+  display: inline-block;
+}
+.owl-carousel .owl-item .manu_image a img {
+  max-width: 100%;
+}
+.owl-carousel .owl-wrapper,
+.owl-carousel .owl-item {
+  /* fix */
+  -webkit-backface-visibility: hidden;
+  -moz-backface-visibility: hidden;
+  -ms-backface-visibility: hidden;
+  -webkit-transform: translate3d(0, 0, 0);
+  -moz-transform: translate3d(0, 0, 0);
+  -ms-transform: translate3d(0, 0, 0);
+  text-align: center;
+}
+
+/* mouse grab icon */
+.grabbing {
+  cursor: url("../img/megnor/grabbing.png") 8 8, move;
+}
+ 
+.customNavigation {
+  position:absolute;
+  z-index: 2;
+  width: 100%;
+  direction: ltr !important;
+  text-align:center;
+  clear:both;
+  top:37%;
+  opacity: 0;
+  -webkit-opacity: 0;
+  -moz-opacity: 0;
+  -ms-opacity: 0;
+  -o-opacity: 0;
+  transition: all 0.6s ease-in-out;
+  -webkit-transition: all 0.6s ease-in-out;
+  -moz-transition: all 0.6s ease-in-out;
+  -ms-transition: all 0.6s ease-in-out;
+  -o-transition: all 0.6s ease-in-out;
+}
+.brands .customNavigation
+{
+  position:absolute;
+  z-index: 2;
+  width: 100%;
+  direction: ltr !important;
+  text-align:center;
+  clear:both;
+  top:35px;
+  opacity: 0;
+  -webkit-opacity: 0;
+  -moz-opacity: 0;
+  -ms-opacity: 0;
+  -o-opacity: 0;
+}
+#featureProduct:hover .customNavigation,
+.newproducts:hover .customNavigation,
+.bestseller-products:hover .customNavigation,
+#tmcategorytabs:hover .customNavigation,
+.homeblog-inner:hover .customNavigation,
+.js-qv-mask.additional_slider:hover .customNavigation{
+  opacity: 1;
+  -webkit-opacity: 1;
+  -moz-opacity: 1;
+  -ms-opacity: 1;
+  -o-opacity: 1;
+}
+.special-banner .customNavigation
+{
+  top: 45%;
+}
+.special-banner .customNavigation
+{
+  opacity: 1;
+    -webkit-opacity: 1;
+  -moz-opacity: 1;
+  -ms-opacity: 1;
+  -o-opacity: 1;
+}
+.product-accessories:hover .customNavigation,
+.crosssell-products:hover .customNavigation,
+.productscategory-products:hover .customNavigation  {
+    opacity: 1;
+      -webkit-opacity: 1;
+  -moz-opacity: 1;
+  -ms-opacity: 1;
+  -o-opacity: 1;
+}
+
+.tmcategory-container .customNavigation
+
+{
+  opacity: 1;
+    -webkit-opacity: 1;
+  -moz-opacity: 1;
+  -ms-opacity: 1;
+  -o-opacity: 1;
+  top: 15px;
+  width: auto;
+  left: auto;
+  right: 20px;
+}
+.discount-products .customNavigation {
+  opacity: 1;
+
+}
+.lastest_block.block.tmblog-latest .customNavigation
+{
+  opacity: 1;
+    -webkit-opacity: 1;
+  -moz-opacity: 1;
+  -ms-opacity: 1;
+  -o-opacity: 1;
+  top: -44px;
+  width: auto;
+  left: auto;
+  right: 20px;
+}
+.brands:hover .customNavigation
+{
+  opacity: 1;
+    -webkit-opacity: 1;
+  -moz-opacity: 1;
+  -ms-opacity: 1;
+  -o-opacity: 1;
+  right: 0;
+  left:auto;
+}
+/*.lastest_block.block.tmblog-latest .customNavigation, #tmtestimonialcmsblock .customNavigation {
+left: 0;
+right: 0;
+}
+.lastest_block.block.tmblog-latest .customNavigation a, #tmtestimonialcmsblock .customNavigation a {
+    background: #fff;
+    border-color: #dddee1;
+}
+#tmtestimonialcmsblock .customNavigation a::before, .lastest_block.block.tmblog-latest .customNavigation a::before{
+  color: #c0c0c0;
+}
+.lastest_block.block.tmblog-latest .customNavigation a:hover, #tmtestimonialcmsblock .customNavigation a:hover, .lastest_block.block.tmblog-latest .customNavigation a:active, .lastest_block.block.tmblog-latest .customNavigation a:focus, .lastest_block.block.tmblog-latest .customNavigation a:hover:active, .lastest_block.block.tmblog-latest .customNavigation a:hover:focus, .lastest_block.block.tmblog-latest .customNavigation a:hover:active:focus, .lastest_block.block.tmblog-latest .customNavigation a:active:focus, #tmtestimonialcmsblock .customNavigation a:active, #tmtestimonialcmsblock .customNavigation a:focus, #tmtestimonialcmsblock .customNavigation a:active:hover, #tmtestimonialcmsblock .customNavigation a:active:focus, #tmtestimonialcmsblock .customNavigation a:hover:focus, #tmtestimonialcmsblock .customNavigation a:hover:active:focus {
+  background: #000;
+  border-color: #000;
+}
+.lastest_block.block.tmblog-latest .customNavigation a:hover::before, #tmtestimonialcmsblock .customNavigation a:hover::before, .lastest_block.block.tmblog-latest .customNavigation a:active::before, .lastest_block.block.tmblog-latest .customNavigation a:focus::before, .lastest_block.block.tmblog-latest .customNavigation a:hover:active::before, .lastest_block.block.tmblog-latest .customNavigation a:hover:focus::before, .lastest_block.block.tmblog-latest .customNavigation a:active:focus::before, .lastest_block.block.tmblog-latest .customNavigation a:hover:active:focus::before, #tmtestimonialcmsblock .customNavigation a:active::before, #tmtestimonialcmsblock .customNavigation a:focus::before, #tmtestimonialcmsblock .customNavigation a:hover:active::before, #tmtestimonialcmsblock .customNavigation a:hover:focus::before, #tmtestimonialcmsblock .customNavigation a:hover:active:focus::before, #tmtestimonialcmsblock .customNavigation a:active:focus::before{
+  color: #fff;
+}*/
+
+#tmtestimonialcmsblock .customNavigation a.prev{
+    right: 30px;
+    left:auto;
+}
+
+#tmtestimonialcmsblock .customNavigation a.next {
+  right: 0;
+  left: auto;
+}
+
+
+.js-qv-mask.additional_slider .customNavigation {
+    opacity: 1;
+    -webkit-opacity: 1;
+    -moz-opacity: 1;
+    -ms-opacity: 1;
+    -o-opacity: 1;
+    top: 33%;
+}
+.customNavigation a {
+    position: absolute;
+    padding: 0;
+    height: 40px;
+    width: 40px;
+    border: 1px solid #ccc;
+    border-radius: 50%;
+    cursor: pointer;
+    overflow: hidden;
+    font-size: 0;
+}
+.customNavigation a:hover {
+    border: 1px solid #ffd200;
+
+}
+.customNavigation a.prev{ 
+  left: 0;
+}
+.customNavigation a.next{ 
+  right:0;
+}
+.customNavigation a::before {
+    position: absolute;
+    font-family: fontawesome;
+    font-size: 24px;
+    left: 0;
+    right: 0;
+    top: 7px;
+    bottom: 0;
+    color: #ccc;
+    font-weight: 400;
+    line-height: 24px;
+}
+.customNavigation a:hover::before {
+    color: #ffd200;
+}
+.tmcategory-container .customNavigation a,
+.lastest_block.block.tmblog-latest .customNavigation a
+{
+  border:none;
+  width: 35px;
+  height: 35px;
+  position: relative;
+}
+.tmcategory-container .customNavigation a::before,
+.lastest_block.block.tmblog-latest .customNavigation a::before
+{
+color: #000;
+}
+.tmcategory-container .customNavigation a:hover::before,
+.lastest_block.block.tmblog-latest .customNavigation a:hover::before
+{
+color: #ffd200;
+}
+.customNavigation a.prev::before {
+    content: "\f104";
+}
+.customNavigation a.next::before {
+    content: "\f105";
+    right: -5px;
+}
+@media (max-width: 767px){
+    .customNavigation{
+      opacity: 1;
+      -webkit-opacity: 1;
+      -moz-opacity: 1;
+      -ms-opacity: 1;
+      -o-opacity: 1;
+      top: 32%;
+  }
+  .brands .customNavigation {
+  opacity: 1;
+}
+  #featureProduct .customNavigation a,
+.newproducts .customNavigation a,
+.bestseller-products .customNavigation a
+{
+  position: relative;
+}
+.tmcategory-container .customNavigation {
+    top: 10px;
+}
+}
+@media (max-width: 479px){
+  .customNavigation a::before{
+    font-size: 18px;
+  }
+  .customNavigation a.prev {
+      left: 0;
+  }
+  .customNavigation a.next {
+      right: 0px;
+  }
+  .js-qv-mask.additional_slider .customNavigation{
+    top: 26%;
+  }
+    .lastest_block.block.tmblog-latest .customNavigation {
+    top: -59px;
+}
+}
