@@ -232,12 +232,12 @@ class OrderController extends Master
     			return redirect()->route('home', ['token'=>Session::get('_token')]);
 
     		}
-    		// dd($orderArr);
+    		//dd($orderArr);
     		$orderDate = date('d M Y',strtotime($orderArr['created_at']));
     		$totalAmount = $orderArr['totalAmount'];
     		$shipping_id = $orderArr['shipping_id']; 
     		if(count($orderArr['Payment'])){
-    			$payment_status = $orderArr['Payment']['status'];
+    			$payment_status = $orderArr['Payment'][0]['status'];
     		}else{
     			$payment_status = $orderArr['payment_status'];
     		}
