@@ -7,7 +7,7 @@
                 <div class="panel panel-default">
                     <div class="panel-heading alert-success">CSV Import</div>
                     <div class="panel-body">
-                       <b>( {{$count}} )</b> Product Data imported successfully.
+                       <b>( {{$count}} )</b> Product Data imported successfully. <a href="{{route('allproduct')}}">Click Here</a> for All Products List
                        <?php if(!empty($error)){ ?>
                         <?php foreach($error as $item){ ?>
                             <div class="alert alert-danger">{{json_encode($item)}}</div>

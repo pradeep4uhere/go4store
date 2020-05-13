@@ -64,6 +64,10 @@ class ImportController extends Master
                 if($field=='price')     { continue; }
                 if($field=='discount')  { continue; }
                 if($field=='selling_price')  { continue; }
+                if($field=='about_product')  { continue; }
+                if($field=='offers')  { continue; }
+                if($field=='return_policy')  { continue; }
+                if($field=='misc')  { continue; }
                 if ($data->csv_header) {
                     $Product->$field = $row[$request->fields[$field]];
                 } else {
@@ -101,6 +105,10 @@ class ImportController extends Master
         if($row['discount']>0){
             $userProduct->isDiscounted = 1;
         }
+        $userProduct->about_product     = $row['about_product'];
+        $userProduct->offers            = $row['offers'];
+        $userProduct->return_policy     = $row['return_policy'];
+        $userProduct->misc              = $row['misc'];
         $userProduct->status = '0';
         $userProduct->created_at = self::getCreatedDate();
         if($userProduct->save()){
