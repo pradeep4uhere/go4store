@@ -30,7 +30,7 @@
                                             <input type="checkbox" name="header" checked>
                                     </div>
                                     <div class="checkbox">
-                                            &nbsp;&nbsp;&nbsp;&nbsp;<i class="fa fa-download"></i><a href="{{env('FRONT_URL').'/public/files/product_import/so_products.csv'}}">Download Sample Files</a>
+                                            &nbsp;&nbsp;&nbsp;&nbsp;<i class="fa fa-download"></i><a href="{{'https://www.go4shop.online/public/files/product_import/so_products.csv'}}">Download Sample Files</a>
                                     </div>
                                     <div class="checkbox">
                                             Your ID is: {{Auth::user()->id}} / Update Created By Column
