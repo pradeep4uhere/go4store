@@ -1,10 +1,10 @@
-@extends('prssystem.layouts.app')
+@extends('prssystem.layouts.list')
 @section('content')
-    <div class="container">
+    <div class="container" style="margin-top:30px;">
         <div class="row">
-            <div class="col-md-8 col-md-offset-2">
+            <div class="col-md-8 col-md-offset-2 ">
                 <div class="panel panel-default">
-                    <div class="panel-heading">CSV Import</div>
+                    <div class="panel-heading">Product CSV Import</div>
 
                     <div class="panel-body">
                         <form class="form-horizontal" method="POST" action="{{ route('import_parse') }}" enctype="multipart/form-data">
@@ -27,9 +27,13 @@
                             <div class="form-group">
                                 <div class="col-md-6 col-md-offset-4">
                                     <div class="checkbox">
-                                        <label>
-                                            <input type="checkbox" name="header" checked> File contains header row?
-                                        </label>
+                                            <input type="checkbox" name="header" checked>
+                                    </div>
+                                    <div class="checkbox">
+                                            &nbsp;&nbsp;&nbsp;&nbsp;<i class="fa fa-download"></i><a href="{{env('FRONT_URL').'/public/files/product_import/so_products.csv'}}">Download Sample Files</a>
+                                    </div>
+                                    <div class="checkbox">
+                                            Your ID is: {{Auth::user()->id}} / Update Created By Column
                                     </div>
                                 </div>
                             </div>

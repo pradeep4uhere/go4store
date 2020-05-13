@@ -1,13 +1,26 @@
-@extends('prssystem.layouts.app')
+@extends('prssystem.layouts.list')
 
 @section('content')
-    <div class="container">
+<style>
+table {
+  border-collapse: collapse;
+  width: 100%;
+}
+
+th, td {
+  text-align: left;
+  padding: 8px;
+}
+
+tr:nth-child(even) {background-color: #f2f2f2;}
+</style>
+    <div class="container" style="margin-top: 30px; ">
         <div class="row">
             <div class="col-md-12">
                 <div class="panel panel-default">
                     <div class="panel-heading">CSV Import</div>
 
-                    <div class="panel-body">
+                    <div class="panel-body" style="max-width: 1024px; overflow: auto;">
                         <form class="form-horizontal" method="POST" action="{{ route('import_process') }}">
                             {{ csrf_field() }}
                             <input type="hidden" name="csv_data_file_id" value="{{ $csv_data_file->id }}" />
@@ -16,14 +29,14 @@
                                 @if (isset($csv_header_fields))
                                 <tr>
                                     @foreach ($csv_header_fields as $csv_header_field)
-                                        <th>{{ $csv_header_field }}</th>
+                                        <th nowrap="nowrap" style="text-transform: capitalize; padding:5px !important;">{{ $csv_header_field }}</th>
                                     @endforeach
                                 </tr>
                                 @endif
                                 @foreach ($csv_data as $row)
                                     <tr>
                                     @foreach ($row as $key => $value)
-                                        <td>{{ $value }}</td>
+                                        <td nowrap="nowrap" style="padding:5px !important; ">{{ $value }}</td>
                                     @endforeach
                                     </tr>
                                 @endforeach

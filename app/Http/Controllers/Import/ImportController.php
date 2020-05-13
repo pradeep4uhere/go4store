@@ -7,6 +7,8 @@ use App\CsvData;
 use App\Http\Requests\CsvImportRequest;
 use Illuminate\Http\Request;
 use Maatwebsite\Excel\Facades\Excel;
+use App\UserProduct;
+use Auth;
 
 class ImportController extends Master
 {
@@ -54,20 +56,57 @@ class ImportController extends Master
         $data = CsvData::find($request->csv_data_file_id);
         $csv_data = json_decode($data->csv_data, true);
         $count =0;
+        $error = [];
         foreach ($csv_data as $row) {
             $Product = new Product();
             foreach (config('import.products') as $field) {
+                if($field=='default_price') { continue; }
+                if($field=='price')     { continue; }
+                if($field=='discount')  { continue; }
+                if($field=='selling_price')  { continue; }
                 if ($data->csv_header) {
                     $Product->$field = $row[$request->fields[$field]];
                 } else {
                     $Product->$field = $row[$request->fields[$index]];
                 }
+                
             }
             $Product->save();
-            $count++;
+            $last_id = $Product->id;
+            if($this->UpdateUserProducts($last_id,$row)){
+                $count++;
+            }else{
+                $error[]= $row;
+            }
         }
 
-        return view(Master::loadFrontTheme('import.import_success'),array('count'=>$count));
+        return view(Master::loadFrontTheme('import.import_success'),array('count'=>$count,'error'=>$error));
     }
 
+
+
+
+    //Update User Products
+    public function UpdateUserProducts($last_product_id,$row){
+        //dd($row);
+        $userProduct = new UserProduct();
+        $userProduct->user_id = Auth::user()->id;
+        $userProduct->seller_id = $this->getSeller('id');
+        $userProduct->product_id =  $last_product_id;
+        $userProduct->quantity_in_unit =  $last_product_id;
+        $userProduct->default_price = ($row['default_price']>0)?$row['default_price']:'0.00';
+        $userProduct->price = ($row['price']>0)?$row['price']:'0.00';
+        $userProduct->selling_price = ($row['selling_price']>0)?$row['selling_price']:'0.00';
+        $userProduct->discount_value = ($row['discount']>0)?$row['discount']:'0.00';
+        if($row['discount']>0){
+            $userProduct->isDiscounted = 1;
+        }
+        $userProduct->status = '0';
+        $userProduct->created_at = self::getCreatedDate();
+        if($userProduct->save()){
+            return true;
+        }else{
+            return false;
+        }
+    }
 }

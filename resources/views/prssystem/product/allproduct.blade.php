@@ -7,8 +7,11 @@ Home Page
 	<div class="graphs">
     	<table style="width: 100%">
 		<tr>
-			<td><b>@lang('product.all_product')</b></td>
-			<td style="text-align: right;font-weight: bold">
+			<td style="width: 77%"><b>@lang('product.all_product')</b></td>
+			<td style="text-align: right;font-weight: bold; width: 15%">
+                <a href="{{ route('import')}}" style="font-size: 14px;"><i class="fa fa-download"></i>&nbsp;Import Product CSV</a>
+            </td>
+            <td style="text-align: right;font-weight: bold; width: 8%">
 				<a href="{{ route('addproduct')}}" style="font-size: 14px;"><i class="fa fa-plus"></i>&nbsp;Add New</a>
             </td>
 		</tr>
