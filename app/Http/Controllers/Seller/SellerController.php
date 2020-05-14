@@ -311,8 +311,9 @@ class SellerController extends Master
         $metaTitle = $seller['business_name'];
         $metaDesc = $seller['business_name'].', Near '.$seller['address_1'].', '.$seller['address_2'];
         $metaKeywords = 'Seller, Near Store';
+        // dd($seller);
         if($seller['image_logo']!=''){
-          $pageImage = config('global.SELLER_STORAGE_DIR').'/250X250/'. $seller['image_thumb'];
+          $pageImage = config('global.SELLER_NEW_STORAGE_DIR').'/250X250/'. $seller['image_thumb'];
         }else{
           $pageImage = self::getLogo();
         }
