@@ -295,7 +295,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       </a>
     </div>
      <div class="head-compare">
-      <a class="ap-btn-compare dropdown-item" href="#" title="Register as seller now" rel="nofollow">
+      <a class="ap-btn-compare dropdown-item" href="{{route('becomeseller')}}" title="Register as seller now" rel="nofollow">
         <i class="fa fa-truck"></i>&nbsp;
         <span>Become Seller</span>
       </a>

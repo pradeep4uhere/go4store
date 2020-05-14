@@ -22,6 +22,7 @@ use Log;
 use Storage;
 use App\Category;
 use App\UserProduct;
+use App\PaymentMode;
 
 
 
@@ -63,6 +64,21 @@ class SellerController extends Master
     }
 	
     
+
+    //Get Order Invoice Of Orders
+    //Admin Invoice View
+    public function getOrderInvoiceDetails(Request $request,$orderId){
+       // dd($orderId);
+      $orderList = Order::with(['Seller','OrderDetail','User','DeliveryAddress','Payment','PaymentMode'])->where('orderId','=',$orderId)->first()->toArray();
+        return view(Master::loadFrontTheme('seller.admin.invoice'),array(
+                'data'=>$orderList,
+        ));
+
+    }
+
+
+
+
 
 
     /*
@@ -295,8 +311,9 @@ class SellerController extends Master
         $metaTitle = $seller['business_name'];
         $metaDesc = $seller['business_name'].', Near '.$seller['address_1'].', '.$seller['address_2'];
         $metaKeywords = 'Seller, Near Store';
+        // dd($seller);
         if($seller['image_logo']!=''){
-          $pageImage = config('global.SELLER_STORAGE_DIR').'/250X250/'. $seller['image_thumb'];
+          $pageImage = config('global.SELLER_NEW_STORAGE_DIR').'/250X250/'. $seller['image_thumb'];
         }else{
           $pageImage = self::getLogo();
         }

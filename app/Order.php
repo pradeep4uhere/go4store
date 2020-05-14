@@ -31,9 +31,20 @@ class Order extends Model
          return $this->belongsTo('App\Seller', 'seller_id', 'id' );
     }
 
+
+    public function PaymentMode() {
+         return $this->belongsTo(PaymentMode::class);
+    }
+
     public function Payment() {
         return $this->hasMany('App\Payment', 'order_id', 'orderID');
     }
+
+
+      public function DeliveryAddress() {
+         return $this->belongsTo(DeliveryAddress::class,'shipping_id','id');
+    }
+
 
 
   

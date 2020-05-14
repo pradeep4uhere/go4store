@@ -64,6 +64,7 @@ Home Page
 	                    <th>Amount</th>
 	                    <th>Payment Status</th>
                         <th>Order Status</th>
+                        <th>Action</th>
 	                </thead>
                     <tbody>
                         @if(!empty($orders))
@@ -103,6 +104,7 @@ Home Page
                                 </select>
                            
                             </td>
+                            <td><a href="{{route('getinvoice',['orderid'=>$Obj->orderID])}}" target="_blank">Invoice</a></td>
                         </tr>
                         @endforeach
                         @else
