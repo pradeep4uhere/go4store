@@ -114,7 +114,7 @@ class RegisterController extends Master
             //Send Whatsapp Message To User
             Log::channel('newuser')->info('Request', array('Name'=>$user['first_name'],'Date'=>$user['created_at'])); 
             $notify = new NotificationController();
-            $notify::sendWelcomeMessage($user);
+            //$notify::sendWelcomeMessage($user);
 
             //Send Welcome Email To User
             Master::sendEmailToUser('newUser', $request, $user);

@@ -1,22 +1,3 @@
-title,description,category_id,sub_category_id,brand_id,unit_id,created_by,default_price,price,discount[%],selling_price
-Woodland T-Shirt,Woodland T-Shirtsssss,1,1,1,1,7550,50,100,20,80
-Water Bottel,Water Bottel,1,1,1,1,7550,50,100,20,80
-Bisleri Water Bottel,Bisleri Water Bottel,1,1,1,1,7550,50,100,20,80
-Himalaya Water Bottel,Himalaya Water Bottel,1,1,1,1,7550,50,100,20,80
-300 ML Bottel,300 ML Bottel,1,1,1,1,7550,50,100,20,80
-Bisleri Water Bottel,Bisleri Water Bottel,1,1,1,1,7550,50,100,20,80
-Test Juice Procdit,Test Juice Procdit,1,1,1,1,7550,50,100,20,80
-Maggi,Maggi,1,1,1,1,7550,50,100,20,80
-Banas Dairy,Banas Dairy,1,1,1,1,7550,50,100,20,80
-Brown Rice,Brown Rice,1,1,1,1,7550,50,100,20,80
-Bisleri Water Bottel,Himalya,1,1,1,1,7550,50,100,20,80
-Himalya,Himalya,1,1,1,1,7550,50,100,20,80
-Brown Rice,Brown Rice,1,1,1,1,7550,50,100,20,80
-Patanjali Biscuit,Patanjali Biscuit,1,1,1,1,7550,50,100,20,80
-Dove,Dove Sampoo,1,1,1,1,7550,50,100,20,80
-BIOTIQUE Bio Green Apple - Fresh Daily Purifying Shampoo & Conditioner,BIOTIQUE Bio Green Apple - Fresh Daily Purifying Shampoo & Conditioner,1,1,1,1,7550,50,100,20,80
-Dove Sampoo,Product Description Goes Here,1,1,1,1,7550,50,100,20,80
-Tomato Ketchupss,Tomato Ketchup,1,1,1,1,7550,50,100,20,80
-"Fresho Apple - Washington, Regular, 4 pcs",Fresho is our brand of fresh fruits and vegeta,1,1,1,1,7550,50,100,20,80
-Fresho Apple-4 Unit Pack,Fresho is our brand of fresh fruits and vegeta,1,1,1,1,7550,50,100,20,80
-Patanjali Biscuit,Patanjali Biscuit,1,1,1,1,7550,50,100,20,80
+title,description,category_id,sub_category_id,brand_id,unit_id,created_by,default_price,price,discount[%],selling_price,about_product,offers,return_policy,misc
+Woodland T-Shirt,Woodland T-Shirtsssss,1,1,1,1,7550,50,100,20,80,First Descriptionn About Products,Offers Description,Return Policy,Other Description
+Water Bottel,Water Bottel,1,1,1,1,7550,50,100,20,80,Second Descriptionn About Products,Second Offers Description,Second Return Policy,Second Other Description
