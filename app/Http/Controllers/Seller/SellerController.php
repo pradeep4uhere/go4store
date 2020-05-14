@@ -317,7 +317,7 @@ class SellerController extends Master
         }else{
           $pageImage = self::getLogo();
         }
-        $pageUrl = self::getURL().'/seller/'.$seller['pincode'].'/'.$seller['businessname'];
+        $pageUrl = self::getURL().'/seller/'.$seller['pincode'].'/'.$seller['businessusername'];
         $createdAtStr = $seller['created_at'];
         $updatedAtStr = $seller['updated_at'];
         $section      = 'Seller';
