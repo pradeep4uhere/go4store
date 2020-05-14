@@ -22,6 +22,7 @@ use Log;
 use Storage;
 use App\Category;
 use App\UserProduct;
+use App\PaymentMode;
 
 
 
@@ -63,6 +64,21 @@ class SellerController extends Master
     }
 	
     
+
+    //Get Order Invoice Of Orders
+    //Admin Invoice View
+    public function getOrderInvoiceDetails(Request $request,$orderId){
+       // dd($orderId);
+      $orderList = Order::with(['Seller','OrderDetail','User','DeliveryAddress','Payment','PaymentMode'])->where('orderId','=',$orderId)->first()->toArray();
+        return view(Master::loadFrontTheme('seller.admin.invoice'),array(
+                'data'=>$orderList,
+        ));
+
+    }
+
+
+
+
 
 
     /*

@@ -184,6 +184,7 @@
         Route::get('/dashboard', 'Seller\SellerController@dashboard')->name('sellerdashboard');
         Route::get('/addproduct', 'Product\ProductController@addProduct')->name('selleraddproduct');
         Route::get('/storedetails', 'Seller\SellerController@accountDetails')->name('storedetails');
+        Route::get('/getinvoice/{orderId}', 'Seller\SellerController@getOrderInvoiceDetails')->name('getinvoice');
         
     });
 
