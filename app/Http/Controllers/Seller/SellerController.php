@@ -308,7 +308,8 @@ class SellerController extends Master
                 }
             }
 
-        $metaTitle = $seller['business_name'];
+        $metaTitle = $seller['business_name'].' '.$seller['StoreType']['name'].' ,Near '.$seller['address_1'];
+    
         $metaDesc = $seller['business_name'].', Near '.$seller['address_1'].', '.$seller['address_2'];
         $metaKeywords = 'Seller, Near Store';
         // dd($seller);
