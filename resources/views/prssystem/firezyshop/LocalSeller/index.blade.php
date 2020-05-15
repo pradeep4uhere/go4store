@@ -11,13 +11,10 @@
 
  <!--Main Container Start Here-->   
 <div class="container">
-
-
 @include('prssystem.firezyshop.LocalSeller.FeatureSeller.featureSeller',array(
 	'sellerArr'=>$featureSeller,
 	'storeTypeArr'=>$storeTypeArr,
 ))
-
 <!-- tm_categorylist-->
 @include('prssystem.firezyshop.LocalSeller.sellerList',array(
 'sellerArr'=>$seller,

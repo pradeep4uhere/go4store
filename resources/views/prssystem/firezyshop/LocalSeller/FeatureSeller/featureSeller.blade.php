@@ -1,4 +1,4 @@
-<div class="container">
+<div class="container" style="margin-bottom: 10px;">
 <section id="featureProduct" class="featured-products clearfix">
 	<div class="side-banner">
 			<h2 class="h1 products-section-title text-uppercase">Featured Sellers in {{$pincode['pincode']}}</h2>
