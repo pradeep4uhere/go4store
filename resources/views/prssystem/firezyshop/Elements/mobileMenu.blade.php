@@ -256,7 +256,6 @@
 <div id="_mobile_contact_link"></div>
 </div>
 </div>
-
 <script type="text/javascript">
 	$(".cat-title").click(function(){
 		$("#mobile_top_menu_wrapper").toggle();
@@ -272,6 +271,4 @@
 	$(".fa-close").click(function(){
 		$("#mobile_top_menu_wrapper").toggle();
 	});
-
-
 </script>
