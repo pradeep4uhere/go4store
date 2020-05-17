@@ -2,14 +2,13 @@
     <div class="container"> 
           <div id="columns_inner">
             <div id="left-column" class="col-xs-12 col-sm-4 col-md-3 hb-animate-element top-to-bottom">
-              @include('prssystem.firezyshop.Cart.CartLeftBlock')
+                @include('prssystem.firezyshop.Cart.CartLeftBlock')
             </div>
-            
 <nav data-depth="1" class="breadcrumb hidden-sm-down">
    <div class="container"><h1 class="h1"><i class="fa fa-shopping-cart"></i>&nbsp;Shopping Cart</h1>
   <ol itemscope="" itemtype="http://schema.org/BreadcrumbList">
       <li itemprop="itemListElement" itemscope="" itemtype="http://schema.org/ListItem">
-        <a itemprop="item" href="https://prestashop.templatemela.com/PRS08/PRS080193/PRS01/index.php">
+        <a itemprop="item" href="{{route('homePage')}}">
           <span itemprop="name"><i class="fa fa-home"></i>&nbsp;Home</span>
         </a>
         <meta itemprop="position" content="1">
@@ -17,7 +16,6 @@
   </ol>
   </div>
 </nav>
-          
 <div id="content-wrapper" class="left-column col-xs-12 col-sm-8 col-md-9">
   <section id="main">
     <div class="cart-grid row">
@@ -28,23 +26,21 @@
           <div class="card-block">
           </div>
           <hr>
-  <div class="cart-overview js-cart" data-refresh-url="//prestashop.templatemela.com/PRS08/PRS080193/PRS01/index.php?controller=cart&amp;ajax=1&amp;action=refresh">
-        <ul class="cart-items">
-          <?php $totalAmount=array(); $quantity = array();?>
-          @if(!empty($cartItem))
-          @foreach($cartItem as $item)
-            @include('prssystem.firezyshop.Cart.CartListItem',array('item'=>$item))
-            <?php 
-            $totalAmount[]=$item['quantity']*$item['price'];
-            $quantity[] = $item['quantity']?>
-          @endforeach
-          @else
-             <center><a href="{{route('homePage')}}" class="btn btn-danger">No Item In your cart, Add Now</a></center>
-          @endif
-
-         
-        </ul>
-</div>
+          <div class="cart-overview js-cart" data-refresh-url="#">
+                <ul class="cart-items">
+                  <?php $totalAmount=array(); $quantity = array();?>
+                  @if(!empty($cartItem))
+                  @foreach($cartItem as $item)
+                    @include('prssystem.firezyshop.Cart.CartListItem',array('item'=>$item))
+                    <?php 
+                    $totalAmount[]=$item['quantity']*$item['price'];
+                    $quantity[] = $item['quantity']?>
+                  @endforeach
+                  @else
+                     <center><a href="{{route('homePage')}}" class="btn btn-danger">No Item In your cart, Add Now</a></center>
+                  @endif
+                </ul>
+        </div>
 
           
         </div>
@@ -57,23 +53,23 @@
       </div>
       <!-- Right Block: cart subtotal & cart total -->
       <div class="cart-grid-right col-xs-12 col-lg-4">
-          <div class="card cart-summary">
-<div class="cart-detailed-totals">
-  <div class="card-block">
-                  <div class="cart-summary-line" id="cart-subtotal-products">
-          <span class="label js-subtotal">
-                          <?php echo array_sum($quantity);?> items
-                      </span>
-          <span class="value">₹<?php echo  array_sum($totalAmount)?></span>
-                  </div>
-                                  <div class="cart-summary-line" id="cart-subtotal-shipping">
-          <span class="label">
-                          Shipping
-                      </span>
-          <span class="value">₹0.00</span>
-                        <div><small class="value"></small></div>
-                  </div>
-                      </div>
+        <div class="card cart-summary">
+        <div class="cart-detailed-totals">
+        <div class="card-block">
+        <div class="cart-summary-line" id="cart-subtotal-products">
+        <span class="label js-subtotal">
+          <?php echo array_sum($quantity);?> items
+        </span>
+        <span class="value">₹<?php echo  array_sum($totalAmount)?></span>
+        </div>
+                  <div class="cart-summary-line" id="cart-subtotal-shipping">
+        <span class="label">
+          Shipping
+        </span>
+        <span class="value">₹0.00</span>
+        <div><small class="value"></small></div>
+        </div>
+        </div>
 
   
       
