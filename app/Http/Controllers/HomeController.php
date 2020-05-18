@@ -11,6 +11,7 @@ use App\Pin;
 use App\Cart;
 use App\Testimonial;
 use App\StoreType;
+use App\Payment;
 use Cookie;
 use Config;
 
@@ -30,7 +31,48 @@ class HomeController extends Master
     public function bharattrader(Request $request){
         return view(Master::loadFrontTheme('firezyshop.PaymentLink.index'),array(''));
     }
- /*Payment Invoice for Bhart Trader*/
+
+    public function createPaymentOrder($requestData){
+            $amount   = $requestData['amount'];
+            $email    = $requestData['email'];
+            $mobile   = $requestData['mobile'];
+            $fullname = $requestData['fullname'];
+    }
+
+    public function updatePaymentStatus($requestData){
+            $net_amount_debit = $requestData['loadAmount'];
+            $AgentId          = $requestData['AgentId'];
+            $Status           = $requestData['Status'];
+            $Message          = $requestData['Message'];
+            $OrderId          = $requestData['OrderId'];
+            $Amount           = $requestData['Amount'];
+            $Mode             = $requestData['Mode'];
+            $BankitTxnId      = $requestData['BankitTxnId'];
+            $Mode             = $requestData['Mode'];
+
+            $payment = new Payment();
+            $payment->order_id = $OrderId;
+            $payment->merchent_id = $AgentId;
+            $payment->mode = $Mode;
+            $payment->status = $Status;
+            $payment->unmappedstatus = $Status;
+            $payment->txnid = $BankitTxnId;
+            $payment->amount = $Amount;
+            $payment->payment_date = $this->getCreatedDate();
+            $payment->firstname = "Bhart Payment";
+            $payment->email ="";
+            $payment->phone = "";
+            $payment->bank_ref_num = $BankitTxnId;
+            $payment->bankcode = "";
+            $payment->error = "";
+            $payment->error_Message = "";
+            $payment->payuMoneyId = "";
+            $payment->payment_details = json_encode($requestData);
+            $payment->net_amount_debit = ($net_amount_debit!='')?$net_amount_debit:'0.00';
+            $payment->created_at = $this->getCreatedDate();
+    }
+
+   /*Payment Invoice for Bhart Trader*/
     public function orderconfirm(Request $request){
         if($request->get('Status')=='Success'){
             $Status = $request->get('Status');
@@ -41,6 +83,8 @@ class HomeController extends Master
             $BankitTxnId = $request->get('BankitTxnId');
             $SecureHash = $request->get('SecureHash');
             $loadAmount = $request->get('loadAmount');
+            $requestData = $request->all();
+            $this->updatePaymentStatus($requestData);
         }
         return view(Master::loadFrontTheme('firezyshop.PaymentLink.confirm'),array(
                 'Status'=>$Status,
@@ -54,6 +98,8 @@ class HomeController extends Master
         $amount = $request->get('amount');
         $email = $request->get('email');
         $mobile = $request->get('mobile');
+        $fullname = $request->get('fullname');
+        $requestData = $request->all();
 
         $AgentId    = "2190";
         $UserInfo   = "Pradeep";
@@ -62,12 +108,13 @@ class HomeController extends Master
         $EmailId    = $email;
         $mobile     = $mobile;
         $callback   = env('APP_URL').'/orderconfirm';
-        $OrderId    = 'ORD'.date('YMD').time();
+        $OrderId    = 'ORD'.date('Ymd').time();
         $hasStr = $AgentId.'|'.$Amount.'|'.$Mode.'|'.$EmailId.'|'.$mobile.'|'.$OrderId.'|'.$callback;
         $SecureHash = $hasStr;
         $secureKey = '6270ee2ccf2c354472ab7bb2fa295e990ac94102';
         $hashKey  = hash_hmac("sha1", $hasStr, $secureKey);
         $BASE_URL = "http://uat.bankit.in:9012/RTOPG/SecureBankitPG"; 
+        $this->createPaymentOrder($requestData);
         
         return view(Master::loadFrontTheme('firezyshop.PaymentLink.ordergenerate'),array(
             'AgentId'   =>  $AgentId,

@@ -17,7 +17,18 @@
               Enter Amount
           </label>
     <div class="col-md-4 col-sm-9">
-        <input type="text" id="amount" name="amount" class="form-control validate" required="required" placeholder="Enter your mobile e.g 10000">
+        <input type="text" id="amount" name="amount" class="form-control validate" required="required" placeholder="Enter your amount e.g 10000">
+
+    </div>
+    <div class="col-md-4 form-control-comment">
+    </div>
+  </div>
+  <div class="form-group row ">
+    <label class="col-md-4 form-control-label required">
+              Enter Full Name
+          </label>
+    <div class="col-md-4">
+        <input type="text" id="fullname" name="fullname" class="form-control validate" required="required" placeholder="Enter your full name">
 
     </div>
     <div class="col-md-4 form-control-comment">

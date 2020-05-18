@@ -2,11 +2,36 @@
 <html lang="en" class="">
 <head>
 @include('prssystem.firezyshop.layouts.HomePage.homePageMetaHead')
+<!-- Templatemela added -->
+<link href="{{config('global.THEME_FRONT_CSS').'/css_font_cyrillic.css'}}" rel="stylesheet"> 
+<link href="{{config('global.THEME_FRONT_CSS').'/css_font_devanagari.css'}}" rel="stylesheet"> 
 
 <!-- Templatemela added -->
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,400i,600,600i,700,700i,800,800i" rel="stylesheet"> 
+<link href="https://fonts.googleapis.com/css?family=Poppins:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet"> 
+<link href="https://fonts.googleapis.com/css?family=Oswald:400,500,600,700" rel="stylesheet"> 
 
-<link rel="stylesheet" href="{{config('global.THEME_FRONT_CSS').'/go4shop.online.css'}}">
+<!-- Owl Stylesheets -->
+<link rel="stylesheet" href="{{config('global.THEME_FRONT_PLUG').'/plugin/owl.carousel.min.css'}}">
+<link rel="stylesheet" href="{{config('global.THEME_FRONT_PLUG').'/plugin/css/owl.theme.default.min.css'}}">
+<link rel="stylesheet" href="{{config('global.THEME_FRONT_CSS').'/theme.css'}}">
+<link rel="stylesheet" href="{{config('global.THEME_FRONT_CSS').'/font-awesome.css'}}" media="all">
+<link rel="stylesheet" href="{{config('global.THEME_FRONT_CSS').'/psproductcountdown.css'}}" media="all">
+<link rel="stylesheet" href="{{config('global.THEME_FRONT_CSS').'/1-simple.css'}}" media="all">
+<link rel="stylesheet" href="{{config('global.THEME_FRONT_CSS').'/psblog.css'}}" media="all">
+<link rel="stylesheet" href="{{config('global.THEME_FRONT_CSS').'/lightbox.css'}}" media="all">
+<link rel="stylesheet" href="{{config('global.THEME_FRONT_CSS').'/productcomments.css'}}" media="all">
+<link rel="stylesheet" href="{{config('global.THEME_FRONT_CSS').'/front.css'}}" media="all">
+<link rel="stylesheet" href="{{config('global.THEME_FRONT_CSS').'/tmcouponpop.css'}}" media="all">
+<link rel="stylesheet" href="{{config('global.THEME_FRONT_CSS').'/jquery-ui.min.css'}}" media="all">
+<link rel="stylesheet" href="{{config('global.THEME_FRONT_CSS').'/jquery.ui.theme.min.css'}}" media="all">
+<link rel="stylesheet" href="{{config('global.THEME_FRONT_CSS').'/jquery.fancybox.css'}}" media="all">
+<link rel="stylesheet" href="{{config('global.THEME_FRONT_CSS').'/tm_verticalmenu.css'}}" media="all">
+<link rel="stylesheet" href="{{config('global.THEME_FRONT_CSS').'/flexslider.css'}}" media="all">
+<link rel="stylesheet" href="{{config('global.THEME_FRONT_CSS').'/tmcategorylist.css'}}" media="all">
+<link rel="stylesheet" href="{{config('global.THEME_FRONT_CSS').'/tm_categoryslider.css'}}" media="all">
+<link rel="stylesheet" href="{{config('global.THEME_FRONT_CSS').'/custom.css'}}" media="all">
 </head>
 <body id="index" class="lang-en country-us currency-usd layout-full-width page-index tax-display-disabled">
 <main>
@@ -21,8 +46,10 @@
 
 </main>
 
-<script src="{{config('global.THEME_FRONT_PLUG').'/js/compressed.js'}}"></script>
+<script src="{{config('global.THEME_FRONT_PLUG').'/plugin/jquery.min.js'}}"></script>
 <script src="https://kit.fontawesome.com/a651bac95e.js" crossorigin="anonymous"></script>
+<script src="{{config('global.THEME_FRONT_PLUG').'/plugin/owl.carousel.js'}}"></script>
+<script src="{{config('global.THEME_FRONT_PLUG').'/js/sweetalert.min.js'}}"></script>
 
 <script type="text/javascript">
   
