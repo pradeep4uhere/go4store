@@ -24,6 +24,64 @@ class HomeController extends Master
 		
 
 	}
+
+
+    /*Payment Invoice for Bhart Trader*/
+    public function bharattrader(Request $request){
+        return view(Master::loadFrontTheme('firezyshop.PaymentLink.index'),array(''));
+    }
+ /*Payment Invoice for Bhart Trader*/
+    public function orderconfirm(Request $request){
+        if($request->get('Status')=='Success'){
+            $Status = $request->get('Status');
+            $Message = $request->get('Message');
+            $OrderId = $request->get('OrderId');
+            $Amount = $request->get('Amount');
+            $Mode = $request->get('Mode');
+            $BankitTxnId = $request->get('BankitTxnId');
+            $SecureHash = $request->get('SecureHash');
+            $loadAmount = $request->get('loadAmount');
+        }
+        return view(Master::loadFrontTheme('firezyshop.PaymentLink.confirm'),array(
+                'Status'=>$Status,
+                'OrderId'=>$OrderId,
+                'Amount'=>$Amount,
+                'TxnId'=>$BankitTxnId
+        ));
+    }
+
+    public function invoicepayment(Request $request){
+        $amount = $request->get('amount');
+        $email = $request->get('email');
+        $mobile = $request->get('mobile');
+
+        $AgentId    = "2190";
+        $UserInfo   = "Pradeep";
+        $Amount     = $amount;
+        $Mode       = "CC";
+        $EmailId    = $email;
+        $mobile     = $mobile;
+        $callback   = env('APP_URL').'/orderconfirm';
+        $OrderId    = 'ORD'.date('YMD').time();
+        $hasStr = $AgentId.'|'.$Amount.'|'.$Mode.'|'.$EmailId.'|'.$mobile.'|'.$OrderId.'|'.$callback;
+        $SecureHash = $hasStr;
+        $secureKey = '6270ee2ccf2c354472ab7bb2fa295e990ac94102';
+        $hashKey  = hash_hmac("sha1", $hasStr, $secureKey);
+        $BASE_URL = "http://uat.bankit.in:9012/RTOPG/SecureBankitPG"; 
+        
+        return view(Master::loadFrontTheme('firezyshop.PaymentLink.ordergenerate'),array(
+            'AgentId'   =>  $AgentId,
+            'UserInfo'  =>  $UserInfo,
+            'Amount'    =>  $Amount,
+            'Mode'      =>  $Mode,
+            'EmailId'   =>  $EmailId,
+            'mobile'    =>  $mobile,
+            'callback'  =>  $callback,
+            'OrderId'   => $OrderId,
+            'hashKey'   =>  $hashKey,
+            'BASE_URL'  => $BASE_URL
+        ));
+    }
     /**
      * Create a new controller instance.
      *

@@ -3,9 +3,8 @@
 <head>
 @include('prssystem.firezyshop.layouts.HomePage.homePageMetaHead')
 <!-- Templatemela added -->
-<link href="{{config('global.THEME_FRONT_CSS').'/css.css'}}" rel="stylesheet"> 
-<link href="{{config('global.THEME_FRONT_CSS').'/css(1).css'}}" rel="stylesheet"> 
-<link href="{{config('global.THEME_FRONT_CSS').'/css(2).css'}}" rel="stylesheet"> 
+<link href="{{config('global.THEME_FRONT_CSS').'/css_font_cyrillic.css'}}" rel="stylesheet"> 
+<link href="{{config('global.THEME_FRONT_CSS').'/css_font_devanagari.css'}}" rel="stylesheet"> 
 
 <!-- Templatemela added -->
 <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">

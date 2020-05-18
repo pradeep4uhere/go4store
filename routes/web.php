@@ -32,6 +32,9 @@
     Route::post('/import_process', 'Import\ImportController@processImport')->name('import_process');
     Route::get('logs', '\Rap2hpoutre\LaravelLogViewer\LogViewerController@index');
     Route::get('/notify', 'PusherController@sendNotification');
+    Route::get('/invoice/bharattrader', 'HomeController@bharattrader')->name('bharattrader');
+    Route::any('/invoicepayment', 'HomeController@invoicepayment')->name('invoicepayment');
+    Route::any('/orderconfirm', 'HomeController@orderconfirm')->name('orderconfirm');
 
     //FB API Auth Callback
     Route::post('/fbauth', 'Auth\LoginController@fblogin')->name('fblogin');

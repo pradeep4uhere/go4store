@@ -3,7 +3,7 @@
 <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-WHG5Z5T"
 height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <!-- End Google Tag Manager (noscript) -->
-<script src="http://code.jquery.com/jquery-1.12.4.min.js"></script>
+<script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
 <script src="{{config('global.THEME_FRONT_PLUG').'/js/jquery.mockjax.js'}}"></script>
 <script src="{{config('global.THEME_FRONT_PLUG').'/js/bootstrap-typeahead.js'}}"></script>
 <style type="text/css">
