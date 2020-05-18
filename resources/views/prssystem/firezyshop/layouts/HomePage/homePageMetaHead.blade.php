@@ -15,6 +15,8 @@
 
     <meta itemprop="image" content="@yield('pageimage')"> 
     <link rel="amphtml" href="@yield('pageurl')"/>
+    <link rel="canonical" href="@yield('pageurl')" />
+
 
     <meta name="author" content="{{env('APP_NAME')}}">
     <meta property="article:published_time" content="@yield('publishedTime')"/>
@@ -39,7 +41,8 @@
     <meta property="og:description" content="@yield('description')"/>
     <meta property="og:site_name" content="{{env('APP_NAME')}}"/>
     <meta name="atdlayout" content="article">
-    <meta name="google-site-verification" content="etzoIjvG1TAYkwyVaWH0FSP4pgszMt8z2IIn9Kgd1Q8" />
+    <meta name="google-site-verification" content="Ew1Lc0Nou_HGP56FlyIEp41IwR_7NeNmb_xqBYc8TuI" />
+
     <!-- Global site tag (gtag.js) - Google Analytics -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=UA-132401162-1"></script>
 <script>
