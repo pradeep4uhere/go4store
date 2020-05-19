@@ -35,7 +35,7 @@
     Route::get('/invoice/bharattrader', 'HomeController@bharattrader')->name('bharattrader');
     Route::any('/invoicepayment', 'HomeController@invoicepayment')->name('invoicepayment');
     Route::any('/orderconfirm', 'HomeController@orderconfirm')->name('orderconfirm');
-
+    
     //FB API Auth Callback
     Route::post('/fbauth', 'Auth\LoginController@fblogin')->name('fblogin');
    
@@ -211,7 +211,9 @@
     Route::get('password/reset' ,   'Auth\ForgotPasswordController@showLinkRequestForm')->name('password.request');
     Route::get('getcity/{state_name}'   ,   'Master@getCityList');
     Route::get('getdislist/{district}'  ,   'Master@getlocationlist')->name('getdislist');
-    Route::get('getaddresslist'  ,   'HomeController@getAddressList')->name('getaddresslist');
+    Route::any('getaddresslist'         ,   'HomeController@getAddressList')->name('getaddresslist');
+    Route::get('/sellersearch'         ,   'HomeController@sellersearch')->name('sellersearch');
+    Route::any('getaddresssearchlist'   ,   'HomeController@getAddressListByTypeOnSearch')->name('getaddresssearchlist');
 
     //New Design URL Route Here
     Route::get('/', 'HomeController@index')->name('homePage');

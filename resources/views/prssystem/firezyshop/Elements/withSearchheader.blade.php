@@ -1,8 +1,18 @@
 <!-- Google Tag Manager (noscript) -->
+
 <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-WHG5Z5T"
 height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <!-- End Google Tag Manager (noscript) -->
 <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+<script src="{{config('global.THEME_FRONT_PLUG').'/js/jquery.mockjax.js'}}"></script>
+<script src="{{config('global.THEME_FRONT_PLUG').'/js/bootstrap-typeahead.js'}}"></script>
+<style type="text/css">
+	.typeahead li{
+		padding:8px;
+		font-size: 13px;
+		background-color:'#CCC'
+		}
+</style>
 <style>
 /* Paste this css to your style sheet file or under head tag */
 /* This only works with JavaScript, 
@@ -18,10 +28,15 @@ if it's not present, don't show loader */
 	z-index: 9999;
 	background: url(../../public/theme/firezyshop/assets/img/megnor/Preloader_2.gif) center no-repeat #fff;
 }
-.sellerList{
-	background-color: cornsilk;
-}
 </style>
+<script>
+	//paste this code under head tag or in a seperate js file.
+	// Wait for window load
+	$(window).load(function() {
+		// Animate loader off screen
+		//$(".se-pre-con").fadeOut("slow");;
+	});
+</script>
 <div class="se-pre-con" id="loader"></div>
 <header id="header">
 <div class="header-banner">
@@ -40,10 +55,8 @@ if it's not present, don't show loader */
 		<div id="search_widget" class="col-lg-4 col-md-5 col-sm-12 search-widget" data-search-controller-url="#">
 		<span class="search_button"></span>
 		<div class="searchtoggle">
-		<form method="get" action="{{url('/sellersearch')}}">
-			<input type="text" id="search-box" name="s" value="" placeholder="Enter Your address OR Zipcode e.g 201301" aria-label="Search" class="ui-autocomplete-input" autocomplete="off"/>
-			<input type="hidden" name="sellername" id="sellername">
-			<div id="suggesstion-box" style="position: absolute; max-height: 300px; overflow: auto; min-width: 100%"></div>
+		<form method="get" action="{{url('/seller')}}">
+			<input type="text" id="demo3" name="s" value="" placeholder="Enter Your address OR Zipcode e.g 201301" aria-label="Search" class="ui-autocomplete-input" autocomplete="off">
 			<button type="submit">
 			<div class="submit-text">search</div>
 			</button>
@@ -254,40 +267,14 @@ if it's not present, don't show loader */
       </header>
 
 <script type="text/javascript">
-	// AJAX call for autocomplete 
-	$(document).ready(function(){
-		$("#search-box").keyup(function(){
-			$.ajax({
-			type: "GET",
-			url: "{{route('getaddresssearchlist')}}",
-			data:'keyword='+$(this).val(),
-			beforeSend: function(){
-				$("#search-box").css("background","#FFF url(LoaderIcon.gif) no-repeat 165px");
-			},
-			success: function(data){
-				console.log(data);
-				$("#suggesstion-box").show();
-				$("#suggesstion-box").html(data);
-				$("#search-box").css("background","#FFF");
-			}
-			});
-		});
-	});
-	//To select country name
-	function selectCountry(val) {
-		$("#search-box").val(val);
-		$("#suggesstion-box").hide();
-	}
-	function getValue(e){
-		$("#search-box").val($(e).html());
-		var listStr = $(e).html();
-		var listArr = listStr.split(',');
-		if(listArr[0]=='Seller'){
-			$("#sellername").val($.trim(listArr[1]));
-		}else{
-			$("#sellername").val('');
-		}
-		$("#suggesstion-box").hide();
-	}
+	var  jsonData = <?php echo json_encode($pincode['addressArray']); ?>;
+	$('#demo3').typeahead({
+        source: <?php echo json_encode($pincode['addressArray']); ?>,
+	    displayField: 'full_name',
+	 });
 
+	
+	$('#demo4').typeahead({
+		 ajax: "{{env('SITE_URL').'/getaddresslist'}}",
+	});
 </script>

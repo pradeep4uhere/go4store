@@ -29,10 +29,11 @@ class Master extends Controller {
 
 
      public function getAddressList(){
-        $stateList = Location::where('status','=',1)->get();
-        foreach($stateList as $item){
-            $location[]= array('id'=>$item['id'],'full_name'=>$item['location'].' | '.$item['district'].' | '.$item['pincode'].' | '.$item['state'],'first_two_letters'=>substr($item['pincode'],0,2));
-        }
+        $location ='';
+        // $stateList = Location::where('status','=',1)->get();
+        // foreach($stateList as $item){
+        //     $location[]= array('id'=>$item['id'],'full_name'=>$item['location'].' | '.$item['district'].' | '.$item['pincode'].' | '.$item['state'],'first_two_letters'=>substr($item['pincode'],0,2));
+        // }
         return $location;
     } 
 

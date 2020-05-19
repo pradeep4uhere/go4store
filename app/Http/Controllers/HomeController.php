@@ -26,6 +26,58 @@ class HomeController extends Master
 
 	}
 
+    public function sellersearch(Request $request){
+        $location = explode(',', $request->get('s'));
+        if($location[0]=='Seller'){
+            $pincode = end($location);
+        }else{
+            $pincode = $location[2];
+        }
+        $sellername = $request->get('sellername');
+        //return \Redirect::route('seller', ['pincode'=>trim($pincode),'longlif'=>$sellername]);
+        return redirect('/seller/'.trim($pincode).'/'.$sellername);
+
+    }
+
+    public function getAddressListByTypeOnSearch(Request $request){
+        $result = [];
+        $searchTerm = $request->get('keyword');
+
+
+        $sellerList = Seller::query()
+               ->where('status',   '=', "1") 
+               ->where('business_name',   'LIKE', "%{$searchTerm}%") 
+               ->orWhere('businessusername', 'LIKE', "%{$searchTerm}%") 
+               ->orWhere('address_1',  'LIKE', "%{$searchTerm}%") 
+               ->orWhere('pincode',    'LIKE', "%{$searchTerm}%") 
+               ->get();
+
+
+        $stateList = Location::query()
+               ->where('status',   '=', "1") 
+               ->where('location',   'LIKE', "%{$searchTerm}%") 
+               ->orWhere('district', 'LIKE', "%{$searchTerm}%") 
+               ->orWhere('pincode',  'LIKE', "%{$searchTerm}%") 
+               ->orWhere('state',    'LIKE', "%{$searchTerm}%") 
+               ->get();
+        //$stateList = Location::where('status','=',1)->get();
+        $str = '<ul id="check-list-box" class="list-group checked-list-box">';
+        
+
+        foreach($sellerList as $itemSeller){
+            $str.= '<li class="list-group-item sellerList listItemChoose" onclick="getValue(this)" style="pointer:cursor">Seller,'.$itemSeller['businessusername'].', '.$itemSeller['address_1'].', '.$itemSeller['pincode'].'</li>';
+        }
+        foreach($stateList as $item){
+            $str.= '<li class="list-group-item listItemChoose" onclick="getValue(this)">'.$item['location'].', '.$item['district'].', '.$item['pincode'].'</li>';
+        }
+
+        if(empty($sellerList) && empty($stateList) ){
+            $str.= '<li class="list-group-item">Please Enter Seller Information OR Your Address</li>';
+        }
+        $str.= "</ul>";
+        return $str;
+    }
+
 
     /*Payment Invoice for Bhart Trader*/
     public function bharattrader(Request $request){

@@ -12,4 +12,7 @@ class GeneralController extends Controller
     	die;
 
     }
+
+
+    
 }
