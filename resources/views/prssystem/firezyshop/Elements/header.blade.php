@@ -262,7 +262,7 @@ if it's not present, don't show loader */
 			url: "{{route('getaddresssearchlist')}}",
 			data:'keyword='+$(this).val(),
 			beforeSend: function(){
-				$("#search-box").css("background","#FFF url(LoaderIcon.gif) no-repeat 165px");
+				$("#search-box").css("background","#FFF url({{config('global.THEME_FRONT_IMAGE').'/megnor/loading.gif'}}) no-repeat 165px");
 			},
 			success: function(data){
 				console.log(data);
