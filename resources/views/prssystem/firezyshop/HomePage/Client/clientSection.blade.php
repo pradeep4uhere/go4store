@@ -11,7 +11,7 @@
 			<li class="item">
 					<div class="brand-image">
 					<a href="?id_manufacturer=2&amp;controller=manufacturer&amp;id_lang=1" title="Fashion Manufacturer1">
-						<img src="{{config('global.THEME_FRONT_IMAGE')}}/2(1).jpg" alt="Fashion Manufacturer1">
+						<img src="{{config('global.THEME_FRONT_IMAGE')}}/6.jpg" alt="Fashion Manufacturer1">
 					</a>
 					</div>
 			</li>
@@ -25,7 +25,7 @@
 			<li class="item">
 					<div class="brand-image">
 					<a href="?id_manufacturer=2&amp;controller=manufacturer&amp;id_lang=1" title="Fashion Manufacturer1">
-						<img src="{{config('global.THEME_FRONT_IMAGE')}}/2(1).jpg" alt="Fashion Manufacturer1">
+						<img src="{{config('global.THEME_FRONT_IMAGE')}}/6.jpg" alt="Fashion Manufacturer1">
 					</a>
 					</div>
 			</li>
@@ -60,28 +60,28 @@
 			<li class="item">
 					<div class="brand-image">
 					<a href="?id_manufacturer=2&amp;controller=manufacturer&amp;id_lang=1" title="Fashion Manufacturer1">
-						<img src="{{config('global.THEME_FRONT_IMAGE')}}/2(1).jpg" alt="Fashion Manufacturer1">
+						<img src="{{config('global.THEME_FRONT_IMAGE')}}/6.jpg" alt="Fashion Manufacturer1">
 					</a>
 					</div>
 			</li>
 			<li class="item">
 					<div class="brand-image">
 					<a href="?id_manufacturer=2&amp;controller=manufacturer&amp;id_lang=1" title="Fashion Manufacturer1">
-						<img src="{{config('global.THEME_FRONT_IMAGE')}}/2(1).jpg" alt="Fashion Manufacturer1">
+						<img src="{{config('global.THEME_FRONT_IMAGE')}}/6.jpg" alt="Fashion Manufacturer1">
 					</a>
 					</div>
 			</li>
 			<li class="item">
 					<div class="brand-image">
 					<a href="?id_manufacturer=2&amp;controller=manufacturer&amp;id_lang=1" title="Fashion Manufacturer1">
-						<img src="{{config('global.THEME_FRONT_IMAGE')}}/2(1).jpg" alt="Fashion Manufacturer1">
+						<img src="{{config('global.THEME_FRONT_IMAGE')}}/6.jpg" alt="Fashion Manufacturer1">
 					</a>
 					</div>
 			</li>
 			<li class="item">
 					<div class="brand-image">
 					<a href="?id_manufacturer=2&amp;controller=manufacturer&amp;id_lang=1" title="Fashion Manufacturer1">
-						<img src="{{config('global.THEME_FRONT_IMAGE')}}/2(1).jpg" alt="Fashion Manufacturer1">
+						<img src="{{config('global.THEME_FRONT_IMAGE')}}/6.jpg" alt="Fashion Manufacturer1">
 					</a>
 					</div>
 			</li>

@@ -69,7 +69,7 @@
 <!--Discount Hot Deal Ends Here-->
 
 <!--Blog Section Start Here-->
-@include('prssystem.firezyshop.HomePage.Blog.blogSection')
+<?php //@include('prssystem.firezyshop.HomePage.Blog.blogSection') ?>
 <!--Blog Section Ends Here-->
 
 <!--Client Section Start Here-->

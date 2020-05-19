@@ -37,7 +37,7 @@
 			<a href="?id_category=6&amp;controller=category&amp;id_lang=1">
 			<div class="categoryimage_bg">
 				<div class="categoryimage">
-					<img src="{{config('global.THEME_FRONT_IMAGE')}}/category/staionery.jpeg" alt="" class="img-responsive">
+					<img src="{{config('global.THEME_FRONT_IMAGE')}}/category/staionery.jpg" alt="" class="img-responsive">
 				</div>
 			</div>
 			</a>
@@ -58,7 +58,7 @@
 			<a href="#">
 			<div class="categoryimage_bg">
 				<div class="categoryimage">
-					<img src="{{config('global.THEME_FRONT_IMAGE')}}/category/grocery.png" alt="" class="img-responsive">
+					<img src="{{config('global.THEME_FRONT_IMAGE')}}/category/grocery.jpg" alt="" class="img-responsive">
 				</div>
 			</div>
 			</a>
@@ -79,7 +79,7 @@
 			<a href="#">
 			<div class="categoryimage_bg">
 				<div class="categoryimage">
-					<img src="{{config('global.THEME_FRONT_IMAGE')}}/category/furniture.png" alt="" class="img-responsive">
+					<img src="{{config('global.THEME_FRONT_IMAGE')}}/category/furniture.jpg" alt="" class="img-responsive">
 				</div>
 			</div>
 			</a>
@@ -100,7 +100,7 @@
 			<a href="#">
 			<div class="categoryimage_bg">
 				<div class="categoryimage">
-					<img src="{{config('global.THEME_FRONT_IMAGE')}}/category/chicken.jpeg" alt="" class="img-responsive">
+					<img src="{{config('global.THEME_FRONT_IMAGE')}}/category/chicken.jpg" alt="" class="img-responsive">
 				</div>
 			</div>
 			</a>
@@ -121,7 +121,7 @@
 			<a href="#">
 			<div class="categoryimage_bg">
 				<div class="categoryimage">
-					<img src="{{config('global.THEME_FRONT_IMAGE')}}/category/vegitable.jpeg" alt="" class="img-responsive">
+					<img src="{{config('global.THEME_FRONT_IMAGE')}}/category/vegitable.jpg" alt="" class="img-responsive">
 				</div>
 			</div>
 			</a>
@@ -142,7 +142,7 @@
 			<a href="#">
 			<div class="categoryimage_bg">
 				<div class="categoryimage">
-					<img src="{{config('global.THEME_FRONT_IMAGE')}}/category/breakfast.png" alt="" class="img-responsive">
+					<img src="{{config('global.THEME_FRONT_IMAGE')}}/category/breakfast.jpg" alt="" class="img-responsive">
 				</div>
 			</div>
 			</a>
@@ -163,7 +163,7 @@
 			<a href="#">
 			<div class="categoryimage_bg">
 				<div class="categoryimage">
-					<img src="{{config('global.THEME_FRONT_IMAGE')}}/category/resturant.png" alt="" class="img-responsive">
+					<img src="{{config('global.THEME_FRONT_IMAGE')}}/category/resturant.jpg" alt="" class="img-responsive">
 				</div>
 			</div>
 			</a>

@@ -14,7 +14,7 @@ use App\DeliveryAddress;
 class UserController extends Master
 {
     public function __construct() {
-       $this->middleware('auth')->except(['index']);
+       $this->middleware('auth')->except(['index','verifyauth']);
     }
 
     /**
@@ -92,7 +92,10 @@ class UserController extends Master
     {
         //
     }
-
+    
+    public function verifyauth(Request $request){
+     dd($request->all());   
+    }
 
 
     /**

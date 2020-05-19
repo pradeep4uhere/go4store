@@ -35,6 +35,7 @@
     Route::get('/invoice/bharattrader', 'HomeController@bharattrader')->name('bharattrader');
     Route::any('/invoicepayment', 'HomeController@invoicepayment')->name('invoicepayment');
     Route::any('/orderconfirm', 'HomeController@orderconfirm')->name('orderconfirm');
+    Route::any('/verifyauth', 'User\UserController@verifyauth')->name('verifyauth');
     
     //FB API Auth Callback
     Route::post('/fbauth', 'Auth\LoginController@fblogin')->name('fblogin');

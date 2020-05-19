@@ -69,6 +69,9 @@
         <input type="hidden" name="submitLogin" value="1">
            <button type="submit" name="login" id="submit-login" class="btn btn-primary">Log in</button>
       </footer>
+     
+
+
   </form>
       </section>
       <hr>
