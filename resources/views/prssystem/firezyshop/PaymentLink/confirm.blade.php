@@ -16,13 +16,21 @@
 <section id="main" >
   <h1>Payment Status</h1>
     <section id="content" class="page-content card card-block">
+    
+    <?php if($Status=='Success'){ ?>
     <h1>Your Payment is Confirm.</h1>
-    <p>Payment Amount - <font style="color: green;font-size: 14px; font-weight: bold;">{{$Status}}</font></p>
+    <p>Payment Status - <font style="color: green;font-size: 14px; font-weight: bold;">{{$Status}}</font></p>
     <p>Payment Amount - <font style="color: green;font-size: 14px; font-weight: bold;"><i class="fa fa-inr"></i> {{$Amount}}</font></p>
     <p>Order ID - {{$OrderId}}</p>
     <p>Txn ID - {{$TxnId}}</p>
     <p><strong>Save your TXN Number- {{$TxnId}} for your future refernce</strong></p>
     <a href="{{route('bharattrader')}}" class="btn btn-danger">Make Another Payment</a>
+  <?php }else{ ?>
+    <h1>Your Payment is Not Completed.</h1>
+      <p>Payment Status - <font style="color: red;font-size: 14px; font-weight: bold;">{{$Status}}</font></p>
+      <p>Payment Amount - <font style="color: red;font-size: 14px; font-weight: bold;"><i class="fa fa-inr"></i> {{$Amount}}</font></p>
+      <a href="{{route('bharattrader')}}" class="btn btn-danger">Make Another Payment</a>
+  <?php } ?>
   </section>
   </div>
         </div>

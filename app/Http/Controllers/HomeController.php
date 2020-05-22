@@ -89,6 +89,38 @@ class HomeController extends Master
             $email    = $requestData['email'];
             $mobile   = $requestData['mobile'];
             $fullname = $requestData['fullname'];
+            $OrderId  = $requestData['OrderId'];
+            $Mode     = $requestData['mode'];
+            $fullname = $requestData['fullname'];
+            $AgentId = $requestData['AgentId'];
+            $net_amount_debit = '0.00';
+
+            $payment = new Payment();
+            $payment->order_id = $OrderId;
+            $payment->merchent_id = $AgentId;
+            $payment->mode = $Mode;
+            $payment->status = 'Pending';
+            $payment->unmappedstatus = '';
+            $payment->txnid = '';
+            $payment->amount = $amount;
+            $payment->payment_date = $this->getCreatedDate();
+            $payment->firstname = $fullname;
+            $payment->email =$email;
+            $payment->phone = $mobile;
+            $payment->bank_ref_num = '';
+            $payment->bankcode = "BANKIT";
+            $payment->error = "";
+            $payment->error_Message = "";
+            $payment->payuMoneyId = "";
+            $payment->payment_details = json_encode($requestData);
+            $payment->net_amount_debit = ($net_amount_debit!='')?$net_amount_debit:'0.00';
+            $payment->created_at = $this->getCreatedDate();
+            
+            if($payment->save()){
+                return true;
+            }else{
+                return false;
+            }
             //ordergenerate
     }
 
@@ -103,8 +135,8 @@ class HomeController extends Master
             $BankitTxnId      = $requestData['BankitTxnId'];
             $Mode             = $requestData['Mode'];
 
-            $payment = new Payment();
-            $payment->order_id = $OrderId;
+            $payment = Payment::where('order_id','=',$OrderId)->first();
+            $payment->id =  $payment->id;
             $payment->merchent_id = $AgentId;
             $payment->mode = $Mode;
             $payment->status = $Status;
@@ -112,21 +144,24 @@ class HomeController extends Master
             $payment->txnid = $BankitTxnId;
             $payment->amount = $Amount;
             $payment->payment_date = $this->getCreatedDate();
-            $payment->firstname = "Bhart Payment";
-            $payment->email ="";
-            $payment->phone = "";
             $payment->bank_ref_num = $BankitTxnId;
-            $payment->bankcode = "";
             $payment->error = "";
-            $payment->error_Message = "";
+            $payment->error_Message =$Message;
             $payment->payuMoneyId = "";
             $payment->payment_details = json_encode($requestData);
             $payment->net_amount_debit = ($net_amount_debit!='')?$net_amount_debit:'0.00';
             $payment->created_at = $this->getCreatedDate();
+            if($payment->save()){
+                return true;
+            }else{
+                return false;
+            }
+            //dd($payment);
     }
 
    /*Payment Invoice for Bhart Trader*/
     public function orderconfirm(Request $request){
+        //dd($request->all());
         if($request->get('Status')=='Success'){
             $Status = $request->get('Status');
             $Message = $request->get('Message');
@@ -137,6 +172,24 @@ class HomeController extends Master
             $SecureHash = $request->get('SecureHash');
             $loadAmount = $request->get('loadAmount');
             $requestData = $request->all();
+            $requestData['loadAmount'] = $loadAmount;
+            $requestData['BankitTxnId'] = $BankitTxnId;
+            $requestData['Amount'] = $Amount;
+            $this->updatePaymentStatus($requestData);
+        }
+        if($request->get('Status')=='Failure'){
+            $Status = $request->get('Status');
+            $Message = $request->get('Message');
+            $OrderId = $request->get('OrderId');
+            $Amount = $request->get('Amount');
+            $Mode = $request->get('Mode');
+            $BankitTxnId = $request->get('BankitTxnId');
+            $SecureHash = $request->get('SecureHash');
+            $loadAmount = $request->get('loadAmount');
+            $requestData = $request->all();
+            $requestData['loadAmount'] = $loadAmount;
+            $requestData['BankitTxnId'] = $BankitTxnId;
+            $requestData['Amount'] = $Amount;
             $this->updatePaymentStatus($requestData);
         }
         return view(Master::loadFrontTheme('firezyshop.PaymentLink.confirm'),array(
@@ -173,7 +226,12 @@ class HomeController extends Master
         $secureKey = $SECURE_KEY;
         $hashKey  = hash_hmac("sha1", $hasStr, $secureKey);
         $BASE_URL = $BANKIT_URL;
-        //$this->createPaymentOrder($requestData);
+        $requestData['OrderId']=$OrderId;
+        $requestData['mode']=$Mode;
+        $requestData['AgentId']=$AgentId;
+        
+
+        $this->createPaymentOrder($requestData);
         
         return view(Master::loadFrontTheme('firezyshop.PaymentLink.ordergenerate'),array(
             'AgentId'   =>  $AgentId,
