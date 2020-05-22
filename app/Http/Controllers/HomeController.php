@@ -89,6 +89,7 @@ class HomeController extends Master
             $email    = $requestData['email'];
             $mobile   = $requestData['mobile'];
             $fullname = $requestData['fullname'];
+            //ordergenerate
     }
 
     public function updatePaymentStatus($requestData){
@@ -147,26 +148,32 @@ class HomeController extends Master
     }
 
     public function invoicepayment(Request $request){
+        //CC/DC/NB/PPI/UPI
+        $BANKIT_URL='https://portal.bankit.in:9090/BankitPG/SecureBankitPG';
+        $SECURE_KEY='ca97854b3a97ce8dde30eb28aeb62b37eb4fdf5a';
+        $AGENT_ID=36658;
+
         $amount = $request->get('amount');
         $email = $request->get('email');
         $mobile = $request->get('mobile');
         $fullname = $request->get('fullname');
+        $mdoe   = $request->get('mode');
         $requestData = $request->all();
 
-        $AgentId    = "2190";
-        $UserInfo   = "Pradeep";
+        $AgentId    = $AGENT_ID;
+        $UserInfo   = $fullname;
         $Amount     = $amount;
-        $Mode       = "CC";
+        $Mode       = $mdoe;
         $EmailId    = $email;
         $mobile     = $mobile;
         $callback   = env('APP_URL').'/orderconfirm';
         $OrderId    = 'ORD'.date('Ymd').time();
         $hasStr = $AgentId.'|'.$Amount.'|'.$Mode.'|'.$EmailId.'|'.$mobile.'|'.$OrderId.'|'.$callback;
         $SecureHash = $hasStr;
-        $secureKey = '6270ee2ccf2c354472ab7bb2fa295e990ac94102';
+        $secureKey = $SECURE_KEY;
         $hashKey  = hash_hmac("sha1", $hasStr, $secureKey);
-        $BASE_URL = "http://uat.bankit.in:9012/RTOPG/SecureBankitPG"; 
-        $this->createPaymentOrder($requestData);
+        $BASE_URL = $BANKIT_URL;
+        //$this->createPaymentOrder($requestData);
         
         return view(Master::loadFrontTheme('firezyshop.PaymentLink.ordergenerate'),array(
             'AgentId'   =>  $AgentId,

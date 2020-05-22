@@ -55,6 +55,21 @@
     </div>
     
   </div>
+  <div class="form-group row ">
+    <label class="col-md-4 form-control-label required">
+              Payment Mode
+          </label>
+    <div class="col-md-4">
+        <select name="mode" class="form-control">
+            <option value="CC" selected="selected">Credit Card</option>
+            <option value="DC">Debit Card</option>
+            <option value="NB">Net Banking</option>
+            <option value="UPI">UPI</option>
+        </select>
+
+    </div>
+    
+  </div>
     </section>
       <footer class="form-footer text-xs-center clearfix">
         <input type="hidden" name="submitLogin" value="1">
