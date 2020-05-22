@@ -149,9 +149,9 @@ class HomeController extends Master
 
     public function invoicepayment(Request $request){
         //CC/DC/NB/PPI/UPI
-        $BANKIT_URL='https://portal.bankit.in:9090/BankitPG/SecureBankitPG';
-        $SECURE_KEY='ca97854b3a97ce8dde30eb28aeb62b37eb4fdf5a';
-        $AGENT_ID=36658;
+        $BANKIT_URL=env('BANKIT_URL');
+        $SECURE_KEY=env('SECURE_KEY');
+        $AGENT_ID=env('AGENT_ID');
 
         $amount = $request->get('amount');
         $email = $request->get('email');
