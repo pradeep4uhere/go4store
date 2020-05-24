@@ -31,22 +31,37 @@ class ApiController extends Master
         foreach($params as $val){
             $str.=$val.'|'; 
         }
-        //echo $str.config('global.CLIENT_SECRET');
+        echo $str.config('global.CLIENT_SECRET');
         return md5($str.config('global.CLIENT_SECRET'));
         
     }
 
 
     public function getStoreType(Request $request){
+        if(self::isValidToekn($request)){
         //Get Business Type List
         try{
-            $businessType = StoreType::where('status','=',1)->get();
+            $businessType = StoreType::where('status','=',1)->orderBy('name','ASC')->get();
             $responseArray['status'] = true;
-            $responseArray['data'] =$businessType;
+            $categoryType = array();
+            foreach($businessType as $item){
+                $categoryType[] = array(
+                    'id'=>$item['id'],
+                    'name'=>$item['name'],
+                    'descriptions'=>$item['descriptions'],
+                    'status'=>$item['status'],
+                    'image'=>config('global.THEME_FRONT_IMAGE').'/category/'.$item['image'],
+                );
+            }
+            $responseArray['resultData'] =$categoryType;
             
         }catch (Exception $e) {
             $responseArray['status'] = false;
             $responseArray['message'] = $e->getMessage();
+        }
+    }else{
+            $responseArray['status'] = false;
+            $responseArray['message']= "Invalid Token.";
         }
         return response()->json($responseArray);
 

@@ -164,15 +164,15 @@ class Master extends Controller {
                     $token = $val;
                 }
             }
-           //echo $str.config('global.CLIENT_SECRET');
+           $str.config('global.CLIENT_SECRET');
            $serverTotak = md5($str.config('global.CLIENT_SECRET')); 
             if($token==$serverTotak){
                 return true;
             }else{
-                return true;
+                return false;
             }
         }else{
-            return true;
+            return false;
         }
     }
 
