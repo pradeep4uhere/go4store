@@ -36,7 +36,10 @@ class ApiController extends Master
         
     }
 
-
+   /*
+    * All Store Type
+    * All Active StoreType 
+    */
     public function getStoreType(Request $request){
         if(self::isValidToekn($request)){
         //Get Business Type List

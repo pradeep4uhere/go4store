@@ -314,6 +314,7 @@ class SellerController extends Master
             'sellers.id',
             'sellers.user_id',
             'sellers.business_name',
+            'sellers.businessusername',
             'sellers.address_1',
             'sellers.address_2',
             'sellers.state',
@@ -354,8 +355,10 @@ class SellerController extends Master
         $output=array();
         if($total_row > 0){
             foreach($data as $k=>$row){
-                $row->publicUrl = env('APP_URL').'/seller/'.str_slug($row->business_name).'/'.encrypt($row->id);
-                $output[]=$row;
+             $row->publicUrl = env('APP_URL').'/seller/'.$row->pincode.'/'.$row->businessusername;
+             $row->image_thumb = config('global.SELLER_NEW_STORAGE_DIR').'250X250/'.$row->image_thumb;
+             $row->image_logo = config('global.SELLER_NEW_STORAGE_DIR').'250X250/'.$row->image_logo;
+             $output[]=$row;
             }
             $responseArray['status'] = true;
             $responseArray['misc']['count'] = $data->count();

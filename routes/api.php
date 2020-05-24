@@ -13,6 +13,10 @@ Route::group(['prefix' => 'en/v1/'], function (){
 	
 	Route::any('gettoken', 'Api\ApiController@gettoken')->name('gettoken');
 	Route::any('getstoretype', 'Api\ApiController@getStoreType')->name('getstoretype');
+
+	//All Seller APIs
+	Route::any('getsellerlist','Api\SellerController@getSellerList')->name('getsellerlist');
+
 	
 
 	//All User Related API
@@ -70,8 +74,6 @@ Route::group(['prefix' => 'en/v1/'], function (){
 	//Location Search
 	Route::any('getlocation','Api\GeneralController@getLocationResult')->name('getlocation');
 	
-	//Seller List
-	Route::any('getsellerlist','Api\SellerController@getSellerList')->name('getsellerlist');
 
 	//Get All Seller Products List
 	Route::any('allproductlist','Api\SellerController@allSellerProductList')->name('allproductlist');
