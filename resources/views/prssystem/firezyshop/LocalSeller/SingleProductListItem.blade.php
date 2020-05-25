@@ -9,8 +9,8 @@ if(!empty($prodObj)){
 <article class="product-miniature js-product-miniature"  itemtype="http://schema.org/Product">
 <div class="thumbnail-container" style="min-height: 220px">
 <a href="{{url('detail/'.str_slug($prodObj['UserProduct']['product']['title']).'/'.encrypt($prodObj['UserProduct']['id']))}}" class="thumbnail product-thumbnail">
-<img src="{{$imgStr}}" alt="Image" data-full-size-image-url="{{$imgStr}}" onerror="this.onerror=null;this.src='{{ Config('global.THEME_URL_FRONT_IMAGE')}}/{{$noImage}}'">
-<img class="replace-2x img_1 img-responsive" src="{{$imgStr}}" data-full-size-image-url="{{$imgStr}}" alt="Image" onerror="this.onerror=null;this.src='{{ Config('global.THEME_URL_FRONT_IMAGE')}}/{{$noImage}}'">
+<img src="{{$imgStr}}" alt="Image" data-full-size-image-url="{{$imgStr}}" onerror="this.onerror=null;this.src='{{ Config('global.THEME_URL_FRONT_IMAGE')}}/{{$noImage}}'" style="height:250px">
+<img style="height:250px" class="replace-2x img_1 img-responsive" src="{{$imgStr}}" data-full-size-image-url="{{$imgStr}}" alt="Image" onerror="this.onerror=null;this.src='{{ Config('global.THEME_URL_FRONT_IMAGE')}}/{{$noImage}}'">
 </a>
 </div>
 <div class="product-description">

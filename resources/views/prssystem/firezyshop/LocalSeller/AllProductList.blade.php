@@ -7,7 +7,7 @@
             <div id="">
             <div id="js-product-list-top" class="row products-selection">
             <div class="col-md-6 hidden-md-down total-products">
-              <p><i class="fa fa-list"></i>&nbsp;There are {{count($productList)}} Sellers.</p>
+              <p><i class="fa fa-list"></i>&nbsp;There are {{count($productList)}} Products.</p>
             </div>
           <div class="col-md-6">
             <div class="row">
