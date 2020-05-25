@@ -2,17 +2,17 @@
 <div class="owl-carousel owl-theme" id="owl-demo1">
 	<div class="item">
 		<a href="#" title="sample-1">
-			<img src="{{config('global.HOME_PAGE_BANNER')}}/sample-2.jpg" alt="sample-1" title="Sample 1" draggable="false">
+			<img src="{{config('global.HOME_PAGE_BANNER')}}/slider1.png" alt="sample-1" title="Sample 1" draggable="false">
 		</a>
 	</div>
 	<div class="item">
 		<a href="#" title="sample-1">
-			<img src="{{config('global.HOME_PAGE_BANNER')}}/sample-1.jpg" alt="sample-1" title="Sample 1" draggable="false">
+			<img src="{{config('global.HOME_PAGE_BANNER')}}/sample-21.jpg" alt="sample-1" title="Sample 1" draggable="false">
 		</a>
 	</div>
 	<div class="item">
 		<a href="#" title="sample-1">
-			<img src="{{config('global.HOME_PAGE_BANNER')}}/sample-2.jpg" alt="sample-1" title="Sample 1" draggable="false">
+			<img src="{{config('global.HOME_PAGE_BANNER')}}/banner2-1760x480.jpeg" alt="sample-1" title="Sample 1" draggable="false">
 		</a>
 	</div>
 	
