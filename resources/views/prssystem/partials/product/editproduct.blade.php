@@ -124,24 +124,30 @@
                         </div>
                     </div>
                     <div class="form-group">
-                        <label for="inputPassword" class="col-sm-2 control-label">@lang('product.actual_price')</label>
-                        <div class="col-sm-8">
+                        <label for="inputPassword" class="col-sm-2 control-label">Actual Price&nbsp;(₹)</label>
+                        <div class="col-sm-3">
                             <input  type="text" class="form-control1" id="actprice" placeholder="Enter Original Price" name="actprice" value=" {{$userProduct['default_price']}}">
+                        </div>
+                        <div class="col-sm-5">
+                            <small><i style="color:red;font-weight:bold">** Not shown anywhere, this is only for referencec for margin.</i></small>
                         </div>
                     </div>
 
                     
                     
                     <div class="form-group">
-                        <label for="inputPassword" class="col-sm-2 control-label">@lang('product.price')</label>
-                        <div class="col-sm-8">
+                        <label for="inputPassword" class="col-sm-2 control-label">Product MRP&nbsp;(₹)</label>
+                        <div class="col-sm-3">
                             <input  type="text" class="form-control1" id="price" placeholder="Enter Price" name="price" value="{{$userProduct['price']}}">
+                        </div>
+                        <div class="col-sm-5">
+                            <small><i style="color:green;font-weight:bold">** Actual price Of the product.</i></small>
                         </div>
                     </div>
 
                      <div class="form-group">
                         <label for="inputPassword" class="col-sm-2 control-label">@lang('product.discount')</label>
-                        <div class="col-sm-2">
+                        <div class="col-sm-3">
                             <select class="form-control1" data-live-search="true" id="discount" name="discount" onChange="getDiscountedPrice(this.value)">
                                 <option value='0'>0%</option>
                                 <?php for($i=5;$i<100;$i=$i+5){ ?>
@@ -149,15 +155,19 @@
                                 <?php } ?>
                             </select>
                         </div>
-                         <div class="col-sm-6">
-                             <p id="qntyId" style="margin-top: 5px;padding-left: 15px;">Price On Store:&nbsp;<span id="orgPrice" style="
+                         <div class="col-sm-5">
+                             <p id="qntyId" style="margin-top: 5px;padding-left: 15px; color:green; font-weight:bold">Price will be on store:&nbsp;<span id="orgPrice" style="
                              font-size: 12px;color:#888;padding-left: 15px;padding-right:10px;"></span>&nbsp;<span id="discountPrice"></span></p>
                         </div>
                     </div>
                      <div class="form-group">
                         <label for="inputPassword" class="col-sm-2 control-label">@lang('product.selling_price')&nbsp;(₹)</label>
-                        <div class="col-sm-2">
-                            <input  type="text" class="form-control1" id="selling_price" name="selling_price" value="{{$userProduct['selling_price'] }}" readonly="readonly">
+                        <div class="col-sm-3">
+                            <input  type="text" class="form-control1" id="selling_price" name="selling_price" value="{{$userProduct['selling_price'] }}" >
+                            
+                        </div>
+                        <div class="col-sm-5">
+                            <small><i style="color:red;font-weight:bold">** If discount is not there, You can update the price as well.</i></small>
                         </div>
                     </div>
 
@@ -213,13 +223,22 @@
     getDiscountedPrice($('#discount').val());
     function getDiscountedPrice(discount){
         var price = $('#price').val();
+          var discount = discount;
             if(price>0){
                 var price = $('#price').val();
-                var discount = discount;
                 var newPrice = Math.round(price) - Math.round(price) * Math.round(discount)/100;
-                $('#discountPrice').html("₹"+Math.round(newPrice));
-                $('#selling_price').val(Math.round(newPrice));
-                $('#orgPrice').html("<strike>₹"+Math.round(price)+"</strike>");
+                if(discount>0){
+                           
+
+                   $('#discountPrice').html("₹"+Math.round(newPrice));
+                   $('#selling_price').val(Math.round(newPrice));
+                   $('#orgPrice').html("<strike>₹"+Math.round(price)+"</strike>");
+                }else{
+                    var price = $('#selling_price').val();
+                    $('#discountPrice').html("₹"+Math.round(price));
+                    $('#selling_price').val(Math.round(price));
+                    $('#orgPrice').html("<strike>₹"+Math.round(price)+"</strike>");
+                }
             }else{
                 document.getElementById("price").style.borderColor = "red";
             }
