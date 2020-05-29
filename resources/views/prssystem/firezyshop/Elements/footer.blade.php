@@ -1,22 +1,14 @@
 
-
-      <footer id="footer">
-        
-          <div class="footer-before container">
-  <div class="container">
-
-    
-    
-  </div>
+ <?php $footeMenu = config('global.FOOTER_MENU'); 
+ //dd($footeMenu);?>
+<footer id="footer">
+<div class="footer-before container">
+<div class="container">
+</div>
 </div>
 <div class="footer-container">
   <div class="container">
     <div class="row footer">
-      
-      
-<!-- begin module:ps_linklist/views/templates/hook/linkblock.tpl -->
-<!-- begin /var/www/html/PRS08/PRS080193/PRS01/themes/PRSADD217/modules/ps_linklist/views/templates/hook/linkblock.tpl -->
-
 <div class="col-md-4 links block links hb-animate-element top-to-bottom">
   <h3 class="h3 hidden-md-down">policy</h3>
     <div class="title h3 block_title hidden-lg-up" data-target="#footer_sub_menu_47856" data-toggle="collapse">
@@ -29,33 +21,14 @@
 	</span>
   </div>
   <ul id="footer_sub_menu_47856" class="collapse block_content">
+  	<?php foreach($footeMenu['FIRST'] as $menukey=>$menuUrl){ ?>
 		  <li>
-		<a id="link-product-page-prices-drop-3" class="cms-page-link" href="#" title="Our special products">
-		  Privacy & Policy
+		<a id="link-product-page-prices-drop-3" class="cms-page-link" href="{{route('viewPage',['slug'=>$menuUrl])}}" title="Our special products">
+		  {{$menukey}}
 		</a>
 	  </li>
-		  <li>
-		<a id="link-product-page-new-products-3" class="cms-page-link" href="#" title="Our new products">
-		  Terms & Conditions
-		</a>
-	  </li>
-		  <li>
-		<a id="link-product-page-best-sales-3" class="cms-page-link" href="#" title="Our best sales">
-		  Advertisement
-
-		</a>
-	  </li>
-		  <li>
-		<a id="link-static-page-sitemap-3" class="cms-page-link" href="{{route('login')}}" title="Lost ? Find what your are looking for">
-		   My account
-		</a>
-	  </li>
-		  <li>
-		<a id="link-static-page-my-account-3" class="cms-page-link" href="#" title="">
+	<?php } ?>
 		 
-		  Sitemap
-		</a>
-	  </li>
 	  </ul>
 </div>
 <div class="col-md-4 links block links hb-animate-element top-to-bottom">
@@ -70,31 +43,13 @@
 	</span>
   </div>
   <ul id="footer_sub_menu_93800" class="collapse block_content">
+		<?php foreach($footeMenu['SECOND'] as $menukey=>$menuUrl){ ?>
 		  <li>
-		<a id="link-product-page-prices-drop-1" class="cms-page-link" href="{{url('page/aboutus')}}" title="Our special products">
-		  About Us
+		<a id="link-product-page-prices-drop-3" class="cms-page-link" href="{{route('viewPage',['slug'=>$menuUrl])}}" title="Our special products">
+		  {{$menukey}}
 		</a>
 	  </li>
-		  <li>
-		<a id="link-product-page-new-products-1" class="cms-page-link" href="{{url('page/aboutus')}}" title="Our new products">
-		  Why Go4shop
-		</a>
-	  </li>
-		  <li>
-		<a id="link-product-page-best-sales-1" class="cms-page-link" href="{{url('page/aboutus')}}" title="Our best sales">
-		  Become Seller
-		</a>
-	  </li>
-		  <li>
-		<a id="link-static-page-authentication-1" class="cms-page-link" href="{{url('page/aboutus')}}" title="">
-		 Refer & Earn
-		</a>
-	  </li>
-		  <li>
-		<a id="link-static-page-my-account-1" class="cms-page-link" href="{{url('page/aboutus')}}" title="">
-		   Become Distributor
-		</a>
-	  </li>
+	<?php } ?>
 	  </ul>
 </div>
 <div class="col-md-4 links block links hb-animate-element top-to-bottom">
@@ -109,31 +64,13 @@
 	</span>
   </div>
   <ul id="footer_sub_menu_61326" class="collapse block_content">
+		<?php foreach($footeMenu['THIRD'] as $menukey=>$menuUrl){ ?>
 		  <li>
-		<a id="link-cms-page-1-2" class="cms-page-link" href="?id_cms=1&amp;controller=cms&amp;id_lang=1" title="Our terms and conditions of delivery">
-		  Delivery
+		<a id="link-product-page-prices-drop-3" class="cms-page-link" href="{{route('viewPage',['slug'=>$menuUrl])}}" title="Our special products">
+		  {{$menukey}}
 		</a>
 	  </li>
-		  <li>
-		<a id="link-cms-page-2-2" class="cms-page-link" href="#" title="Legal notice">
-		   FAQs
-		</a>
-	  </li>
-		  <li>
-		<a id="link-cms-page-4-2" class="cms-page-link" href="#" title="Learn more about us">
-		 Legal Notice
-		</a>
-	  </li>
-		  <li>
-		<a id="link-cms-page-5-2" class="cms-page-link" href="#" title="Our secure payment method">
-		  Secure Payment
-		</a>
-	  </li>
-		  <li>
-		<a id="link-static-page-stores-2" class="cms-page-link" href="?controller=stores" title="">
-		  Track  Order
-		</a>
-	  </li>
+	<?php } ?>
 	  </ul>
 </div>
 <div class="block-contact footer-block col-xs-12 col-sm-4 links wrapper hb-animate-element right-to-left">
@@ -316,14 +253,12 @@ $(document).ready(function(){
 <div class="container">
 <div id="links_block_footer" class="block links">
 <ul id="tm_footerlink" class="block_content ">
+<?php foreach($footeMenu['BOTTOM'] as $menukey=>$menuUrl){ ?>
 <li>
-<a href="#" title="get support">get support</a></li>
-<li>
-<a href="#" title="register &amp; lists">register &amp; lists</a></li>
-<li>
-<a href="#" title="track order">track order</a></li>
-<li>
-<a href="#" title="credit card">Advertisement With Us</a></li>
+<a id="link-product-page-prices-drop-3" class="cms-page-link" href="{{route('viewPage',['slug'=>$menuUrl])}}" title="{{$menukey}}">
+	  {{$menukey}}
+	</a>
+<?php } ?>
 </ul>
 </div>
 <div id="tmpaymentcmsblock" class="links hb-animate-element right-to-left">
