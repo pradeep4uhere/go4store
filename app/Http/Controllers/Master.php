@@ -19,6 +19,7 @@ use Config;
 use App\Location;
 use Log;
 use App\Seller;
+use App\StoreType;
 
 
 class Master extends Controller {
@@ -418,6 +419,13 @@ class Master extends Controller {
         return date($formate,strtotime($date));
 
     }
+
+
+
+     public function getStoreTypeIdByName($name){
+        $storeType = StoreType::where('name', 'LIKE', '%' . $name . '%')->first();
+        return $storeType;
+    } 
 
 
 

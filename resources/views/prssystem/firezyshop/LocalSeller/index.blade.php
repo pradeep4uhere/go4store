@@ -5,9 +5,16 @@
 @include('prssystem.firezyshop.Elements.header')
 <!--Header Section Ends-->
         
+
 <aside id="notifications">
-  <div class="container">&nbsp;&nbsp;</div>
+  <div class="container">
+  	        <!-- Block links module -->
+@include('prssystem.firezyshop.Elements.blockLinks',array('storeTypeArr'=>$storeTypeArr))
+<!-- /Block links module -->
+
+  </div>
 </aside>
+
 
  <!--Main Container Start Here-->   
 <div class="container">

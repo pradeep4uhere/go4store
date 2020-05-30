@@ -20,7 +20,7 @@ class StoreType extends Model
     	$catObj = StoreType::where('status','=','1');
 	    $catObjRes = $catObj->get();
         foreach ($catObjRes as $obj) {
-           $cateArr[]=array('id'=>$obj->id,'name'=>$obj->name,'description'=>$obj->description);
+           $cateArr[]=array('id'=>$obj->id,'name'=>$obj->name,'image'=>$obj->image,'description'=>$obj->description);
         }
         return $cateArr;
     }

@@ -22,7 +22,7 @@
 <!-- slider-->
 
 <!-- tm_categorylist-->
-@include('prssystem.firezyshop.Elements.department')
+@include('prssystem.firezyshop.Elements.department',array('storeTypeArr'=>$storeTypeArr))
 <!-- categorylist -->
 
 </div>
