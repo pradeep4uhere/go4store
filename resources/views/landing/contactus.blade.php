@@ -14,11 +14,10 @@
 <a href="{{env('APP_URL')}}">
 <div class="logo-container">
 <div class="logo">
-<img src="{{env('APP_URL')}}/public/theme/prssystem/img/front/rsz_go4shoponline.jpg">
+<img src="{{env('APP_URL')}}/public/theme/prssystem/img/front/logo.png">
 </div>
 <div class="brand">
-Go4Shop.
-<small>online</small>
+Go4Shop
 </div>
 </div>
 </a>
@@ -43,7 +42,7 @@ Go4Shop.
     <!--        You can switch " data-color="blue" "  with one of the next bright colors: "green", "orange", "red", "purple"             -->
     <div class="wizard-header">
       <h3 class="wizard-title">Contact Us</h3>
-      <p><small class="description">Mahagun Mywoods, Gaur City-2, Greater Noida West, Pin-201016 (Uttar Pradesh)<br>, Mobile: +91-9958760605, Email: info@go4shop.online</small></p>
+      <p><small class="description">Mahagun Mywoods, Gaur City-2, Greater Noida West, Pin-201016 (Uttar Pradesh)<br>, Mobile: {{env('ADMIN_MOBILE')}}, Email: info@go4shop.online</small></p>
     </div>
     <div class="wizard-navigation">
       <ul>
@@ -219,8 +218,8 @@ Go4Shop.
       <div class="container text-center">
 Made with 
         <i class="fa fa-heart heart"></i> by 
-        <a href="http://www.creative-tim.com">Creative Tim</a>. Free download 
-        <a href="http://www.creative-tim.com/product/material-bootstrap-wizard">here.</a>
+        <a href="http://www.go4shop.online">www.go4shop.online</a> 
+      
       </div>
     </div>
   </div>
