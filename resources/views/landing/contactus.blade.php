@@ -178,7 +178,7 @@ Go4Shop
                         <p class="description">Mahagun Mywoods, Gaur City-2<br>
                             Greater Noida West<br>
                             Pin-201016 (Uttar Pradesh)</br>
-                        Mobile: +91-9958760605</br>
+                        Mobile: +91-{{env('ADMIN_MOBILE')}}</br>
                       Email: info@go4shop.online</p>
                       </div>
                     </div>
