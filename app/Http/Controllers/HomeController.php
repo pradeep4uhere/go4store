@@ -1,6 +1,8 @@
 <?php
 
 namespace App\Http\Controllers;
+date_default_timezone_set('Asia/Kolkata');
+
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Auth;
@@ -202,11 +204,18 @@ class HomeController extends Master
 
     public function invoicepayment(Request $request){
         //CC/DC/NB/PPI/UPI
-        $BANKIT_URL=env('BANKIT_URL');
+         $BANKIT_URL=env('BANKIT_URL'); 
+        //$BANKIT_URL='https://portal.bankit.in:9090/BankitPG/pay';
         $SECURE_KEY=env('SECURE_KEY');
         $AGENT_ID=env('AGENT_ID');
 
         $amount = $request->get('amount');
+        
+        if($amount>25000){
+            $BANKIT_URL=env('BANKITR_URL');
+        }else{
+            $BANKIT_URL=env('BANKIT_URL');  
+        }
         $email = $request->get('email');
         $mobile = $request->get('mobile');
         $fullname = $request->get('fullname');
