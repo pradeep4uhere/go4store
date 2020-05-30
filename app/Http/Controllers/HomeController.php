@@ -272,6 +272,9 @@ class HomeController extends Master
     function allSellerTypeInPincodeArea(Request $request,$pincode,$name,$id){
         $metaTags = array();
         //Set Meta Section Data
+        $nameStr = ucwords(str_replace("-"," ",$name));
+        $storeTypeArr = $this->getStoreTypeIdByName($nameStr);
+        $storeTypeId = $storeTypeArr->id;
         $pincode = $this->getPinCode();
     
         $metaTitle = "Go4Shop- Your Own Online Shop";
@@ -302,13 +305,21 @@ class HomeController extends Master
         
         //Get All Store Type Into Zipcode Location
         $storeTypeArr = StoreType::where('status','=','1')->get()->toArray();
-
+// dd($storeTypeArr);
         //Get All Seller List
 
-        if($id>0){
-            $seller = Seller::where('status','=',1)->where('store_type_id','=',$id)->with('StoreType')->with('SellerImage')->paginate(Master::getPageItemCount());
+        if($storeTypeId>0){
+            $seller = Seller::where('status','=',1)
+            ->where('store_type_id','=',$id)
+            ->with('StoreType')
+            ->with('SellerImage')
+            ->paginate(Master::getPageItemCount());
         }else{
-        $seller = Seller::where('status','=',1)->with('StoreType')->with('SellerImage')->paginate(Master::getPageItemCount());
+            $seller = Seller::where('status','=',1)
+            ->where('pincode','=',$pincode6)
+            ->with('StoreType')
+            ->with('SellerImage')
+            ->paginate(Master::getPageItemCount());
         }
 
         //Feature Sellers

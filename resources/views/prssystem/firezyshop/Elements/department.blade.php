@@ -30,20 +30,25 @@
 
 
 <div class="owl-carousel owl-theme" id="owl-demo2">
+	<?php $count=1;?>
+	@foreach($storeTypeArr as $item) 
+	<?php //dd($item);?>
 	<div class="item first" style="width: 203px;">
 		<li>
 			<div class="categoryblock1 categoryblock item">
 			<div class="block_content">
-			<a href="?id_category=6&amp;controller=category&amp;id_lang=1">
+			<a href="{{route('shoptype',['pincode'=>$pincode['pincode'], 'name'=>str_slug($item['name']),
+           					'id'=>$item['id']])}}">
 			<div class="categoryimage_bg">
 				<div class="categoryimage">
-					<img src="{{config('global.THEME_FRONT_IMAGE')}}/category/staionery.jpg" alt="" class="img-responsive">
+					<img src="{{config('global.THEME_FRONT_IMAGE')}}/category/{{$item['image']}}" alt="" class="img-responsive">
 				</div>
 			</div>
 			</a>
 			<div class="categorylist">
 			<div class="cate-heading">
-				<a href="#">Staionery</a>
+				<a href="{{route('shoptype',['pincode'=>$pincode['pincode'], 'name'=>str_slug($item['name']),
+           					'id'=>$item['id']])}}">{{$item['name']}}</a>
 			</div>
 			</div>
 			</div>
@@ -51,6 +56,8 @@
 			</div>
 		</li>
 	</div>
+    <?php $count++; ?>
+    @endforeach
 	<div class="item" style="width: 203px;">
 		<li>
 			<div class="categoryblock1 categoryblock item">

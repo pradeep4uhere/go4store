@@ -1,7 +1,7 @@
 <?php
 namespace App\Http\Controllers;
-
 use Illuminate\Http\Request;
+use App\StoreType;
 
 class GeneralController extends Controller
 {
@@ -12,6 +12,12 @@ class GeneralController extends Controller
     	die;
 
     }
+
+
+    public static function getStoreTypeIdByName($name){
+    	$storeType = StoreType::where('name','=',$name)->first();
+    	return $storeType;
+    } 
 
 
     
