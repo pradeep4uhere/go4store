@@ -112,7 +112,7 @@ class EmailController extends Controller
             $m->from(env('MAIL_FROM_ADDRESS'), env('MAIL_FROM_NAME'));
             $m->to($user['email'], ucwords(strtolower($user['name'])))
                 ->bcc(env('MAIL_FROM_ADDRESS'))
-                ->subject('Thank you for register with Go4Shop!');
+                ->subject('Thank you for contacting with Go4Shop!');
         });
         if($mail){
             return true;
@@ -183,7 +183,9 @@ class EmailController extends Controller
      */
     public static function sendOrderConfirmationSellerEmail($data)
     {   
+
         $orderDetails = Order::with('OrderDetail','User')->where('id','=',$data[0]['id'])->first();
+    
         $paymentDetailArr = Payment::where('order_id','=',$orderDetails['orderID'])->first();
         
         $orderDate = Master::getDate('d M,Y H:i:s',$orderDetails['created_at']);
@@ -227,7 +229,7 @@ class EmailController extends Controller
             $items.='</tr>';
             $count++;
         }
-        $items.="</table>";
+        $items.="</table>"; 
 
         $body1 = "You have new order recived on <b>".$orderDate."</b> with order id <b>".$orderDetails['orderID']."</b><br/>";
         $body3 =" For more details, please login to your seller account.";
@@ -277,11 +279,10 @@ class EmailController extends Controller
     {   
         $orderDetails = Order::with('OrderDetail','User')->where('id','=',$data[0]['id'])->first();
         $paymentDetailArr = Payment::where('order_id','=',$orderDetails['orderID'])->first();
-        
-        $orderDate = Master::getDate('d M,Y H:i:s',$orderDetails['created_at']);
-        $seller = \App\Seller::findOrFail($orderDetails['seller_id']);
+        $orderDate  = Master::getDate('d M,Y H:i:s',$orderDetails['created_at']);
+        $seller     = \App\Seller::findOrFail($orderDetails['seller_id']);
         $sellerName = $seller['business_name'];
-        dd($sellerName);
+        
         //User Details
         $userDetails = " Seller Name: ".$seller['business_name']."</br>";
         $userDetails.= " Contact Number: ".$seller['User']['mobile']."</br>";
@@ -321,19 +322,20 @@ class EmailController extends Controller
             $count++;
         }
         $items.="</table>";
-
         $body1 = "You have new order recived on <b>".$orderDate."</b> with order id <b>".$orderDetails['orderID']."</b><br/>";
         $body3 =" For more details, please login to your seller account.";
         $customerDetails= "";
-        
         $url  = env('APP_URL');
-        $body1 = "You have successfully registered .";
+        $body1 = "You have successfully placed order .";
         $body2= "Thank you for joining with us.";
         $mail = Mail::send('Email.seller.order.order_confirom', [
             'name' => $sellerName,
             'body1' => $body1,
             'userDetails' => $userDetails,
             'paymentDetails' => $paymentDetails,
+            'orderDetails'=>$orderDetails,
+            'orderDate'=>$orderDate,
+            'seller'=>$seller,
             'items' => $items,
             'body3' => $body3,
             'url'  => $url ,
@@ -342,7 +344,7 @@ class EmailController extends Controller
                 $m->from(env('MAIL_FROM_ADDRESS'), env('MAIL_FROM_NAME'));
                 $m->to($seller['email_address'], ucwords(strtolower($seller['business_name'])))
                 ->bcc(env('MAIL_FROM_ADDRESS'))
-                ->subject('New Order Recived!');
+                ->subject('Your order is confirmed!');
             });
         if($mail){
             return true;

@@ -32,9 +32,6 @@ class OrderController extends Master
     //
     public function orderpost(Request $request){
     	$paymentType = $request->get('_pt');
-		
-
-
 		$totalAmount = $request->get('_tm');
 		$shippingId = $request->get('_sp');
 		$userId = Auth::user()->id;
@@ -45,7 +42,6 @@ class OrderController extends Master
 		$quantity=\Cart::getTotalQuantity();
 		$subTotal=\Cart::session($userId)->getSubTotal();
 		$total=\Cart::session($userId)->getTotal();
-		
 
 		//Insert Records Into Order Table
 		$orderObj = new Order();
@@ -150,7 +146,7 @@ class OrderController extends Master
 			dd($e->getMessage());
 			//abort(404);
 		}
-		
+		//dd($PAYU_BASE_URL);
 		
 		return view(Master::loadFrontTheme('frontend.payment.order_creating'),
 		array(
@@ -250,8 +246,14 @@ class OrderController extends Master
 			//DD($address);
 
 			if($payment_status=='success'){
+
+
 				$payment_status = "<font color='green'><b>SUCCESS</b></font>";
 			}else{
+				//Send Email to Seller
+				$orderDetailsArr =Order::with('OrderDetail','Payment','Seller')->where('id','=',$ordeId)->get()->toArray();
+				Master::sendEmailToSeller('newOrder',$orderDetailsArr);
+				Master::sendEmailToUser('newOrder',NULL,$orderDetailsArr);
 				$payment_status = "<font color='red'><b>".$payment_status."</b></font>";
 			}
     		return view(Master::loadFrontTheme('firezyshop.Payment.ThanksPage'),

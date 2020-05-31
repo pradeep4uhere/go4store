@@ -29,7 +29,7 @@
 <tr>
 <!-- <td><img src="{{env('APP_URL')}}/public/theme/prssystem/img/front/rsz_go4shoponline.jpg" alt="Image" style="width:65px;"></td> -->
 <td style="width:10%;text-align:left; padding: 5px 0px 0px 5px;">
-    <img src="http://www.go4shop.online/public/theme/prssystem/img/front/rsz_go4shoponline.jpg" alt="Image" style="width:65px; border-radius: 50%">
+    <img src="http://www.go4shop.online/public/theme/prssystem/img/front/logo.png" alt="Image" style="width:65px; border-radius: 50%">
 </td>
 <td class="header"  style=" width:90%; text-align:left; font-family: Avenir, Helvetica, sans-serif; box-sizing: border-box; padding: 0px; text-align: center;">
     <a href="{{env('APP_URL')}}" style="font-family: Avenir, Helvetica, sans-serif; box-sizing: border-box; color: #FFF; font-size: 24px; font-weight: bold; text-decoration: none; text-shadow: 0 1px 0 white;">

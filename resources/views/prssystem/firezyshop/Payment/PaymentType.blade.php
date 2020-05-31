@@ -72,7 +72,7 @@
 </div>
 </div>
 <div class="col-md-4">
-<section id="js-checkout-summary" class="card js-cart" data-refresh-url="https://prestashop.templatemela.com/PRS08/PRS080193/PRS01/index.php?controller=cart?ajax=1&amp;action=refresh">
+<section id="js-checkout-summary" class="card js-cart" data-refresh-url="#">
 <div class="card-block">
       <div class="cart-summary-products">
        <h6 class="block_title hidden-md-down">
@@ -92,37 +92,7 @@
       </p>
 
         
-          <div class="collapse" id="cart-summary-product-list">
-            <ul class="media-list">
-                              <li class="media">
-  <div class="media-left">
-    <a href="https://prestashop.templatemela.com/PRS08/PRS080193/PRS01/index.php?id_product=2&amp;id_product_attribute=48&amp;rewrite=brown-bear-printed-sweater&amp;controller=product&amp;id_lang=1#/1-size-s/8-color-white/20-dimension-60x90cm" title="Suspendisse Massa Nulla tristique nisla">
-      <img class="media-object" src="https://prestashop.templatemela.com/PRS08/PRS080193/PRS01/img/p/3/7/6/376-cart_default.jpg" alt="Suspendisse Massa Nulla tristique nisla">
-    </a>
-  </div>
-  <div class="media-body">
-    <span class="product-name">Suspendisse Massa Nulla tristique nisla</span>
-    <span class="product-quantity">x1</span>
-    <span class="product-price pull-xs-right">$28.72</span>
-    
-  </div>
-
-</li>
-<li class="media">
-  <div class="media-left">
-    <a href="https://prestashop.templatemela.com/PRS08/PRS080193/PRS01/index.php?id_product=9&amp;id_product_attribute=154&amp;rewrite=mountain-fox-cushion&amp;controller=product&amp;id_lang=1#/1-size-s/16-color-yellow/19-dimension-40x60cm" title="Nascetur ridiculus mus feugiat viverra">
-      <img class="media-object" src="https://prestashop.templatemela.com/PRS08/PRS080193/PRS01/img/p/4/1/0/410-cart_default.jpg" alt="Nascetur ridiculus mus feugiat viverra">
-    </a>
-  </div>
-  <div class="media-body">
-    <span class="product-name">Nascetur ridiculus mus feugiat viverra</span>
-    <span class="product-quantity">x2</span>
-    <span class="product-price pull-xs-right">$77.00</span>
-    
-  </div>
-</li>
-</ul>
-</div>
+      
 </div>
 <div class="cart-summary-line cart-summary-subtotals" id="cart-subtotal-products">
 <span class="label">Subtotal</span>
@@ -145,45 +115,34 @@
 
 </div>
 </section>
-              
-
-              
-<!-- begin module:blockreassurance/views/templates/hook/blockreassurance.tpl -->
-<!-- begin /var/www/html/PRS08/PRS080193/PRS01/themes/PRSADD217/modules/blockreassurance/views/templates/hook/blockreassurance.tpl -->  <div id="block-reassurance">
+<div id="block-reassurance">
     <ul>
               <li>
           <div class="block-reassurance-item">
-            <img src="https://prestashop.templatemela.com/PRS08/PRS080193/PRS01/modules/blockreassurance/img/ic_verified_user_black_36dp_1x.png" alt="Security policy (edit with Customer reassurance module)">
+            <img src="{{config('global.THEME_FRONT_IMAGE')}}/icon/restaurant.guru_.jpg-130x130.png" alt="Security policy (edit with Customer reassurance module)">
             <span class="h6">Security policy<br/> <small>(We never share your details anywhere)</small></span>
           </div>
         </li>
               <li>
           <div class="block-reassurance-item">
-            <img src="https://prestashop.templatemela.com/PRS08/PRS080193/PRS01/modules/blockreassurance/img/ic_local_shipping_black_36dp_1x.png" alt="Delivery policy (edit with Customer reassurance module)">
+            <img src="{{config('global.THEME_FRONT_IMAGE')}}/icon/ic_local_shipping_black_36dp_1x.png" alt="Delivery policy (edit with Customer reassurance module)">
             <span class="h6">Delivery policy <br/><small>(Read more terms & conditions)</small></span>
           </div>
         </li>
               <li>
           <div class="block-reassurance-item">
-            <img src="https://prestashop.templatemela.com/PRS08/PRS080193/PRS01/modules/blockreassurance/img/ic_swap_horiz_black_36dp_1x.png" alt="Return policy (edit with Customer reassurance module)">
+            <img src="{{config('global.THEME_FRONT_IMAGE')}}/icon/ic_swap_horiz_black_36dp_1x.png" alt="Return policy (edit with Customer reassurance module)">
             <span class="h6">Return policy<br/> <small>(Read more terms & conditions)</small></span>
           </div>
         </li>
           </ul>
-  </div>
-<!-- end /var/www/html/PRS08/PRS080193/PRS01/themes/PRSADD217/modules/blockreassurance/views/templates/hook/blockreassurance.tpl -->
-<!-- end module:blockreassurance/views/templates/hook/blockreassurance.tpl -->
-
+          </div>
             </div>
           </div>
         </section>
-      
       </div>
-      
   </div>
     </section>
-
-
 <form action="{{route('orderpost')}}" method="get" id="_op">
     <input type="hidden" name="_pt" id="pt" >
     <input type="hidden" name="_tm" id="tm" value="{{$totalAmount}}">

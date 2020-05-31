@@ -259,8 +259,8 @@
                THANK YOU FOR YOUR BUSINESS
             </p>
             <p class="text-center">
-               <span class="m-r-10"><i class="fa fa-fw fa-lg fa-globe"></i> {{env('FRONT_URL')}}</span>
-               <span class="m-r-10"><i class="fa fa-fw fa-lg fa-phone-volume"></i> T:{{env('PHONE_NO')}}</span>
+               <span class="m-r-10"><i class="fa fa-fw fa-lg fa-globe"></i> {{env('APP_URL')}}</span>
+               <span class="m-r-10"><i class="fa fa-fw fa-lg fa-phone-volume"></i> +91-8130656751, {{env('PHONE_NO')}}</span>
                <span class="m-r-10"><i class="fa fa-fw fa-lg fa-envelope"></i> {{env('MAIL_FROM_ADDRESS')}}</span>
             </p>
          </div>

@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
-
+date_default_timezone_set('Asia/Kolkata');
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\DB;

@@ -56,7 +56,7 @@ var hash = '<?php echo $hash ?>';
         return;
       }
 var payuForm = document.forms.payuForm;
-payuForm.submit();
+  payuForm.submit();
 }
 </script>	
 @stop
