@@ -27,7 +27,7 @@
     <a href="{{env('APP_URL')}}">
          <div class="logo-container">
             <div class="logo">
-                <img src="{{env('APP_URL')}}/public/theme/prssystem/img/front/rsz_go4shoponline.jpg">
+                <img src="{{env('APP_URL')}}/public/theme/prssystem/img/front/logo.png">
             </div>
             <div class="brand">
                 Go4Shop.<small>online</small>
