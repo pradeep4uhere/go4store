@@ -26,6 +26,16 @@
 .product-actions-main :hover{
 	display: block;
 }
+
+@media (max-width: 479px){
+.customNavigation a.next {
+    right: 19px;
+}
+a.btn.btn-danger{
+  padding: 5px 10px;
+}
+}
+
 </style>
 <section id="content" class="page-home">
 <div id="tmcategorytabs" class="tabs products_block container clearfix"> 

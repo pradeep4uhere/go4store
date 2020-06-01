@@ -17,31 +17,12 @@
 			<div class="left-nav"></div>
 			<div class="right-nav">
 				<div id="links_block_top" class="block links">
-					<h3 class="h3 title_block ">
+					<h3 class="h3 title_block active">
 						<i class="material-icons"></i>
 					</h3>
 					
 						
-					<ul id="tm_toplink" class="block_content">
-							 
-							<li>
-								<a href="#" title="home">home</a></li>
-									 
-							<li>
-								<a href="#" title="new collection">new collection</a></li>
-									 
-							<li>
-								<a href="#" title="contact us">contact us</a></li>
-									 
-							<li>
-								<a href="#" title="brands">brands</a></li>
-									 
-							<li>
-								<a href="#" title="returns">returns</a></li>
-									 
-							<li>
-								<a href="#" title="special">special</a></li>
-								</ul>
+					
 				</div>
 			</div>
 		 </div>
@@ -69,7 +50,7 @@
 						</div>
 						<div class="cart-price" >
 						<span class="hidden-md-down cart">My cart</span>
-						<span class="hidden-md-down value">$0.00</span>
+						<span class="hidden-md-down value">0.00</span>
 					</div>
 					<div id="bgimage"></div>
 					</a>
@@ -107,21 +88,7 @@
 <!-- <span class="ap-total-compare ap-total"></span> -->
       </a>
     </div>
-  <div class="language-selector-wrapper">
-      
-
-        <div class="language-selector dropdown js-dropdown">
-        <span class="expand-more hidden-md-down" data-toggle="dropdown">
-		<select class="link hidden-lg-up" aria-labelledby="language-selector-label">
-		  <option value="?id_lang=1" selected="selected"></option>
-		  <option value="?id_lang=2"></option>
-		  <option value="?id_lang=3"></option>
-		  <option value="?id_lang=4"></option>
-		  <option value="?id_lang=5"></option>
-		</select>
-      </span>
-    </div>
-  </div>
+  
    <div class="head-compare">
       <a class="ap-btn-compare dropdown-item" href="javascript:void(0);" title="Edit My Pincode" rel="nofollow" onclick="return openPinCodeBox()">
         <i class="fa fa-map-marker"></i>&nbsp;
@@ -156,6 +123,10 @@
 	<i class="fa fa-ellipsis-v" style="font-size: 25px;color: #FFF"></i>
 </div>
 			
+<div id="search_form" class="col-lg-4 col-md-5 col-sm-12 search-widget" style="margin-top: 9px;">
+	<i class="fa fa-search" style="font-size: 25px;color: #FFF"></i>
+</div>
+
 <div class="right-nav">
 <!-- Block links module -->
 <div id="links_block_top" class="block links">
@@ -164,33 +135,46 @@
 	</h3>
 	<ul id="tm_toplink" class="block_content">
 			 
-			<li>
-				<a href="{{route('homePage')}}" title="home">home</a></li>
-					 
-			<li>
-				<a href="#" title="new collection">new collection</a></li>
-					 
-			<li>
-				<a href="#" title="contact us">contact us</a></li>
-					 
-			<li>
-				<a href="#" title="brands">brands</a></li>
-					 
-			<li>
-				<a href="#" title="returns">returns</a></li>
-					 
-			<li>
-				<a href="#" title="special">special</a></li>
-				</ul>
+		<li><a href="{{url('/')}}" title="Home">Home</a></li>
+		<li><a href="{{url('/seller/'.$pincode['pincode'])}}" title="New Seller">new Seller</a></li>
+		<li><a href="{{url('page/aboutus')}}" title="About Us">About Us</a></li>
+		<li><a href="{{url('/seller/'.$pincode['pincode'])}}" title="Find Your Nearest Seller">Best Seller</a></li>
+		<li><a href="{{url('contactus')}}" title="Write us ~ Contact Us">Write us</a></li>
+		<li><a href="{{url('contactus')}}" title="Become Distributor">Distributor</a></li>
+ 		
+	</ul>
 </div>
 
-			</div>
-			<div class="clearfix"></div>
-		</div>
+
+</div>
+<div class="clearfix"></div>
+</div>
         
 	</div>
+	
 </div>
+
 </nav>
+<div class="mobileSearch">
+	<!--Search Box For Mobile Start-->
+<div id="search_widget" class="col-lg-12 col-md-12 col-sm-12 search-widget search-widget-mobile">
+<span class="search_button" ></span>
+<div class="searchtoggle" id="searchtoggleMobile">
+<form method="get" action="{{url('/sellersearch')}}">
+	<input type="text" id="search-box" name="s" value="" placeholder="Enter Your address OR Zipcode e.g 201301" aria-label="Search" class="ui-autocomplete-input" autocomplete="off" style="border-radius: 0px !important;" />
+	<input type="hidden" name="sellername" id="sellername">
+	<div id="suggesstion-box" style="position: absolute; max-height: 300px; overflow: auto; min-width: 100%"></div>
+	<button type="submit">
+	<div class="submit-text">search</div>
+	</button>
+	<input type="submit" style="position: absolute; left: -9999px"/>
+</form>
+<input type="hidden" name="hiddenJson" id="hiddenJson">
+</div>
+
+</div>
+<!--Search Box For Mobile Ends Here-->
+</div>
 
 <div id="mobile_top_menu_wrapper" class="row hidden-lg-up slide" style="display: none">
 <div class="mobile-menu-inner">
@@ -199,7 +183,9 @@
 		<div class="container">
 		<div class="row">
 			<div class="col-sm-10 col-md- pull-xs-left" style="width: 80%;float: left;">Menu @if(Auth::user()) Hi, {{ucfirst(strtolower(Auth::user()->first_name))}} @endif</div>
-			<div style="width: 20%;float: right;" class="pull-xs-right"><i class="fa fa-close pull-xs-right" style="color: #FFF"></i></div>
+			<div style="width: 20%;float: right;" class="pull-xs-right">
+				<i class="fa fa-close pull-xs-right" style="color: #FFF"></i>
+			</div>
 		</div>
 		</div>
 	</div>
@@ -222,7 +208,7 @@
 		</li>
 		@else
 		<li class="category " id="tmcategory-6">
-			<a href="{{url('page/aboutus')}}" class="dropdown-item" data-depth="0"><i class="fa fa-home"></i>&nbsp;&nbsp;About Us</a>
+			<a href="{{url('/seller/'.$pincode['pincode'])}}" class="dropdown-item" data-depth="0"><i class="fa fa-shopping-bag"></i>&nbsp;&nbsp;Near By Seller</a>
 		</li>
 		<li class="category " id="tmcategory-6">
 			<a href="{{route('login')}}" class="dropdown-item" data-depth="0"><i class="fa fa-user"></i>&nbsp;&nbsp;Login</a>
@@ -251,8 +237,8 @@
 		
 </ul>
 </div>
-<div id="_mobile_currency_selector"></div>
-<div id="_mobile_language_selector"></div>
-<div id="_mobile_contact_link"></div>
+
 </div>
+
 </div>
+	

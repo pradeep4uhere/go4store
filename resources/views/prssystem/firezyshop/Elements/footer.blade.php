@@ -11,7 +11,7 @@
     <div class="row footer">
 <div class="col-md-4 links block links hb-animate-element top-to-bottom">
   <h3 class="h3 hidden-md-down">policy</h3>
-    <div class="title h3 block_title hidden-lg-up" data-target="#footer_sub_menu_47856" data-toggle="collapse">
+    <div class="title h3 block_title hidden-lg-up" id="footer_sub_menu_47856" data-toggle="collapse">
 	<span class="">policy</span>
 	<span class="pull-xs-right">
 	  <span class="navbar-toggler collapse-icons">
@@ -20,7 +20,7 @@
 	  </span>
 	</span>
   </div>
-  <ul id="footer_sub_menu_47856" class="collapse block_content">
+  <ul id="_footer_sub_menu_47856" class="collapse block_content">
   	<?php foreach($footeMenu['FIRST'] as $menukey=>$menuUrl){ ?>
 		  <li>
 		<a id="link-product-page-prices-drop-3" class="cms-page-link" href="{{route('viewPage',['slug'=>$menuUrl])}}" title="Our special products">
@@ -33,7 +33,7 @@
 </div>
 <div class="col-md-4 links block links hb-animate-element top-to-bottom">
   <h3 class="h3 hidden-md-down">Go4shop</h3>
-    <div class="title h3 block_title hidden-lg-up" data-target="#footer_sub_menu_93800" data-toggle="collapse">
+    <div class="title h3 block_title hidden-lg-up" id="footer_sub_menu_93800" data-toggle="collapse">
 	<span class="">Go4shop</span>
 	<span class="pull-xs-right">
 	  <span class="navbar-toggler collapse-icons">
@@ -42,7 +42,7 @@
 	  </span>
 	</span>
   </div>
-  <ul id="footer_sub_menu_93800" class="collapse block_content">
+  <ul id="_footer_sub_menu_93800" class="collapse block_content">
 		<?php foreach($footeMenu['SECOND'] as $menukey=>$menuUrl){ ?>
 		  <li>
 		<a id="link-product-page-prices-drop-3" class="cms-page-link" href="{{route('viewPage',['slug'=>$menuUrl])}}" title="Our special products">
@@ -54,7 +54,7 @@
 </div>
 <div class="col-md-4 links block links hb-animate-element top-to-bottom">
   <h3 class="h3 hidden-md-down">help</h3>
-    <div class="title h3 block_title hidden-lg-up" data-target="#footer_sub_menu_61326" data-toggle="collapse">
+    <div class="title h3 block_title hidden-lg-up"  id ="footer_sub_menu_61326" data-target="#footer_sub_menu_61326" data-toggle="collapse">
 	<span class="">help</span>
 	<span class="pull-xs-right">
 	  <span class="navbar-toggler collapse-icons">
@@ -63,7 +63,7 @@
 	  </span>
 	</span>
   </div>
-  <ul id="footer_sub_menu_61326" class="collapse block_content">
+  <ul id="_footer_sub_menu_61326" class="collapse block_content">
 		<?php foreach($footeMenu['THIRD'] as $menukey=>$menuUrl){ ?>
 		  <li>
 		<a id="link-product-page-prices-drop-3" class="cms-page-link" href="{{route('viewPage',['slug'=>$menuUrl])}}" title="Our special products">
@@ -110,11 +110,8 @@
   
 </div>
 <div class="links block_newsletter block col-lg-12 col-md-12 col-sm-12">
-
-
 <h3 class="block_title hidden-md-down">Subscribe Now</h3>
-
-  <h3 class="block_title hidden-lg-up title" data-target="#block_email_toggle" data-toggle="collapse">Subscribe Now
+<h3 class="block_title hidden-lg-up title" id="block_email_toggle" data-toggle="collapse">Subscribe Now
     <span class="pull-xs-right">
       <span class="navbar-toggler collapse-icons">
       <i class="material-icons add"></i>
@@ -122,14 +119,14 @@
       </span>
     </span>
   </h3>
-    <div class="col-md-12 col-xs-12 block_content collapse" id="block_email_toggle">
+    <div class="col-md-12 col-xs-12 block_content collapse" id="_block_email_toggle">
               <p class="text">You may unsubscribe at any moment. please find our contact info in the legal notice.</p>
             <form action="#footer" method="post">
        
           <div class="col-xs-12">
 
               <div class="input-wrapper">
-              <input name="email" type="email" value="" placeholder="Enter Your ID" aria-labelledby="block-newsletter-label">
+              <input name="email" type="email" value="" placeholder="Enter Email ID" aria-labelledby="block-newsletter-label">
             
 
 
@@ -219,17 +216,47 @@ $(document).ready(function(){
 	$(".cat-title").click(function(){
 		$("#mobile_top_menu_wrapper").toggle();
 	});
+
 	$(".fa-ellipsis-v").click(function(){
-		$(".user-info").toggle();
-		openPinCodeBox();
+		$(".user-info").hide();
+    $("#tm_toplink").toggle();
+    $("#searchtoggleMobile").slideUp();
+		//openPinCodeBox();
 	});
+
+  $(".fa-search").click(function(){
+    $(".user-info").hide();
+    $("#tm_toplink").hide();
+    $("#searchtoggleMobile").toggle();
+  });
 
 	$("#_mobile_user_info").click(function(){
 		$(".user-info").toggle();
+    $("#tm_toplink").hide();
+    $("#searchtoggleMobile").slideUp();
 	});
 	$(".fa-close").click(function(){
 		$("#mobile_top_menu_wrapper").toggle();
 	});
+
+  $('#footer_sub_menu_61326').click(function(){
+    $("#_footer_sub_menu_61326").toggleClass("collapse in");
+  });
+
+
+  $('#footer_sub_menu_93800').click(function(){
+    $("#_footer_sub_menu_93800").toggleClass("collapse in");
+  });
+
+
+  $('#footer_sub_menu_47856').click(function(){
+    $("#_footer_sub_menu_47856").toggleClass("collapse in");
+  });
+
+
+  $('#block_email_toggle').click(function(){
+    $("#_block_email_toggle").toggleClass("collapse in");
+  });
 </script>
 <div class="tm-show-newsletter-popup open">
 	<div class="tm-coupon-small">

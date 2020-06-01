@@ -21,6 +21,34 @@ if it's not present, don't show loader */
 .sellerList{
 	background-color: cornsilk;
 }
+@media (max-width: 480px){
+	#tm_toplink {
+    	top: 45px;
+    	left: 24px;
+	}
+	.search-widget-mobile{
+		display: block;
+		width: 100%;
+		height: 52px;
+	}
+	.mobileSearch{
+		background-color:'#2457aa'; 
+		position: absolute; 
+		width: 100%; 
+		top: 10px;     
+		height: 52px;
+    	top: 93px;
+    	left: 10px;
+	}
+	.mobileSearch  form input[type="text"]{
+		border-radius: 1px !important;
+	}
+	.searchtoggle {
+	    top: -2px;
+	    width: 100%;
+	    right: 0px;
+	}
+}
 </style>
 <div class="se-pre-con" id="loader"></div>
 <header id="header">
@@ -47,6 +75,7 @@ if it's not present, don't show loader */
 			<button type="submit">
 			<div class="submit-text">search</div>
 			</button>
+			<input type="submit" style="position: absolute; left: -9999px"/>
 		</form>
 		<input type="hidden" name="hiddenJson" id="hiddenJson">
 		</div>
@@ -119,11 +148,6 @@ if it's not present, don't show loader */
 		<div class="menu-title1">Seller Now</div>
 		</a>
 		</div>
-
-
-
-
-
 </div>
 <!-- Block links module -->
 <div id="links_block_top" class="block links">
@@ -134,7 +158,7 @@ if it's not present, don't show loader */
 			<li><a href="{{url('/')}}" title="Home">Home</a></li>
 			<li><a href="{{url('/seller/'.$pincode['pincode'])}}" title="New Seller">new Seller</a></li>
 			<li><a href="{{url('page/aboutus')}}" title="About Us">About Us</a></li>
-			<li><a href="#" title="Find Your Nearest Seller">Best Seller</a></li>
+			<li><a href="{{url('/seller/'.$pincode['pincode'])}}" title="Find Your Nearest Seller">Best Seller</a></li>
 			<li><a href="{{url('contactus')}}" title="Write us ~ Contact Us">Write us</a></li>
 			<li><a href="{{url('contactus')}}" title="Become Distributor">Distributor</a></li>
 			

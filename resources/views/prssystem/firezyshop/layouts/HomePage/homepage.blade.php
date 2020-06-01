@@ -41,7 +41,7 @@
         "<i class='fa fa-arrow-circle-right'></i>"
         ],
    // $(".owl-wrapper").owlCarousel({
-    items : 1,
+      items : 1,
       itemsDesktop : [1199,1],
       itemsDesktopSmall : [980,1],
       itemsTablet: [768,1],
@@ -68,7 +68,7 @@
       theme : "owl-theme",
    
       //Lazy load
-      lazyLoad : false,
+      lazyLoad : true,
       lazyFollow : true,
    
       //Auto height
@@ -296,12 +296,12 @@
         "<div class='customNavigation'><a class='btn next cat_next'>&nbsp;</a></div>"
         ],
    // $(".owl-wrapper").owlCarousel({
-    items : 5,
+      items : 5,
       itemsDesktop : [1199,4],
       itemsDesktopSmall : [980,3],
       itemsTablet: [768,2],
       itemsTabletSmall: false,
-      itemsMobile : [479,1],
+      itemsMobile : [479,2],
       slideSpeed : 300,
       paginationSpeed : 400,
       singleItem:false,
@@ -323,7 +323,7 @@
       theme : "owl-theme",
    
       //Lazy load
-      lazyLoad : false,
+      lazyLoad : true,
       lazyFollow : true,
    
       //Auto height
@@ -343,7 +343,7 @@
       itemsDesktopSmall : [980,3],
       itemsTablet: [768,2],
       itemsTabletSmall: false,
-      itemsMobile : [479,1],
+      itemsMobile : [479,2],
       slideSpeed : 300,
       paginationSpeed : 400,
       singleItem:false,
