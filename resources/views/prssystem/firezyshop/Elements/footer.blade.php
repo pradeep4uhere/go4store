@@ -73,11 +73,12 @@
 	<?php } ?>
 	  </ul>
 </div>
+
 <div class="block-contact footer-block col-xs-12 col-sm-4 links wrapper hb-animate-element right-to-left">
   
-   		<h3 class="block-contact-title hidden-md-down"><a href="?controller=stores">address</a></h3>
+   		<h3 class="block-contact-title hidden-md-down"><a href="#">address</a></h3>
       
-		<div class="title h3 hidden-lg-up" data-target="#block-contact_list" data-toggle="collapse">
+		<div class="title h3 hidden-lg-up block_title" id="block-contact_list" data-target="#block-contact_list" data-toggle="collapse">
 		  <span class="">address</span>
 		  <span class="pull-xs-right">
 			  <span class="navbar-toggler collapse-icons">
@@ -87,7 +88,7 @@
 		  </span>
 		</div>
 	  
-	  <ul id="block-contact_list" class="collapse">
+	  <ul id="_block-contact_list" class="collapse">
           <li class="address">
       <!-- <i class="material-icons">&#xE55F;</i> -->
    <span class="contactdiv"> Go4shop.online<br>Mahagun Mywoods, Gaur City-2<br>Greater Noida West<br>Pin-2013009, Uttar Pradesh</span>
@@ -109,6 +110,7 @@
       	  </ul>
   
 </div>
+
 <div class="links block_newsletter block col-lg-12 col-md-12 col-sm-12">
 <h3 class="block_title hidden-md-down">Subscribe Now</h3>
 <h3 class="block_title hidden-lg-up title" id="block_email_toggle" data-toggle="collapse">Subscribe Now
@@ -220,20 +222,20 @@ $(document).ready(function(){
 	$(".fa-ellipsis-v").click(function(){
 		$(".user-info").hide();
     $("#tm_toplink").toggle();
-    $("#searchtoggleMobile").slideUp();
+    $(".search_widget_mobile").hide();
 		//openPinCodeBox();
 	});
 
   $(".fa-search").click(function(){
     $(".user-info").hide();
     $("#tm_toplink").hide();
-    $("#searchtoggleMobile").toggle();
+    $(".search_widget_mobile").toggle();
   });
 
 	$("#_mobile_user_info").click(function(){
 		$(".user-info").toggle();
     $("#tm_toplink").hide();
-    $("#searchtoggleMobile").slideUp();
+    $(".search_widget_mobile").hide();
 	});
 	$(".fa-close").click(function(){
 		$("#mobile_top_menu_wrapper").toggle();
@@ -257,6 +259,12 @@ $(document).ready(function(){
   $('#block_email_toggle').click(function(){
     $("#_block_email_toggle").toggleClass("collapse in");
   });
+
+
+  $('#block-contact_list').click(function(){
+    $("#_block-contact_list").toggleClass("collapse in");
+  });
+  
 </script>
 <div class="tm-show-newsletter-popup open">
 	<div class="tm-coupon-small">

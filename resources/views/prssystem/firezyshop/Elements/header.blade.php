@@ -21,16 +21,13 @@ if it's not present, don't show loader */
 .sellerList{
 	background-color: cornsilk;
 }
+
 @media (max-width: 480px){
 	#tm_toplink {
     	top: 45px;
     	left: 24px;
 	}
-	.search-widget-mobile{
-		display: block;
-		width: 100%;
-		height: 52px;
-	}
+	
 	.mobileSearch{
 		background-color:'#2457aa'; 
 		position: absolute; 
@@ -39,6 +36,14 @@ if it's not present, don't show loader */
 		height: 52px;
     	top: 93px;
     	left: 10px;
+
+	}
+	.search_widget_mobile{
+		display: block; 
+		top:-10px !important; 
+		left: 5px !important;
+		height: 31px;
+		width: '105%';
 	}
 	.mobileSearch  form input[type="text"]{
 		border-radius: 1px !important;
@@ -65,9 +70,9 @@ if it's not present, don't show loader */
 				</a>
   			</div>
 
-		<div id="search_widget" class="col-lg-4 col-md-5 col-sm-12 search-widget" data-search-controller-url="#">
+		<div id="search_widget" class="search_widget_mobile col-lg-4 col-md-5 col-sm-12 search-widget" data-search-controller-url="#">
 		<span class="search_button"></span>
-		<div class="searchtoggle">
+		<div class="searchtoggle" style="display: block;">
 		<form method="get" action="{{url('/sellersearch')}}">
 			<input type="text" id="search-box" name="s" value="" placeholder="Enter Your address OR Zipcode e.g 201301" aria-label="Search" class="ui-autocomplete-input" autocomplete="off"/>
 			<input type="hidden" name="sellername" id="sellername">

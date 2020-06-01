@@ -155,26 +155,6 @@
 </div>
 
 </nav>
-<div class="mobileSearch">
-	<!--Search Box For Mobile Start-->
-<div id="search_widget" class="col-lg-12 col-md-12 col-sm-12 search-widget search-widget-mobile">
-<span class="search_button" ></span>
-<div class="searchtoggle" id="searchtoggleMobile">
-<form method="get" action="{{url('/sellersearch')}}">
-	<input type="text" id="search-box" name="s" value="" placeholder="Enter Your address OR Zipcode e.g 201301" aria-label="Search" class="ui-autocomplete-input" autocomplete="off" style="border-radius: 0px !important;" />
-	<input type="hidden" name="sellername" id="sellername">
-	<div id="suggesstion-box" style="position: absolute; max-height: 300px; overflow: auto; min-width: 100%"></div>
-	<button type="submit">
-	<div class="submit-text">search</div>
-	</button>
-	<input type="submit" style="position: absolute; left: -9999px"/>
-</form>
-<input type="hidden" name="hiddenJson" id="hiddenJson">
-</div>
-
-</div>
-<!--Search Box For Mobile Ends Here-->
-</div>
 
 <div id="mobile_top_menu_wrapper" class="row hidden-lg-up slide" style="display: none">
 <div class="mobile-menu-inner">
