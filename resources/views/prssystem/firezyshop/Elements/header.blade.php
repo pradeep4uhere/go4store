@@ -47,6 +47,7 @@ if it's not present, don't show loader */
 			<button type="submit">
 			<div class="submit-text">search</div>
 			</button>
+			
 		</form>
 		<input type="hidden" name="hiddenJson" id="hiddenJson">
 		</div>
@@ -256,6 +257,15 @@ if it's not present, don't show loader */
 <script type="text/javascript">
 	// AJAX call for autocomplete 
 	$(document).ready(function(){
+	    
+	     $(window).keydown(function(event){
+            if(event.keyCode == 13) {
+              event.preventDefault();
+              return false;
+            }
+          });
+          
+          
 		$("#search-box").keyup(function(){
 			$.ajax({
 			type: "GET",

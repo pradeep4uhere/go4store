@@ -129,7 +129,7 @@
           <div class="col-xs-12">
 
               <div class="input-wrapper">
-              <input name="email" type="email" value="" placeholder="Enter Your ID" aria-labelledby="block-newsletter-label">
+              <input name="email" type="email" value="" placeholder="Enter ID" aria-labelledby="block-newsletter-label">
             
 
 

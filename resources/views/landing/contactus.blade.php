@@ -145,7 +145,7 @@ Go4Shop
                           <div class="icon">
                             <i class="material-icons">supervisor_account</i>
                           </div>
-                          <h6>Sales User</h6>
+                          <h6>Distributor</h6>
                         </div>
                       </div>
                     <div class="col-sm-3">
