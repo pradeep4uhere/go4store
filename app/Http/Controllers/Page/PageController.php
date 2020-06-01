@@ -138,7 +138,7 @@ class PageController extends Master
                     $contactObj->created_at = self::getCreatedDate();
                     $contactObj->save();
                     $responseArray['status'] = true;
-                    $responseArray['message']= "Thank you for contact us, we will back to you 2 business working days.";
+                    $responseArray['message']= "Thank You message should be: Thank you for Contacting Us. Our reprensentative will get back to you within 2 working days.";
                     Master::sendEmailToUser('contactUs',$request,NULL);
                 }catch(Exception $e){
                     $responseArray['status'] = '9999';

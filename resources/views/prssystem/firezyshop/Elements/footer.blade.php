@@ -127,7 +127,7 @@
 
               <div class="input-wrapper">
               <input name="email" type="email" value="" placeholder="Enter Email ID" aria-labelledby="block-newsletter-label">
-            
+
 
 
             <input class="btn btn-primary pull-xs-right hidden-xs-down" name="submitNewsletter" type="submit" value="Subscribe">
