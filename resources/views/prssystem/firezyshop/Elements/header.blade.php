@@ -66,7 +66,18 @@ if it's not present, don't show loader */
 		<div class="container">
 		        	<div class="header_logo hidden-md-down" id="_desktop_logo">
  				<a href="{{url('/')}}">
- 					<h1 style="color: white;font-size: 31px;font-weight: bold;font-family: monospace;">Go4Shop</h1>
+ 					<h1 style="color: white;font-size: 24px;font-weight: bold;font-family: monospace;">
+ 						<span class="block pull-left">
+ 						<img src="{{env('APP_URL')}}/public/theme/prssystem/img/front/logo.png" style="max-width: 100%;
+						    vertical-align: middle;
+						    height: 59px;
+						    position: absolute;
+						    top: 18px;">
+ 						</span>
+ 						<span class="pull-right block" style="font-size: 21px; padding-right: 5px;">
+						Go4shop 							
+ 						</span>
+</h1>
 				</a>
   			</div>
 
