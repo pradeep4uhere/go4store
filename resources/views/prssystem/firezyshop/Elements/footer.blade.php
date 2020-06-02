@@ -122,13 +122,13 @@
     </span>
   </h3>
     <div class="col-md-12 col-xs-12 block_content collapse" id="_block_email_toggle">
-              <p class="text">You may unsubscribe at any moment. please find our contact info in the legal notice.</p>
+              <p class="text">Email id box k neeche *you can unsubscribe from the mailers any time</p>
             <form action="#footer" method="post">
        
           <div class="col-xs-12">
 
               <div class="input-wrapper">
-              <input name="email" type="email" value="" placeholder="Enter Email ID" aria-labelledby="block-newsletter-label">
+              <input name="email" type="email" value="" placeholder="Enter Your Email ID" aria-labelledby="block-newsletter-label">
 
 
 
