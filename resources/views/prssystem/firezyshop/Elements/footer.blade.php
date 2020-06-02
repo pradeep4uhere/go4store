@@ -91,20 +91,20 @@
 	  <ul id="_block-contact_list" class="collapse">
           <li class="address">
       <!-- <i class="material-icons">&#xE55F;</i> -->
-   <span class="contactdiv"> Go4shop.online<br>Mahagun Mywoods, Gaur City-2<br>Greater Noida West<br>Pin-2013009, Uttar Pradesh</span>
+   <span class="contactdiv" style="color: white"> Go4shop.online<br>Mahagun Mywoods, Gaur City-2<br>Greater Noida West<br>Pin-2013009, Uttar Pradesh</span>
     </li>
 	  
          <li class="number">
        
-            <!-- <i class="material-icons">&#xE324;</i> -->
-        <span>{{env('ADMIN_MOBILE')}}</span>
+            <i class="material-icons" style="color: white">&#xE324;</i>
+        <span style="color: white"> {{env('ADMIN_MOBILE')}}</span>
     </li>
       
 
 	 
             	  <li class="email">
        
-        		<!-- <i class="material-icons">&#xE554;</i> -->
+        		<i class="material-icons" style="color: white">&#xE554;</i>
         <a href="mailto:Sales@yourcompany.com" class="dropdown">{{env('MAIL_FROM_ADDRESS')}}</a>
 		</li>
       	  </ul>

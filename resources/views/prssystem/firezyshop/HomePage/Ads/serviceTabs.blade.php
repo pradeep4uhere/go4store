@@ -31,8 +31,8 @@
 <div class="service-cms-banner-list1">
 <div class="service-icon smile"></div>
 <div class="service-details">
-<div class="title">free world delivery</div>
-<div class="description">Orders Over INR 250</div>
+<div class="title">free delivery</div>
+<div class="description">Orders Over INR 200</div>
 </div>
 </div>
 <div class="service-cms-banner-list2">
@@ -52,8 +52,7 @@
 <div class="service-cms-banner-list4">
 <div class="service-icon money"></div>
 <div class="service-details">
-<div class="title">Win 
-INR 100 To Shop</div>
+<div class="title">More Shop, More Win</div>
 <div class="description">Enter Now</div>
 </div>
 </div>
