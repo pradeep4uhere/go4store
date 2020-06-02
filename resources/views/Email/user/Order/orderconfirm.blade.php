@@ -187,11 +187,11 @@
 </head>
 
 <body style="-ms-text-size-adjust: 100%; -webkit-text-size-adjust: 100%;
- background-color: #d2000c; height: 100%; margin: 0; padding: 0; width: 100%">
+ background-color: #2457aa; height: 100%; margin: 0; padding: 0; width: 100%">
   <center>
     <table align="center" border="0" cellpadding="0" cellspacing="0" height="100%" id="bodyTable" style="border-collapse: collapse; mso-table-lspace: 0;
  mso-table-rspace: 0; -ms-text-size-adjust: 100%; -webkit-text-size-adjust:
- 100%; background-color: #fed149; height: 100%; margin: 0; padding: 0; width:
+ 100%; background-color: #2457aa; height: 100%; margin: 0; padding: 0; width:
  100%" width="100%">
       <tr>
         <td align="center" id="bodyCell" style="mso-line-height-rule: exactly;
@@ -208,7 +208,7 @@
  600px; border: 0" width="100%">
             <tr>
               <td id="templatePreheader" style="mso-line-height-rule: exactly;
- -ms-text-size-adjust: 100%; -webkit-text-size-adjust: 100%; background-color:#fed149;
+ -ms-text-size-adjust: 100%; -webkit-text-size-adjust: 100%; background-color:#2457aa;
  border-top: 0; border-bottom: 0; padding-top: 16px; padding-bottom: 8px" valign="top">
                 <table border="0" cellpadding="0" cellspacing="0" class="mcnTextBlock" style="border-collapse: collapse; mso-table-lspace: 0;
  mso-table-rspace: 0; -ms-text-size-adjust: 100%; -webkit-text-size-adjust: 100%;
@@ -222,18 +222,18 @@
  100%; min-width:100%;" width="100%">
                           <tbody>
                             <tr>
-                              <td class="mcnTextContent" style='mso-line-height-rule: exactly;
- -ms-text-size-adjust: 100%; -webkit-text-size-adjust: 100%; word-break: break-word;
- color: #2a2a2a; font-family: "Asap", Helvetica, sans-serif; font-size: 12px;
- line-height: 150%; text-align: left; padding-top:9px; padding-right: 18px;
- padding-bottom: 9px; padding-left: 18px;' valign="top">
- <a href="{{$data['site_url']}}" style="mso-line-height-rule: exactly;
+                              <td class="mcnTextContent" style='width: 85px;' valign="middle">
+ <a href="{{env('SITE_URL')}}" style="mso-line-height-rule: exactly;
  -ms-text-size-adjust: 100%; -webkit-text-size-adjust: 100%; color: #2a2a2a;
  font-weight: normal; text-decoration: none" target="_blank" title="Go4shop Logo Image">
-                                  <img align="none" alt="" src="{{env('LOGO_IMG')}}" style="-ms-interpolation-mode: bicubic; border: 0; outline: none;
- text-decoration: none; height: auto;  margin: 0px;" width="107" /> 
+                                  <img align="none"  alt="" src="{{env('LOGO_IMG')}}" style="-ms-interpolation-mode: bicubic; border: 0; outline: none;
+ text-decoration: none; height: auto;  margin: 0px;" width="85px" height="85px"/> 
                                 </a>
                               </td>
+                              <td align="left"><a href="{{env('SITE_URL')}}" style="mso-line-height-rule: exactly;
+ -ms-text-size-adjust: 100%; -webkit-text-size-adjust: 100%; color: #2a2a2a;
+ font-weight: normal; text-decoration: none; font-size: 32px; color: #FFF; font-weight: bold;" target="_blank" title="Go4shop Logo Image">
+ &nbsp;Go4Shop</a></td>
                             </tr>
                           </tbody>
                         </table>
@@ -268,9 +268,9 @@
                                   <a class="" href="https://www.lingoapp.com/" style="mso-line-height-rule:
  exactly; -ms-text-size-adjust: 100%; -webkit-text-size-adjust: 100%; color:
  #f57153; font-weight: normal; text-decoration: none" target="_blank" title="">
-                                    <img align="center" alt="Forgot your password?" class="mcnImage" src="https://i.ya-webdesign.com/images/free-add-to-cart-buttons-png-7.png" style="-ms-interpolation-mode: bicubic; border: 0; height: 150px;width:150px; outline: none;
- text-decoration: none; vertical-align: bottom; max-width:1200px; padding-bottom:
- 0; display: inline !important; vertical-align: bottom;" width="600"></img>
+                                    <img align="center" alt="Order Confirm" class="mcnImage" src="https://i.ya-webdesign.com/images/free-add-to-cart-buttons-png-7.png" style="-ms-interpolation-mode: bicubic; border: 0; height: 150px;width:150px; outline: none;
+ text-decoration: none; vertical-align: bottom; padding-bottom:
+ 0; display: inline !important; vertical-align: bottom;"></img>
                                   </a>
                                 </a>
                               </td>
@@ -305,7 +305,7 @@
  padding-bottom: 9px; padding-left: 18px;' valign="top">
 <h2 class="null" style='color: #2a2a2a; font-family: "Asap", Helvetica, sans-serif; font-size: 25px; font-style: normal; font-weight: bold; line-height: 125%; letter-spacing: 1px; text-align: center; display: block; margin: 0; padding: 0'><br/><br/><span style="text-transform:uppercase">Congratulations</span></h2>
                                 <h1 class="null" style='color: #2a2a2a; font-family: "Asap", Helvetica, sans-serif; font-size: 15px; font-style: normal; font-weight: bold; line-height: 125%; letter-spacing: 2px; text-align: center; display: block; margin: 0; padding: 0'><br/><span style="text-transform:uppercase">Your Order  No:: {{$orderDetails['orderID']}}</span></h1>
-                                <small>Order Date:: {{orderDate}}</small><br>
+                                <small>Order Date:: {{$orderDetails['created_at']}}</small><br>
                                 <small>Please save order number for future reference</small>
 
 
@@ -358,27 +358,35 @@
                                             <table border="1" cellpadding="0" cellspacing="0" class="mcnButtonBlock" style="border-collapse: collapse; mso-table-lspace: 0; mso-table-rspace: 0;
                      -ms-text-size-adjust: 100%; -webkit-text-size-adjust: 100%; min-width:100%; font-size:12px" width="100%">
                                               <tbody class="mcnButtonBlockOuter">
-                                                <tr style="background-color:#fed149">
-                                                  <td align="center" class="mcnButtonBlockInner" style="mso-line-height-rule: exactly; -ms-text-size-adjust: 100%; -webkit-text-size-adjust: 100%; padding:5px; width:50%" valign="top">
+                                                <tr style="background-color:#2457aa">
+                                                  <td align="center" class="mcnButtonBlockInner" style="mso-line-height-rule: exactly; -ms-text-size-adjust: 100%; -webkit-text-size-adjust: 100%; padding:5px; width:50%; font-weight: bold;color: #FFF" valign="top">
                                                    Shipping Address
                                                   </td>
                                                   
-                                                  <td align="center" class="mcnButtonBlockInner" style="mso-line-height-rule: exactly; -ms-text-size-adjust: 100%; -webkit-text-size-adjust: 100%; padding:5px;" valign="top">
+                                                  <td align="center" class="mcnButtonBlockInner" style="mso-line-height-rule: exactly; -ms-text-size-adjust: 100%; -webkit-text-size-adjust: 100%; padding:5px;font-weight: bold;color: #FFF" valign="top">
                                                    From
                                                   </td>
                                                 </tr>
                                                  <tr >
                                                   <td align="left" class="mcnButtonBlockInner" style="mso-line-height-rule: exactly; -ms-text-size-adjust: 100%; -webkit-text-size-adjust: 100%; padding:5px;" valign="top">
-                                                    <strong>{{'PRADEEP KUMAR'}}</strong><br/>
+                                                    <strong>{{$DeliveryAddress['full_name']}}</strong><br/>
+                                                  {{$DeliveryAddress['address_1']}}</br/>
+                                                  {{$DeliveryAddress['address_2']}}</br/>
+                                                  {{$DeliveryAddress['landmarks']}}</br/>
+                                                  {{$DeliveryAddress['City']['city_name']}}, 
+                                                  {{$DeliveryAddress['State']['state_name']}}, {{$DeliveryAddress['pincode']}}, </br/>
                                                    Phone: {{'9015446567'}}<br/>
                                                    Email: {{'go4shoponline@gmail.com'}}
                                                   </td>
                                                   
                                                   <td align="left" class="mcnButtonBlockInner" style="mso-line-height-rule: exactly; -ms-text-size-adjust: 100%; -webkit-text-size-adjust: 100%; padding:5px;" valign="top">
-                                                   <strong>{{$sellerName}}</strong><br/>
-                                                   {{$data['moreInfo']['company_address']}}<br/>
-                                                   Phone: {{$seller['User']['mobile']}},{{$seller['User']['mobile']}}<br/>
-                                                   Email: {{$seller['User']['email']}}
+                                                   <strong>{{$seller['business_name']}}</strong><br/>
+                                                   {{$seller['address_1']}}<br/>
+                                                   {{$seller['district']}},  {{$seller['location']}}, <br/>
+                                                   {{$seller['state']}}, {{$seller['pincode']}}<br/>
+                                                   
+                                                   Phone: {{$seller['contact_number']}}<br/>
+                                                   Email: {{$seller['email_address']}}
                                                   </td>
                                                 </tr>
                                                 
@@ -403,47 +411,50 @@
                         <table border="1" cellpadding="0" cellspacing="0" class="mcnButtonBlock" style="border-collapse: collapse; mso-table-lspace: 0; mso-table-rspace: 0;
  -ms-text-size-adjust: 100%; -webkit-text-size-adjust: 100%; min-width:100%; font-size:12px" width="100%">
                           <tbody class="mcnButtonBlockOuter">
-                            <tr style="background-color:#fed149">
-                              <td align="center" class="mcnButtonBlockInner" style="mso-line-height-rule: exactly; -ms-text-size-adjust: 100%; -webkit-text-size-adjust: 100%; padding:5px;" valign="top">
+                            <tr style="background-color:#2457aa">
+                              <td align="center" class="mcnButtonBlockInner" style="mso-line-height-rule: exactly; -ms-text-size-adjust: 100%; -webkit-text-size-adjust: 100%; padding:5px;font-weight: bold;color: #FFF" valign="top">
                                SN
                               </td>
-                               <td align="center" class="mcnButtonBlockInner" style="mso-line-height-rule: exactly; -ms-text-size-adjust: 100%; -webkit-text-size-adjust: 100%; padding:5px;" valign="top">
+                               <td align="center" class="mcnButtonBlockInner" style="mso-line-height-rule: exactly; -ms-text-size-adjust: 100%; -webkit-text-size-adjust: 100%; padding:5px;font-weight: bold;color: #FFF" valign="top">
                                Image
                               </td>
-                              <td align="center" class="mcnButtonBlockInner" style="mso-line-height-rule: exactly; -ms-text-size-adjust: 100%; -webkit-text-size-adjust: 100%; padding:5px;" valign="top">
-                               Title
+                              <td align="center" class="mcnButtonBlockInner" style="mso-line-height-rule: exactly; -ms-text-size-adjust: 100%; -webkit-text-size-adjust: 100%; padding:5px;font-weight: bold;color: #FFF" valign="top">
+                               Item
                               </td>
-                               <td align="center" class="mcnButtonBlockInner" style="mso-line-height-rule: exactly; -ms-text-size-adjust: 25%; -webkit-text-size-adjust: 25%; padding:5px;" valign="top">
-                               Event Time
+                               <td align="center" class="mcnButtonBlockInner" style="mso-line-height-rule: exactly; -ms-text-size-adjust: 25%; -webkit-text-size-adjust: 25%; padding:5px;font-weight: bold;color: #FFF" valign="top">
+                               Quantity
                               </td>
-                               <td align="center" class="mcnButtonBlockInner" style="mso-line-height-rule: exactly; -ms-text-size-adjust: 25%; -webkit-text-size-adjust: 25%; padding:5px;" valign="top">
-                               Seat
+                              
+                               <td align="center" class="mcnButtonBlockInner" style="mso-line-height-rule: exactly; -ms-text-size-adjust: 25%; -webkit-text-size-adjust: 25%; padding:5px;font-weight: bold;color: #FFF" valign="top">
+                               Price/Unit
                               </td>
-                              <td align="center" class="mcnButtonBlockInner" style="mso-line-height-rule: exactly; -ms-text-size-adjust: 100%; -webkit-text-size-adjust: 100%; padding:5px;" valign="top">
+                              
+                              <td align="center" class="mcnButtonBlockInner" style="mso-line-height-rule: exactly; -ms-text-size-adjust: 100%; -webkit-text-size-adjust: 100%; padding:5px;font-weight: bold;color: #FFF" valign="top">
                                Price
                               </td>
                             </tr>
-                            <?php $i=1; foreach($data['eventArray'] as $item){ ?>
+                            <?php $i=1; foreach($orderDetails['OrderDetail'] as $item){ ?>
                              <tr>
                               <td align="center" class="mcnButtonBlockInner" style="mso-line-height-rule: exactly; -ms-text-size-adjust: 100%; -webkit-text-size-adjust: 100%; padding:5px;" valign="top">
                                {{$i++}}
                               </td>
                                <td align="center" class="mcnButtonBlockInner" style="mso-line-height-rule: exactly; -ms-text-size-adjust: 100%; -webkit-text-size-adjust: 100%; padding:5px;" valign="top">
-                               <img src="{{$item['EventImageThumb']}}" alt="image" width="65px" height="65px">
+                               <img src="{{$item['default_images']}}" alt="image" width="65px" height="65px">
                               </td>
                                <td align="center" class="mcnButtonBlockInner" style="mso-line-height-rule: exactly; -ms-text-size-adjust: 100%; -webkit-text-size-adjust: 100%; padding:5px;" valign="top">
-                               {{$item['Event']}}</br>
-                                 <small>Theatre::{{$item['Theatre']}}</small></br>
+                               {{ucwords($item['product_name'])}}
+                                 
                                  
                               </td>
                               <td align="center" class="mcnButtonBlockInner" style="mso-line-height-rule: exactly; -ms-text-size-adjust: 100%; -webkit-text-size-adjust: 100%; padding:5px;" valign="top">
-                               {{$item['start_time']}} - {{$item['end_time']}}
+                               {{$item['quantity']}}
                               </td>
-                              <td align="center" class="mcnButtonBlockInner" style="mso-line-height-rule: exactly; -ms-text-size-adjust: 100%; -webkit-text-size-adjust: 100%; padding:5px;" valign="top">
-                               {{$item['Seat']}}<br/><small>Type::{{$item['event_seat']}}</small>
+                               <td align="center" class="mcnButtonBlockInner" style="mso-line-height-rule: exactly; -ms-text-size-adjust: 100%; -webkit-text-size-adjust: 100%; padding:5px;" valign="top">
+                                 ₹{{$item['unit_price']}}
                               </td>
-                              <td align="center" class="mcnButtonBlockInner" style="mso-line-height-rule: exactly; -ms-text-size-adjust: 100%; -webkit-text-size-adjust: 100%; padding:5px;" valign="top">
-                               {{$item['priceType']}}{{$item['quantity']* $item['price']}}
+                             
+                              <td align="center" class="mcnButtonBlockInner" style="mso-line-height-rule: exactly; -ms-text-size-adjust: 100%; -webkit-text-size-adjust: 100%; padding:5px;" valign="top">₹
+                               {{$item['quantity']* $item['unit_price']}}
                               </td>
                             </tr>
                             <?php } ?>
@@ -460,10 +471,10 @@
                                &nbsp;
                               </td>
                               <td align="center" class="mcnButtonBlockInner" style="mso-line-height-rule: exactly; -ms-text-size-adjust: 100%; -webkit-text-size-adjust: 100%; padding:5px;" valign="top">
-                               GST({{$data['gst']}}%)
+                               GST({{$gst}}%)
                               </td>
                               <td align="center" class="mcnButtonBlockInner" style="mso-line-height-rule: exactly; -ms-text-size-adjust: 100%; -webkit-text-size-adjust: 100%; padding:5px;" valign="top">
-                               {{$data['priceType']}}{{$data['tax_amount']}}
+                               ₹{{$tax_amount}}
                               </td>
                             </tr>
                              <tr>
@@ -482,7 +493,7 @@
                                Offer(-)
                               </td>
                               <td align="center" class="mcnButtonBlockInner" style="mso-line-height-rule: exactly; -ms-text-size-adjust: 100%; -webkit-text-size-adjust: 100%; padding:5px;" valign="top">
-                               {{$data['priceType']}}{{$data['offerPrice']}}
+                                 ₹{{$offerPrice}}
                               </td>
                             </tr>
                             <tr>
@@ -502,7 +513,7 @@
                                Total Amount
                               </td>
                               <td align="center" class="mcnButtonBlockInner" style="mso-line-height-rule: exactly; -ms-text-size-adjust: 100%; -webkit-text-size-adjust: 100%; padding:5px;" valign="top">
-                               {{$data['totalAmount']}}
+                               {{$tax_amount}}
                               </td>
                             </tr>
                           </tbody>
@@ -536,12 +547,12 @@
  exactly; -ms-text-size-adjust: 100%; -webkit-text-size-adjust: 100%;
  font-family: 'Asap', Helvetica, sans-serif; font-size: 16px; padding-top:24px;
  padding-right:48px; padding-bottom:24px; padding-left:48px;" valign="middle">
-                                        <a class="mcnButton " href="{{$data['site_url']}}" style="mso-line-height-rule: exactly;
+                                        <a class="mcnButton " href="{{env('APP_URL')}}" style="mso-line-height-rule: exactly;
  -ms-text-size-adjust: 100%; -webkit-text-size-adjust: 100%; display: block; color: #f57153;
  font-weight: bold; text-decoration: none; font-weight: normal;letter-spacing:
  1px;line-height: 100%;text-align: center;text-decoration: none;color:
  #FFFFFF; text-transform:uppercase;" target="_blank" title="Review Lingo kit
- invitation">Total Payment : {{$data['totalAmount']}}</a>
+ invitation">Total Payment : ₹{{$orderDetails['totalAmount']}}</a>
                                       </td>
                                     </tr>
                                    
@@ -550,7 +561,7 @@
                               </td>
                             </tr>
                              <tr>
-                               <td align="center"><small>If you are not able to see email properly, <a  href="{{$data['viewURL']}}" style="text-decoration:none;color:#333" target="_blank" title="View Email on Web Browser"> Click Here</a> to see on your web browser.</small>
+                               <td align="center"><small>If you are not able to see email properly, <a  href="{{$viewurl}}" style="text-decoration:none;color:#333" target="_blank" title="View Email on Web Browser"> Click Here</a> to see on your web browser.</small>
                                         
                                       </td>
                                     </tr>
@@ -585,53 +596,10 @@
             </tr>
             <tr>
               <td id="templateFooter" style="mso-line-height-rule: exactly;
- -ms-text-size-adjust: 100%; -webkit-text-size-adjust: 100%; background-color: #fed149;
+ -ms-text-size-adjust: 100%; -webkit-text-size-adjust: 100%; background-color: #2457aa;
  border-top: 0; border-bottom: 0; padding-top: 8px; padding-bottom: 80px" valign="top">
-                <table border="0" cellpadding="0" cellspacing="0" class="mcnTextBlock" style="border-collapse: collapse; mso-table-lspace: 0; mso-table-rspace: 0;
- -ms-text-size-adjust: 100%; -webkit-text-size-adjust: 100%; min-width:100%;" width="100%">
-                  <tbody class="mcnTextBlockOuter">
-                    <tr>
-                      <td class="mcnTextBlockInner" style="mso-line-height-rule: exactly;
- -ms-text-size-adjust: 100%; -webkit-text-size-adjust: 100%" valign="top">
-                        <table align="center" bgcolor="#F7F7FF" border="0" cellpadding="32" cellspacing="0" class="card" style="border-collapse: collapse; mso-table-lspace: 0;
- mso-table-rspace: 0; -ms-text-size-adjust: 100%; -webkit-text-size-adjust:
- 100%; background:#F7F7FF; margin:auto; text-align:left; max-width:950px;
- font-family: 'Asap', Helvetica, sans-serif;" text-align="left" width="100%">
-                          <tr>
-                            <td style="mso-line-height-rule: exactly; -ms-text-size-adjust: 100%;
- -webkit-text-size-adjust: 100%">
-
-                              <h3 style='color: #2a2a2a; font-family: "Asap", Helvetica, sans-serif; font-size: 20px; font-style: normal; font-weight: normal; line-height: 125%; letter-spacing: normal; text-align: center; display: block; margin: 0; padding: 0; text-align: left; width: 100%; font-size: 16px; font-weight: bold; '>What is RudraXP?</h3>
-
-                              <p style='margin: 10px 0; padding: 0; mso-line-height-rule: exactly;
- -ms-text-size-adjust: 100%; -webkit-text-size-adjust: 100%; color: #2a2a2a;
- font-family: "Asap", Helvetica, sans-serif; font-size: 12px; line-height: 150%;
- text-align: left; text-align: left; font-size: 14px; '>{{$data['aboutSite']}}
-                              </p>
-                              <div style="padding-bottom: 18px;">
-                                <a href="https://www.go4shop.online" style="mso-line-height-rule: exactly; -ms-text-size-adjust: 100%;
- -webkit-text-size-adjust: 100%; color: #f57153; font-weight: normal; text-decoration: none;
- font-size: 14px; color:#F57153; text-decoration:none;" target="_blank" title="Learn more about Lingo">Learn More ❯</a>
-                              </div>
-                            </td>
-                          </tr>
-                        </table>
-                        <table align="center" border="0" cellpadding="0" cellspacing="0" style="border-collapse: collapse; mso-table-lspace: 0; mso-table-rspace: 0;
- -ms-text-size-adjust: 100%; -webkit-text-size-adjust: 100%; min-width:100%;" width="100%">
-                          <tbody>
-                            <tr>
-                              <td style="mso-line-height-rule: exactly; -ms-text-size-adjust: 100%;
- -webkit-text-size-adjust: 100%; padding-top: 24px; padding-right: 18px;
- padding-bottom: 24px; padding-left: 18px; color: #7F6925; font-family: 'Asap',
- Helvetica, sans-serif; font-size: 12px;" valign="top">
-                                <div style="text-align: center;">
-                                  
-                                  {{$data['footerSite']}}</div>
-                              </td>
-                            </tr>
-                            <tbody></tbody>
-                          </tbody>
-                        </table>
+                
+                       
                         <table align="center" border="0" cellpadding="12" style="border-collapse:
  collapse; mso-table-lspace: 0; mso-table-rspace: 0; -ms-text-size-adjust:
  100%; -webkit-text-size-adjust: 100%; ">

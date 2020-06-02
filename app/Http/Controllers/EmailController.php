@@ -10,6 +10,7 @@ use App\Order;
 use File;
 use App\Payment;
 use App\Setting;
+use Auth;
 
  
 class EmailController extends Controller
@@ -277,12 +278,18 @@ class EmailController extends Controller
      */
     public static function sendOrderConfirmationToUser($data)
     {   
-        $orderDetails = Order::with('OrderDetail','User')->where('id','=',$data[0]['id'])->first();
+        //dd(Auth::user()->id);
+        $user_id = Auth::user()->id;
+        $userArr = User::find($user_id);
+
+        
+        $orderDetails = Order::with('OrderDetail','User','DeliveryAddress')->where('id','=',$data[0]['id'])->first();
         $paymentDetailArr = Payment::where('order_id','=',$orderDetails['orderID'])->first();
         $orderDate  = Master::getDate('d M,Y H:i:s',$orderDetails['created_at']);
         $seller     = \App\Seller::findOrFail($orderDetails['seller_id']);
         $sellerName = $seller['business_name'];
-        
+        //dd($orderDetails);
+        $DeliveryAddress = $orderDetails['DeliveryAddress'];
         //User Details
         $userDetails = " Seller Name: ".$seller['business_name']."</br>";
         $userDetails.= " Contact Number: ".$seller['User']['mobile']."</br>";
@@ -299,7 +306,7 @@ class EmailController extends Controller
         $paymentDetails.=" Payment Date: ".Master::getDate('d M,Y H:i:s',$paymentDetailArr['payment_date'])."<br/>";
         $paymentDetails.=" <hr><br/>";
 
-
+        // dd($orderDetails);
         //All Item Details
         $items ="Items Details:<br/>";
         $items.="<table cellpadding='2' cellspacing='0' border='1'>";
@@ -328,17 +335,28 @@ class EmailController extends Controller
         $url  = env('APP_URL');
         $body1 = "You have successfully placed order .";
         $body2= "Thank you for joining with us.";
-        $mail = Mail::send('Email.seller.order.order_confirom', [
+        $gst = '0.00';
+        $tax_amount = '0.00';
+        $offerPrice = '0.00';
+        $viewurl = "";
+        $aboutSite = "";
+        $mail = Mail::send('Email.user.Order.orderconfirm', [
             'name' => $sellerName,
             'body1' => $body1,
             'userDetails' => $userDetails,
             'paymentDetails' => $paymentDetails,
             'orderDetails'=>$orderDetails,
+            'DeliveryAddress'=>$DeliveryAddress,
             'orderDate'=>$orderDate,
             'seller'=>$seller,
             'items' => $items,
             'body3' => $body3,
             'url'  => $url ,
+            'gst'=>$gst,
+            'tax_amount'=>$tax_amount,
+            'offerPrice'=>$offerPrice,
+            'viewurl'=>$viewurl,
+            'aboutSite'=>$aboutSite,
             'copyright' => 'copyright'
             ], function ($m) use ($seller) {
                 $m->from(env('MAIL_FROM_ADDRESS'), env('MAIL_FROM_NAME'));

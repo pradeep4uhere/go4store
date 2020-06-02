@@ -91,7 +91,7 @@
 	  <ul id="_block-contact_list" class="collapse">
           <li class="address">
       <!-- <i class="material-icons">&#xE55F;</i> -->
-   <span class="contactdiv" style="color: white"> Go4shop.online<br>Mahagun Mywoods, Gaur City-2<br>Greater Noida West<br>Pin-2013009, Uttar Pradesh</span>
+   <span class="contactdiv" style="color: white"> Go4shop.online<br>Mahagun Mywoods, Gaur City-2<br>Greater Noida West<br>Pin-201309, Uttar Pradesh</span>
     </li>
 	  
          <li class="number">

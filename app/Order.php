@@ -42,7 +42,7 @@ class Order extends Model
 
 
       public function DeliveryAddress() {
-         return $this->belongsTo(DeliveryAddress::class,'shipping_id','id');
+         return $this->belongsTo(DeliveryAddress::class,'shipping_id','id')->with('State','City');
     }
 
 
