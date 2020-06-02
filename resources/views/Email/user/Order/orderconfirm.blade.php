@@ -513,7 +513,7 @@
                                Total Amount
                               </td>
                               <td align="center" class="mcnButtonBlockInner" style="mso-line-height-rule: exactly; -ms-text-size-adjust: 100%; -webkit-text-size-adjust: 100%; padding:5px;" valign="top">
-                               {{$tax_amount}}
+                               ₹{{$orderDetails['totalAmount']}}
                               </td>
                             </tr>
                           </tbody>
