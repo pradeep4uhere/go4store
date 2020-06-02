@@ -122,7 +122,7 @@
     </span>
   </h3>
     <div class="col-md-12 col-xs-12 block_content collapse" id="_block_email_toggle">
-              <p class="text">Email id box k neeche *you can unsubscribe from the mailers any time</p>
+              <p class="text">You can unsubscribe from the mailers any time</p>
             <form action="#footer" method="post">
        
           <div class="col-xs-12">
