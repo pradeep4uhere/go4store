@@ -185,99 +185,6 @@ class EmailController extends Controller
     public static function sendOrderConfirmationSellerEmail($data)
     {   
 
-        $orderDetails = Order::with('OrderDetail','User')->where('id','=',$data[0]['id'])->first();
-    
-        $paymentDetailArr = Payment::where('order_id','=',$orderDetails['orderID'])->first();
-        
-        $orderDate = Master::getDate('d M,Y H:i:s',$orderDetails['created_at']);
-        $seller = \App\Seller::findOrFail($orderDetails['seller_id']);
-        $sellerName = $seller['business_name'];
-        //User Details
-        $userDetails = " Customer Name: ".$orderDetails['User']['first_name'].' '.$orderDetails['User']['last_name']."</br>";
-        $userDetails.= " Contact Number: ".$orderDetails['User']['mobile']."</br>";
-        $userDetails.= " Email: ".$orderDetails['User']['email']."</br>";
-        $userDetails.= " Address: ".$orderDetails['User']['address_1']."</br>";
-        $userDetails.= " <hr></br>";
-
-        //All Payment Details        
-        $paymentDetails=" Payment Details<br/>";
-        $paymentDetails.=" Order Id: ".$orderDetails['orderID']."<br/>";
-        $paymentDetails.=" Total Amount: ₹".number_format($paymentDetailArr['net_amount_debit'],2)."<br/>";
-        $paymentDetails.=" Payment Status: ".strtoupper($paymentDetailArr['status'])."<br/>";
-        $paymentDetails.=" Transaction No: ".strtoupper($paymentDetailArr['bank_ref_num'])."<br/>";
-        $paymentDetails.=" Payment Date: ".Master::getDate('d M,Y H:i:s',$paymentDetailArr['payment_date'])."<br/>";
-        $paymentDetails.=" <hr><br/>";
-
-
-        //All Item Details
-        $items ="Items Details:<br/>";
-        $items.="<table cellpadding='2' cellspacing='0' border='1' style='width:100%'>";
-        $items.='<tr>';
-        $items.='<td>SN</td>';
-        $items.='<td>Image</td>';
-        $items.='<td>Name</td>';
-        $items.='<td>Quantity</td>';
-        $items.='<td>Price</td>';
-        $items.='</tr>';
-        $count=1;
-        foreach($orderDetails['OrderDetail'] as $itemObj){
-            $items.="<tr>";
-            $items.="<td>".$count."</td>";
-            $items.="<td><img src=".$itemObj['default_thumbnail']." alt='image'></td>";
-            $items.="<td>".ucwords($itemObj['product_name'])."</td>";
-            $items.="<td>".$itemObj['quantity']."</td>";
-            $items.="<td>₹".$itemObj['unit_price']."</td>";
-            $items.='</tr>';
-            $count++;
-        }
-        $items.="</table>"; 
-
-        $body1 = "You have new order recived on <b>".$orderDate."</b> with order id <b>".$orderDetails['orderID']."</b><br/>";
-        $body3 =" For more details, please login to your seller account.";
-        $customerDetails= "";
-        
-        $url  = env('APP_URL');
-        $body1 = "You have successfully registered .";
-        $body2= "Thank you for joining with us.";
-        $mail = Mail::send('Email.seller.order.order_confirom', [
-            'name' => $sellerName,
-            'body1' => $body1,
-            'userDetails' => $userDetails,
-            'paymentDetails' => $paymentDetails,
-            'items' => $items,
-            'body3' => $body3,
-            'url'  => $url ,
-            'copyright' => 'copyright'
-            ], function ($m) use ($seller) {
-                $m->from(env('MAIL_FROM_ADDRESS'), env('MAIL_FROM_NAME'));
-                $m->to($seller['email_address'], ucwords(strtolower($seller['business_name'])))
-                ->bcc(env('MAIL_FROM_ADDRESS'))
-                ->subject('New Order Recived!');
-            });
-        if($mail){
-            return true;
-        }
-    }
-
-
-
-
-
-
-
-
-
-
-
-    /**
-     * Send an e-mail confirmation to the User For New Order.
-     *
-     * @param  Request  $request
-     * @param  Order Details Object
-     * @return Response
-     */
-    public static function sendOrderConfirmationToUser($data)
-    {   
         //dd(Auth::user()->id);
         $user_id = Auth::user()->id;
         $userArr = User::find($user_id);
@@ -305,8 +212,89 @@ class EmailController extends Controller
         $paymentDetails.=" Transaction No: ".strtoupper($paymentDetailArr['bank_ref_num'])."<br/>";
         $paymentDetails.=" Payment Date: ".Master::getDate('d M,Y H:i:s',$paymentDetailArr['payment_date'])."<br/>";
         $paymentDetails.=" <hr><br/>";
+        $customerDetails= "";
+        $url  = env('APP_URL');
+        $body1 = "You have successfully placed order .";
+        $body2= "Thank you for joining with us.";
+        $gst = '0.00';
+        $tax_amount = '0.00';
+        $offerPrice = '0.00';
+        $viewurl = "";
+        $aboutSite = "";
+        $mail = Mail::send('Email.user.Order.orderconfirm', [
+            'name' => $sellerName,
+            'userDetails' => $userArr,
+            'paymentDetails' => $paymentDetails,
+            'orderDetails'=>$orderDetails,
+            'DeliveryAddress'=>$DeliveryAddress,
+            'orderDate'=>$orderDate,
+            'seller'=>$seller,
+            'url'  => $url ,
+            'gst'=>$gst,
+            'tax_amount'=>$tax_amount,
+            'offerPrice'=>$offerPrice,
+            'viewurl'=>$viewurl,
+            'aboutSite'=>$aboutSite,
+            'copyright' => 'copyright'
+            ], function ($m) use ($seller) {
+                $m->from(env('MAIL_FROM_ADDRESS'), env('MAIL_FROM_NAME'));
+                $m->to($seller['email_address'], ucwords(strtolower($seller['business_name'])))
+                ->bcc(env('MAIL_FROM_ADDRESS'))
+                ->subject($seller['business_name'].' - New order is recive!');
+            });
+        if($mail){
+            return true;
+        }
+    }
 
-        // dd($orderDetails);
+
+
+
+
+
+
+
+
+
+
+    /**
+     * Send an e-mail confirmation to the User For New Order.
+     *
+     * @param  Request  $request
+     * @param  Order Details Object
+     * @return Response
+     */
+    public static function sendOrderConfirmationToUser($data)
+    {   
+        //dd($data);
+        $user_id = Auth::user()->id;
+        $userArr = User::find($user_id);
+
+        
+        $orderDetails = Order::with('OrderDetail','User','DeliveryAddress')->where('id','=',$data[0]['id'])->first();
+        $paymentDetailArr = Payment::where('order_id','=',$orderDetails['orderID'])->first();
+        $orderDate  = Master::getDate('d M,Y H:i:s',$orderDetails['created_at']);
+        $seller     = \App\Seller::findOrFail($orderDetails['seller_id']);
+        $sellerName = $seller['business_name'];
+        //dd($orderDetails);
+        $DeliveryAddress = $orderDetails['DeliveryAddress'];
+        //User Details
+        $userDetails = " Seller Name: ".$seller['business_name']."</br>";
+        $userDetails.= " Contact Number: ".$seller['User']['mobile']."</br>";
+        $userDetails.= " Email: ".$orderDetails['User']['email']."</br>";
+        $userDetails.= " Address: ".$orderDetails['User']['address_1']."</br>";
+        $userDetails.= " <hr></br>";
+
+        //All Payment Details        
+        $paymentDetails=" Payment Details<br/>";
+        $paymentDetails.=" Order Id: ".$orderDetails['orderID']."<br/>";
+        $paymentDetails.=" Total Amount: ₹".number_format($paymentDetailArr['net_amount_debit'],2)."<br/>";
+        $paymentDetails.=" Payment Status: ".strtoupper($paymentDetailArr['status'])."<br/>";
+        $paymentDetails.=" Transaction No: ".strtoupper($paymentDetailArr['bank_ref_num'])."<br/>";
+        $paymentDetails.=" Payment Date: ".Master::getDate('d M,Y H:i:s',$paymentDetailArr['payment_date'])."<br/>";
+        $paymentDetails.=" <hr><br/>";
+
+        // dd($userDetails);
         //All Item Details
         $items ="Items Details:<br/>";
         $items.="<table cellpadding='2' cellspacing='0' border='1'>";
@@ -343,7 +331,7 @@ class EmailController extends Controller
         $mail = Mail::send('Email.user.Order.orderconfirm', [
             'name' => $sellerName,
             'body1' => $body1,
-            'userDetails' => $userDetails,
+            'userDetails' => $userArr,
             'paymentDetails' => $paymentDetails,
             'orderDetails'=>$orderDetails,
             'DeliveryAddress'=>$DeliveryAddress,
@@ -358,9 +346,9 @@ class EmailController extends Controller
             'viewurl'=>$viewurl,
             'aboutSite'=>$aboutSite,
             'copyright' => 'copyright'
-            ], function ($m) use ($seller) {
+            ], function ($m) use ($userArr) {
                 $m->from(env('MAIL_FROM_ADDRESS'), env('MAIL_FROM_NAME'));
-                $m->to($seller['email_address'], ucwords(strtolower($seller['business_name'])))
+                $m->to($userArr['email'], ucwords(strtolower($userArr['first_name'])))
                 ->bcc(env('MAIL_FROM_ADDRESS'))
                 ->subject('Your order is confirmed!');
             });

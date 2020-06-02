@@ -370,21 +370,22 @@
                                                  <tr >
                                                   <td align="left" class="mcnButtonBlockInner" style="mso-line-height-rule: exactly; -ms-text-size-adjust: 100%; -webkit-text-size-adjust: 100%; padding:5px;" valign="top">
                                                     <strong>{{$DeliveryAddress['full_name']}}</strong><br/>
-                                                  {{$DeliveryAddress['address_1']}}</br/>
-                                                  {{$DeliveryAddress['address_2']}}</br/>
-                                                  {{$DeliveryAddress['landmarks']}}</br/>
-                                                  {{$DeliveryAddress['City']['city_name']}}, 
-                                                  {{$DeliveryAddress['State']['state_name']}}, {{$DeliveryAddress['pincode']}}, </br/>
-                                                   Phone: {{'9015446567'}}<br/>
-                                                   Email: {{'go4shoponline@gmail.com'}}
+                                                  {{$DeliveryAddress['address_1']}}<br/>
+                                                  {{$DeliveryAddress['address_2']}},
+                                                  {{$DeliveryAddress['landmarks']}}<br/>
+                                                  {{$DeliveryAddress['City']['city_name']}},
+                                                  {{$DeliveryAddress['State']['state_name']}}<br/>
+                                                   Pin: {{$DeliveryAddress['pincode']}}, <br/>
+                                                   Phone: {{$DeliveryAddress['mobile']}}<br/>
+                                                   Email: {{$userDetails['email']}}
                                                   </td>
                                                   
                                                   <td align="left" class="mcnButtonBlockInner" style="mso-line-height-rule: exactly; -ms-text-size-adjust: 100%; -webkit-text-size-adjust: 100%; padding:5px;" valign="top">
                                                    <strong>{{$seller['business_name']}}</strong><br/>
                                                    {{$seller['address_1']}}<br/>
                                                    {{$seller['district']}},  {{$seller['location']}}, <br/>
-                                                   {{$seller['state']}}, {{$seller['pincode']}}<br/>
-                                                   
+                                                   {{$seller['state']}}<br/>
+                                                   Pin: {{$seller['pincode']}}<br/>
                                                    Phone: {{$seller['contact_number']}}<br/>
                                                    Email: {{$seller['email_address']}}
                                                   </td>
