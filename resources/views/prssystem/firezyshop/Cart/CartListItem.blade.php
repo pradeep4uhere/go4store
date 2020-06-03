@@ -25,7 +25,9 @@
     </div>
     <div class="product-line-info">
     <span class="label">Unit:</span>
+    <?php if(array_key_exists('quantity', $item['attributes'])){ ?>
     <span class="value">{{$item['attributes']['quantity']}} {{$item['attributes']['unitType']}}</span>
+    <?php } ?>
     </div>
 
     </div>
