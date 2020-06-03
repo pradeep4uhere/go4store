@@ -107,8 +107,9 @@ class CartController extends Master
 		$cartCollections = \Cart::getContent();
 		$cartItem = $cartCollections->toArray();
 
-		$address = DeliveryAddress::where('user_id','=',Auth::user()->id)->get();
+		$address = DeliveryAddress::with('State','City')->where('user_id','=',Auth::user()->id)->get();
 		//Get Seller Name
+		// dd($address);
 		$sellerNameArr=[];
 		$sellerIDArr=[];
 		if(!empty($cartItem)){

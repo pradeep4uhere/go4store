@@ -1,57 +1,162 @@
+<script src="//netdna.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+<style type="text/css">
+
+  a:hover, a:focus{
+    text-decoration: none;
+    outline: none;
+}
+#accordion .panel{
+    border: none;
+    box-shadow: none;
+    border-radius: 0;
+    margin-bottom: 15px;
+}
+#accordion .panel-heading{
+    padding: 0;
+    border-radius:0;
+    border: none;
+}
+#accordion .panel-title a{
+    display: block;
+    padding: 14px 30px 14px 70px;
+    font-size: 16px;
+    font-weight: bold;
+    color: #fff;
+    background: #ef6145;
+    position: relative;
+    overflow: hidden;
+    transition: all 0.5s ease 0s;
+}
+#accordion .panel-title a.collapsed{
+    background: #f8f8f8;
+    color: #1e4276;
+}
+#accordion .panel-title a.collapsed:hover{
+    color: #ef6145;
+}
+#accordion .panel-title a:before{
+    content: "";
+    width: 55px;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.1);
+    position: absolute;
+    top: 0;
+    left: -13px;
+    transform: skewX(-25deg);
+    transition: all 0.5s ease 0s;
+}
+#accordion .panel-title a.collapsed:hover:before{
+    background: #d7573e;
+}
+#accordion .panel-title a:after{
+    content: "\f047";
+    font-family: FontAwesome;
+    position: absolute;
+    left: 10px;
+    top: 50%;
+    color: #fff;
+    transform: translateY(-50%);
+}
+#accordion .panel-title a.collapsed:after{
+    color: #9f9f9f;
+}
+#accordion .panel-title a.collapsed:hover:after{
+    color: #fff;
+}
+#accordion .panel-body{
+    font-size: 14px;
+    color: #5a3245;
+    line-height: 25px;
+    padding: 20px 15px 20px 40px;
+    position: relative;
+    border: none;
+    transition: all 0.5s ease 0s;
+}
+#accordion .panel-body:before{
+    content: "";
+    width: 5px;
+    height: 40px;
+    background: #ef6145;
+    position: absolute;
+    top: 30px;
+    left: 0;
+}
+#accordion .panel-body p{
+    margin-bottom: 0;
+}
+</style>
 <section id="wrapper">
 <div class="container">
-<div class="row">
-  <div class="tab">
-  <button class="tablinks" onclick="openCity(event, 'London')" id="defaultOpen">Shipping Address</button>
-  <button class="tablinks" onclick="openCity(event, 'Paris')">Pickup Address</button>
-  <button class="tablinks" onclick="openCity(event, 'Tokyo')">Add New Address</button>
-</div>
+    <div class="row">
+        <div class="col-md-9">
+            <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+                <div class="panel panel-default">
+                    <div class="panel-heading" role="tab" id="headingOne">
+                        <h4 class="panel-title">
+                            <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                                Delivery Address 
+                            </a>
+                        </h4>
+                    </div>
+                    <div id="collapseOne" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
+                        <div class="panel-body">
+                            <div class="row">
+                              @if(count($address)>0)
+                              @foreach($address as $item)
 
-<div id="London" class="tabcontent">
-  <div class="row">
-    @if(count($address)>0)
-    @foreach($address as $item)
-        <div class="col-md-6 mb-5">
-                <div class="card cardClass" id="card_{{$item->id}}">
-                <div class="card-header" style="font-size: 16px;">{{ucwords($item->full_name)}}</div>
-                <div class="card-body" style="font-size: 13px !important; padding: 15px;">
-                <div class="" >
-                <div>{{$item->address_1}}</div> 
-                <div>{{$item->address_2}}</div> 
-                <div>{{$item->landmarks}}</div> 
-                <div>{{$item->city_id}}, {{$item->state_id}}, {{$item->pincode}}, {{$item->country}}
-                  <input type="hidden" id="shipphide_{{$item->id}}" value="{{encrypt($item->id)}}"></div> 
-                </div>
-                <div>Mobile: {{$item->mobile}}</div>  
-                <div>
-                <button class="btn btn-info del" style="padding:8px; font-size:12px;margin-top:5px;" id="del_{{$item->id}}" onclick="setDefault({{$item->id}})" >Delivery Here</button>
-                <!-- <button class="btn btn-warning edit" style="padding:8px; font-size:12px;margin-top:5px;" id="edit_{{encrypt($item->id)}}" >&nbsp;&nbsp;Edit&nbsp;&nbsp;</button> -->
-                <button class="btn btn-danger remove" style="padding:8px; font-size:12px;margin-top:5px;" id="remove_{{encrypt($item->id)}}">Remove</button>
-                </div>
-                </div>
-                </div>
-              </div>
-      @endforeach
-      @endif
-
-        </div>
-</div>
-
-<div id="Paris" class="tabcontent">
-  <div class="row" id="pickAddress">
-                                                  <div class="col-md-12">
-          <div style="font-size:16px;"> Pickup Address For Seller :: Long Life Furniture Shop</div>
-          <hr>
-                    
-          </div>
-          
-                                
+                                  <div class="col-md-6 mb-5">
+                                          <div class="card cardClass" id="card_{{$item->id}}">
+                                          <div class="card-header" style="font-size: 16px;">{{ucwords($item->full_name)}}</div>
+                                          <div class="card-body" style="font-size: 13px !important; padding: 15px;">
+                                          <div class="" >
+                                          <div>{{$item->address_1}}</div> 
+                                          <div>{{$item->address_2}}</div> 
+                                          <div>{{$item->landmarks}}</div> 
+                                          <div>{{$item['City']['city_name']}}<br/> {{$item['State']['state_name']}}, 
+                                           Pin: {{$item->pincode}} ({{$item->country}})
+                                            <input type="hidden" id="shipphide_{{$item->id}}" value="{{encrypt($item->id)}}"></div> 
+                                          </div>
+                                          <div>Mobile: {{$item->mobile}}</div>  
+                                          <div>
+                                          <button class="btn btn-info del" style="padding:8px; font-size:12px;margin-top:5px;" id="del_{{$item->id}}" onclick="setDefault({{$item->id}})" >Delivery Here</button>
+                                          <!-- <button class="btn btn-warning edit" style="padding:8px; font-size:12px;margin-top:5px;" id="edit_{{encrypt($item->id)}}" >&nbsp;&nbsp;Edit&nbsp;&nbsp;</button> -->
+                                          <button class="btn btn-danger remove" style="padding:8px; font-size:12px;margin-top:5px;" id="remove_{{encrypt($item->id)}}">Remove</button>
+                                          </div>
+                                          </div>
+                                          </div>
+                                        </div>
+                                @endforeach
+                                @endif
+                            </div>
                         </div>
-</div>
-
-<div id="Tokyo" class="tabcontent">
-  <div class="container">
-          <div class="row ">
+                    </div>
+                </div>
+                <div class="panel panel-default">
+                    <div class="panel-heading" role="tab" id="headingTwo">
+                        <h4 class="panel-title">
+                            <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                                Pickup Address
+                            </a>
+                        </h4>
+                    </div>
+                    <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
+                        <div class="panel-body">
+                            <div style="font-size:16px;"> Pickup Address For Seller :: Long Life Furniture Shop</div>
+          <hr>
+                        </div>
+                    </div>
+                </div>
+                <div class="panel panel-default">
+                    <div class="panel-heading" role="tab" id="headingThree">
+                        <h4 class="panel-title">
+                            <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                                Add New Address
+                            </a>
+                        </h4>
+                    </div>
+                    <div id="collapseThree" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree">
+                        <div class="panel-body">
+                            <div class="row ">
             <div class="col-md-12">
                 <form class="form-horizontal" method="POST" action="{{route('addaddress')}}">
                 @csrf
@@ -69,7 +174,7 @@
                         <div class="form-row">
                             <div class="form-group col-md-12">
                             <label>Flat No/Office Address</label>
-                              <input type="text" id="address_1" name="address_1" class="form-control validate" required="required" placeholder="Email Your Address">
+                              <input type="text" id="address_1" name="address_1" class="form-control validate" required="required" placeholder="Enter flat or plot number">
                             </div>
                             
                           </div>
@@ -96,7 +201,7 @@
                         <div class="form-row">
                             <div class="form-group col-md-12">
                             <label>Mobile No</label>
-                              <input type="text" id="mobile" name="mobile" class="form-control validate" required="required" placeholder="Enter Mobile Number" maxlength="10">
+                              <input type="text" id="mobile" name="mobile" class="form-control validate" required="required" placeholder="Enter Mobile Number" maxlength="10" value="{{Auth::user()->mobile}}" onkeyup="if (/\D/g.test(this.value)) this.value = this.value.replace(/\D/g,'')">
                             </div>
                             
                           </div>
@@ -164,7 +269,7 @@
                         <div class="form-row">
                             <div class="form-group col-md-12">
                             <label>Pincode</label>
-                              <input type="text" id="pincode" name="pincode" class="form-control validate" required="required" placeholder="Enter pincode">
+                              <input type="text" id="pincode" name="pincode" class="form-control validate" required="required" placeholder="Enter pincode" onkeyup="if (/\D/g.test(this.value)) this.value = this.value.replace(/\D/g,'')" maxlength="6">
                             </div>
                             
                           </div>
@@ -178,20 +283,21 @@
                 </form>
             </div>
         </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 </div>
-
-</div>
-</div>
+<div class="container">
+<div class="row">
 <div class="checkout cart-detailed-actions card-block ">
-    <div class="text-xs-center pull-right">
-        <a href="{{route('home')}}" class="btn btn-primary">&nbsp;Continue Shopping</a>
+    <div class="text-xs-center pull-left">
+        <a href="{{route('home')}}" class="btn btn-primary top-btn">&nbsp;Continue Shopping</a>
         <a href="javascript:void(0)" class="btn top-btn btn btn-primary"  id="payment"> Procced To Payment</a>
-
-        
     </div>
 </div>
-
 </section>
 <script>
 
@@ -218,53 +324,7 @@ function openCity(evt, cityName) {
 // Get the element with id="defaultOpen" and click on it
 document.getElementById("defaultOpen").click();
 </script>
-<style type="text/css">
-  
 
-/* Style the tab */
-.tab {
-  float: left;
-  border: 1px solid #ccc;
-  background-color: #f1f1f1;
-  width: 30%;
-  min-height: 100%;
-}
-
-/* Style the buttons inside the tab */
-.tab button {
-  display: block;
-  background-color: inherit;
-  color: black;
-  padding: 22px 16px;
-  width: 100%;
-  border: none;
-  outline: none;
-  text-align: left;
-  cursor: pointer;
-  transition: 0.3s;
-  font-size: 17px;
-}
-
-/* Change background color of buttons on hover */
-.tab button:hover {
-  background-color: #ddd;
-}
-
-/* Create an active/current "tab button" class */
-.tab button.active {
-  background-color: #ccc;
-}
-
-/* Style the tab content */
-.tabcontent {
-  float: left;
-  padding: 10px 12px;
-  border: 1px solid #ccc;
-  width: 70%;
-  border-left: none;
-  min-height: 300px;
-} 
-</style>
 
 
 <form id="choosePay" action="{{route('choosepayment')}}" method="get">
