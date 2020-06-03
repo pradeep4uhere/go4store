@@ -78,13 +78,13 @@
 
   <div class="card-block">
     <div class="cart-summary-line cart-total">
-      <span class="label">Total (tax excl.)</span>
+      <span class="label">Tax</span>
       <span class="value">₹0.00</span>
     </div>
 
     <div class="cart-summary-line">
-      <small class="label">Taxes</small>
-      <small class="value">$0.00</small>
+      <small class="label">Total</small>
+      <small class="value" style="font-size: 20px">₹<?php echo  number_format(array_sum($totalAmount),2)?></small>
     </div>
   </div>
 

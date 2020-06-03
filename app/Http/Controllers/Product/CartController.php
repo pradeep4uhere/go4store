@@ -48,6 +48,9 @@ class CartController extends Master
         if($userProductId>0){
         	$user_id=Auth::user()->id;
 			$productDetails=UserProduct::with('Product')->find($userProductId);
+		    // echo "<pre>";
+		    // print_r($productDetails);
+		    // die;
 		    $sellerDetails=Seller::where('user_id','=',$productDetails['user_id'])->first();
     	    //Add Item Into Cart
         	$userId = Auth::user()->id;
@@ -62,12 +65,16 @@ class CartController extends Master
         	$productDetails = array(
         		'seller_id'=>$sellerDetails['id'],
         		'seller'=>$sellerDetails['business_name'],
-        		'brandName'=>$productDetails['Product']['Brand']['name'],
+        		'brandName'=>($productDetails['Product']['Brand']['name']!='')?$productDetails['Product']['Brand']['name']:'-NA-',
         		'product_id'=>$productDetails['product_id'],
         		'default_images'=>$imgUrlDefaultImages,
         		'default_thumbnail'=>$imgUrlDefaultThumbnail,
         		'product_in_stock'=>$productDetails['product_in_stock'],
+        		'default_price'=>$productDetails['default_price'],
+        		'isDiscounted'=>($productDetails['isDiscounted']==1)?"Yes":"No",
         		'selling_price'=>$productDetails['selling_price'],
+        		'quantity'=>$productDetails['quantity'],
+        		'unitType'=>$productDetails['Product']['Unit']['name'],
         		'status'=>$productDetails['status'],
         	);
          	$item = \Cart::session($userId)->add($product_id, $name, $price, $qty, $productDetails);

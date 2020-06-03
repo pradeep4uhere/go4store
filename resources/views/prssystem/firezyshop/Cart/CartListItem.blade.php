@@ -15,27 +15,17 @@
     <div class="product-line-info">
     <a class="label" href="#" data-id_customization="0">{{ucwords($item['name'])}}</a>
     </div>
-
-    <div class="product-line-info  product-price ">
-    <div class="current-price">
-    <span class="price">₹{{$item['price']}}</span>
+    <div class="product-line-info">
+    <span class="label">Seller:</span>
+    <span class="value">{{$item['attributes']['seller']}}</span>
     </div>
-
-    </div>
-
-    <br>
-
-   <!--  <div class="product-line-info">
-    <span class="label">Size:</span>
-    <span class="value">S</span>
-    </div> -->
     <div class="product-line-info">
     <span class="label">Brand:</span>
     <span class="value">{{$item['attributes']['brandName']}}</span>
     </div>
     <div class="product-line-info">
     <span class="label">Unit:</span>
-    <span class="value">{{$item['attributes']['product_id']}}</span>
+    <span class="value">{{$item['attributes']['quantity']}} {{$item['attributes']['unitType']}}</span>
     </div>
 
     </div>
