@@ -22,12 +22,20 @@
   </div>
   <ul id="_footer_sub_menu_47856" class="collapse block_content">
   	<?php foreach($footeMenu['FIRST'] as $menukey=>$menuUrl){ ?>
+      <?php if($menuUrl=='sitemap'){ ?>
+      <li>
+        <a id="link-product-page-prices-drop-3" class="cms-page-link" href="https://www.go4sshop.online/public/sitemap.xml" title="Our special products">
+          {{$menukey}}
+        </a>
+        </li>
+      <?php }else{ ?>
 		  <li>
 		<a id="link-product-page-prices-drop-3" class="cms-page-link" href="{{route('viewPage',['slug'=>$menuUrl])}}" title="Our special products">
 		  {{$menukey}}
 		</a>
 	  </li>
 	<?php } ?>
+  <?php } ?>
 		 
 	  </ul>
 </div>
