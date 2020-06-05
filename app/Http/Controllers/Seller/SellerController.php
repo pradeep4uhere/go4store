@@ -357,7 +357,7 @@ class SellerController extends Master
           $featureImage = 'banner4.jpg';
         }
     //seller.details
-        //dd($lsitArr);
+    //dd($productList);
 		return view(Master::loadFrontTheme('firezyshop.LocalSeller.ProductList'),array(
 				'seller'=>$seller,
         'featureSeller'=>$seller,

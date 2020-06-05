@@ -4,18 +4,18 @@
             <div id="left-column" class="col-xs-12 col-sm-4 col-md-3 hb-animate-element top-to-bottom">
                 @include('prssystem.firezyshop.Cart.CartLeftBlock')
             </div>
-<nav data-depth="1" class="breadcrumb hidden-sm-down">
-   <div class="container"><h1 class="h1"><i class="fa fa-shopping-cart"></i>&nbsp;Shopping Cart</h1>
-  <ol itemscope="" itemtype="http://schema.org/BreadcrumbList">
-      <li itemprop="itemListElement" itemscope="" itemtype="http://schema.org/ListItem">
-        <a itemprop="item" href="{{route('homePage')}}">
-          <span itemprop="name"><i class="fa fa-home"></i>&nbsp;Home</span>
-        </a>
-        <meta itemprop="position" content="1">
-      </li>
-  </ol>
-  </div>
-</nav>
+            <nav data-depth="1" class="breadcrumb hidden-sm-down">
+               <div class="container"><h1 class="h1"><i class="fa fa-shopping-cart"></i>&nbsp;Shopping Cart</h1>
+              <ol itemscope="" itemtype="http://schema.org/BreadcrumbList">
+                  <li itemprop="itemListElement" itemscope="" itemtype="http://schema.org/ListItem">
+                    <a itemprop="item" href="{{route('homePage')}}">
+                      <span itemprop="name"><i class="fa fa-home"></i>&nbsp;Home</span>
+                    </a>
+                    <meta itemprop="position" content="1">
+                  </li>
+              </ol>
+              </div>
+            </nav>
 <div id="content-wrapper" class="left-column col-xs-12 col-sm-8 col-md-9">
   <section id="main">
     <div class="cart-grid row">
@@ -62,7 +62,7 @@
         </span>
         <span class="value">₹<?php echo  array_sum($totalAmount)?></span>
         </div>
-                  <div class="cart-summary-line" id="cart-subtotal-shipping">
+        <div class="cart-summary-line" id="cart-subtotal-shipping">
         <span class="label">
           Shipping
         </span>
@@ -70,24 +70,17 @@
         <div><small class="value"></small></div>
         </div>
         </div>
-
-  
-      
-
   <hr>
-
   <div class="card-block">
     <div class="cart-summary-line cart-total">
       <span class="label">Tax</span>
       <span class="value">₹0.00</span>
     </div>
-
     <div class="cart-summary-line">
       <small class="label">Total</small>
       <small class="value" style="font-size: 20px">₹<?php echo  number_format(array_sum($totalAmount),2)?></small>
     </div>
   </div>
-
   <hr>
 </div>
 <div class="checkout cart-detailed-actions card-block">
@@ -128,19 +121,14 @@
 
     </div>
   </section>
-
-    
   </div>
-
-
-         
-        </div>
-                </div>
+  </div>
+</div>
 </section>
-<form id="cart" action="{{route('updatecart')}}" method="post">
+<form id="formcart" action="{{route('updatecart')}}" method="post">
    {{ csrf_field() }}
    <input type="hidden" name="item_id" id="item_id">
-   <input type="hidden" name="qnty" id="qnty">
+   <input type="hidden" name="qntyy" id="qntyy">
    <input type="hidden" name="cart_id" id="cart_id">
 </form>
 <form id="cartCheckout" action="{{route('checkoutinit')}}" method="post">
@@ -160,12 +148,6 @@
     getAlert('Great',"{{ Session::get('message') }}",'success');
    @endif
 
-   function updateCart(v,i){
-       $('#item_id').val(i);
-       $('#qnty').val(v);
-       $('#cart').submit();
-   }
-   
 </script>
 
    

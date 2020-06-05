@@ -565,6 +565,25 @@ class ProductController extends Master
                     );    
                 }
             }
+
+            //dd($seller['user_id']);
+            $lsitArr=array();
+            $productList=array();
+            $userProd = new \App\UserProduct();
+            
+            //Search Parameters
+            $params=array();
+            $productList = $userProd->getUserProductList($seller['user_id'])->paginate(self::getPageItem());
+            if(!empty($productList)){
+            foreach($productList as $key=>$obj){
+                       
+                    $lsitArr[]=array(
+                            'UserProduct'=>$obj,
+                            'Product'=>$obj->product
+                            );    
+                        
+                    }
+                }
         }else{
             abort(404);
         }
@@ -602,12 +621,22 @@ class ProductController extends Master
         $metaTags['url']          =$pageUrl;
         $metaTags['sitename']     =self::getAppName();
         //$viewFile = Master::loadFrontTheme('frontend.details');
-        $viewFile = Master::loadFrontTheme('firezyshop.LocalSeller.ProductDetails');
 
+            //Get All the Category For Filter Respective Store Type
+        $categoryList = Category::with('children')
+        ->where('status','=',1)
+        ->where('parent_id','=',0)
+        ->where('store_type','=',$seller['store_type_id'])
+        ->paginate(self::getPageItem(100));
+
+        $viewFile = Master::loadFrontTheme('firezyshop.LocalSeller.ProductDetails');
+        // dd($userProduct);
         return view($viewFile,array(
                     'productDetails'=>$userProduct,
                     'seller'=>$seller,
                     'productList'=>$lsitArr,
+                    'productDetailsList'=>$productList,
+                    'categoryList'=>$categoryList,
                     'metaTags'=>$metaTags,
                     'pincode'=>$pincode
                     

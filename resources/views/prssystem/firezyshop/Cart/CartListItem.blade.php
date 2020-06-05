@@ -42,9 +42,10 @@
     <div class="col-md-6 col-xs-6 qty">
     <div class="input-group bootstrap-touchspin">
         <span class="input-group-addon bootstrap-touchspin-prefix" style="display: none;"></span>
-       
-        <select class="custom-select"  style="font-size: 11px;" onchange="updateCart(this.value,'{{encrypt($item["id"])}}')" id="quantity_{{$item['id']}}">
-         @for($i=1;$i<100;$i++)
+       <?php $enitemId=  encrypt($item['id']); ?>
+        <select class="custom-select"  style="font-size: 11px;" 
+        onChange="updateCart(this.value,'<?php echo $enitemId;?>')" id="quantity_{{$item['id']}}">
+         @for($i=1;$i<=20;$i++)
          <option value="{{$i}}" @if($item['quantity']==$i) selected="selected" @endif>{{$i}}</option>
          @endfor
          </select>

@@ -56,15 +56,21 @@
 <div class="hook-reviews">
 <div class="comments_note">
 <div class="star_content clearfix">
-<div class="star star_on"></div>
-<div class="star star_on"></div>
-<div class="star star_on"></div>
-<div class="star star_on"></div>
-<div class="star"></div>
+  <span class="btn-success pull-left" style="margin-right: 10px;display: block; width: 45px; padding:2px 2px 2px 5px; border-radius: 10px">4.5/5</span>
+  <i class="fa fa-star" style="color: gold"></i>
+  <i class="fa fa-star" style="color: gold"></i>
+  <i class="fa fa-star" style="color: gold"></i>
+  <i class="fa fa-star" style="color: gold"></i>
+  <i class="fa fa-star" ></i>
 </div>
-<span>%s Review(s)&nbsp;</span>
+<span style="display: block;margin-right: 10px;"> 45% Review(s)&nbsp;</span>
 </div>
 </div>
+<?php if($productDetails['description']!=''){ ?>
+<div id="product-description-short-1" itemprop="description">
+  <p>Descriptions: {{$productDetails['description']}}</p>
+</div>
+<?php } ?>
                     
 <div class="product-information">
 <!-- begin catalog/_partials/product-prices.tpl -->
@@ -73,76 +79,39 @@
 <link itemprop="availability" href="https://schema.org/InStock">
 <meta itemprop="priceCurrency" content="USD">
 <div class="current-price">
-<span itemprop="price" content="19.12">₹{{$productDetails['selling_price']}}</span>
-<!-- <span class="discount discount-percentage">Save 20%</span> -->
+<span itemprop="price" content="{{$productDetails['selling_price']}}">₹{{$productDetails['selling_price']}}</span>
+<span class="discount discount-percentage">Save ₹{{$productDetails['price'] - $productDetails['selling_price']}}</span>
 </div>
 </div>
 <div class="product-discount">
   <span class="regular-price">₹{{$productDetails['price']}}</span>
-</div>          
-<div class="tax-shipping-delivery-label"></div>
+</div>    
 </div>
-
-
-            
-<div id="product-description-short-1" itemprop="description">
-  <p>{{$productDetails['description']}}</p>
-</div>
-            
-            
 <div class="product-actions">
 <form action="{{url('/cartpage')}}" method="get" id="add-to-cart-or-refresh">
 <div class="">
 <!-- begin modules/stfeature/views/templates/hook/st_compare_button.tpl -->
-<div class="compare">
-  <a class="st-compare-button btn-product btn" href="#" data-id-product="1" title="Add to Compare">
-    <span class="st-compare-bt-content">
-      Unit: {{$productDetails->product->Brand['name']}}
-    </span>
-    
 
-  </a>
-</div>
-<!-- end modules/stfeature/views/templates/hook/st_compare_button.tpl -->
-
-
-                
-<!-- begin modules/stfeature/views/templates/hook/st_wishlist_button.tpl -->
 <div class="wishlist">
       <a class="st-wishlist-button btn-product btn" href="#" data-id-wishlist="" data-id-product="1" data-id-product-attribute="1" title="Add to Wishlist">
       <span class="st-wishlist-bt-content">
-        {{$productDetails['quantity_in_unit']}}&nbsp;{{$productDetails->product->Unit['name']}}
+        Unit: {{$productDetails['quantity_in_unit']}}&nbsp;{{$productDetails->product->Unit['name']}}
       </span>
     </a>
   </div>
-<!-- end modules/stfeature/views/templates/hook/st_wishlist_button.tpl -->
+ 
 <br/>
 <div class="clearfix"></div>
 </div>
 <div class="">
-<!-- begin modules/stfeature/views/templates/hook/st_compare_button.tpl -->
-<div class="compare">
-  <a class="st-compare-button btn-product btn" href="#" data-id-product="1" title="Add to Compare">
-    <span class="st-compare-bt-content">
-      Manufacture By {{$productDetails->product->Brand['name']}}
-    </span>
-    
-
-  </a>
-</div>
-<!-- end modules/stfeature/views/templates/hook/st_compare_button.tpl -->
-
-
-                
-<!-- begin modules/stfeature/views/templates/hook/st_wishlist_button.tpl -->
 <div class="wishlist">
       <a class="st-wishlist-button btn-product btn" href="#" data-id-wishlist="" data-id-product="1" data-id-product-attribute="1" title="Add to Wishlist">
       <span class="st-wishlist-bt-content">
-        <img src="{{config('global.THEME_URL_FRONT_IMAGE')}}/Liefstatus_Gruen_04de426b.png.gif"> Certified Brand Seller
+        <img src="{{config('global.THEME_URL_FRONT_IMAGE')}}/Liefstatus_Gruen_04de426b.png.gif"> {{$productDetails->product->Brand['name']}} Certified Brand Seller
       </span>
     </a>
   </div>
-<!-- end modules/stfeature/views/templates/hook/st_wishlist_button.tpl -->
+
 <br/>
 <div class="clearfix"></div>
 </div>
@@ -173,65 +142,30 @@
     </button>
    
     &nbsp;
-    <button class="btn btn-danger add-to-cart" data-button-action="add-to-cart" type="button" onClick="buyNow('{{encrypt($productDetails->id)}}','{{str_slug($productDetails->product['title'])}}')" >
+    <button class="btn btn-danger add-to-cart" style="padding: 6px; width: 30%" data-button-action="add-to-cart" type="button" onClick="gotocartPage()" >
       <i class="fa fa-inr"></i>&nbsp;Buy Now
     </button>
     <span id="product-availability"></span>
   </div>
 </div>
 <div class="clearfix"></div>
-
-
-
-<p class="product-minimal-quantity">Only 2 Left</p>
+<p class="product-minimal-quantity">Today In Stock</p>
 </div>
 </form>
 </div>
                 
-<!-- begin modules/stfeature/views/templates/hook/st_compare_button.tpl -->
-<div class="compare">
-	<a class="st-compare-button btn-product btn" href="#" data-id-product="1" title="Add to Compare">
-		<span class="st-compare-bt-content">
-			<i class="fa fa-area-chart"></i>
-			Add to Compare
-		</span>
-		
-
-	</a>
-</div>
-<!-- end modules/stfeature/views/templates/hook/st_compare_button.tpl -->
-
-
-                
-<!-- begin modules/stfeature/views/templates/hook/st_wishlist_button.tpl -->
-<div class="wishlist">
-			<a class="st-wishlist-button btn-product btn" href="#" data-id-wishlist="" data-id-product="1" data-id-product-attribute="1" title="Add to Wishlist">
-			<span class="st-wishlist-bt-content">
-				<i class="fa fa-heart" aria-hidden="true"></i>
-				Add to Wishlist
-			</span>
-		</a>
-	</div>
-<!-- end modules/stfeature/views/templates/hook/st_wishlist_button.tpl -->
 </div>
 </div>
+<div class="right_cms">
+<!-- begin Right Banner TOP -->
+  @include('prssystem.firezyshop.LocalSeller.ProductDetails.RightBannerTop')
+<!-- begin Right Banner TOP -->
 
-    <div class="right_cms">
-
-    <!-- begin Right Banner TOP -->
-      @include('prssystem.firezyshop.LocalSeller.ProductDetails.RightBannerTop')
-    <!-- begin Right Banner TOP -->
-
-    <!-- begin Right Banner Bottom -->
-      @include('prssystem.firezyshop.LocalSeller.ProductDetails.RightBanner')
-    <!-- begin Right Banner Bottom -->
-    </div>
-
-
-
+<!-- begin Right Banner Bottom -->
+  @include('prssystem.firezyshop.LocalSeller.ProductDetails.RightBanner')
+<!-- begin Right Banner Bottom -->
 </div>
-  
-
+</div>
 <div class="row">
 <div class="col-md-12"> 
     <section class="product-tabcontent" style="margin-top: 25px">  
@@ -245,19 +179,55 @@
 </div> 
 
 
-
-
-<div class="row">
-<div class="col-md-12"> 
-    <section class="product-tabcontent">  
-    <div class="tabs">
-      <!--Feature Product Slider Start Here-->
-       <?php /* @include('prssystem.firezyshop.LocalSeller.FeatureProducts.featureProducts') */?>
-      <!--Feature Product Slider Ends Here-->
-    </div>
-</section>
+<div id="servicecms"> 
+<div class="container">
+<div id="servicecmsblock" class="block_content">
+<div class="service1">
+<div class="service-cms-banner-list1">
+<div class="service-icon smile"></div>
+<div class="service-details">
+<div class="title">free delivery</div>
+<div class="description">Orders Over INR 200</div>
 </div>
-</div> 
+</div>
+<div class="service-cms-banner-list2">
+<div class="service-icon thumbs-up"></div>
+<div class="service-details">
+<div class="title">Money Back Guarantee</div>
+<div class="description">with a 30 day</div>
+</div>
+</div>
+<div class="service-cms-banner-list3">
+<div class="service-icon plane"></div>
+<div class="service-details">
+<div class="title">Best Online support</div>
+<div class="description">Hours: 8AM -11PM</div>
+</div>
+</div>
+<div class="service-cms-banner-list4">
+<div class="service-icon money"></div>
+<div class="service-details">
+<div class="title">More Shop, More Win</div>
+<div class="description">Enter Now</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+<div class="tab-main-title">
+<h2 class="h1 products-section-title">More item from this seller</h2> 
+</div>
+
+<div class="container">
+<?php //dd($productList);?>
+
+
+<!-- tm_categorylist-->
+@include('prssystem.firezyshop.LocalSeller.AllProductList',['productList'=>$productList,'productDetails'=>$productDetailsList,'categoryList'=>$categoryList]) 
+<!-- categorylist -->
+</div>
 
 
 </section>
@@ -275,8 +245,13 @@ function getAlert(a,b,c){
     icon: c,
   });
 }
+
+function gotocartPage(){
+  window.location="{{route('cart')}}";
+}
 //Add To Cart 
 function addToCart(pid,title){
+var qnty = $("#group_1").val();
 @if(Auth::check()) 
 var Auth ="<?php echo Auth::user()->id ?>";
 @else
@@ -284,7 +259,7 @@ var Auth =0;
 @endif
 if(Auth>0){
     var csrf="{{csrf_token()}}";
-    var postJson={_token:csrf,pid:pid,name:title};
+    var postJson={_token:csrf,pid:pid,name:title,qnty:qnty};
     $.ajax({
       type:'POST',
       url:"{{route('addtocart')}}",

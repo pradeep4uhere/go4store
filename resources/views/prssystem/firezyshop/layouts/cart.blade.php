@@ -603,11 +603,11 @@
     });
     //$('#pickAddress').fadeOut();
   });
-        function updateCart(v,i){
-            $('#qnty').val(v);
-            $('#cart_id').val(i);
-            $('#cart').submit();
-        }
+  function updateCart(v,i){
+      $('#qntyy').val(v);
+      $('#item_id').val(i);
+      $('#formcart').submit();
+  }
     </script>
 </body>
 </html>

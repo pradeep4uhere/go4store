@@ -43,6 +43,11 @@ class CartController extends Master
 
     public function addToCart(Request $request){
 		$req=$request->all();
+		if(array_key_exists('qnty', $req)){
+			$qnty = $request->get('qnty');
+		}else{
+			$qnty = 1;
+		}
 		$pid = $request->get('pid');
 	    $userProductId=decrypt($pid);
         if($userProductId>0){
@@ -56,7 +61,7 @@ class CartController extends Master
         	$userId = Auth::user()->id;
         	$price = $productDetails['selling_price'];
         	$product_id = $userProductId;
-        	$qty = 1;
+        	$qty = $qnty;
         	$name = str_replace("-",' ',request('name'));
         	//Get Product Details
         	$imgUrlDefaultImages = config('global.PRODUCTS_NEW_STORAGE_DIR').DIRECTORY_SEPARATOR.$productDetails['seller_id'].DIRECTORY_SEPARATOR.config('global.PRODUCT_IMG_WIDTH').'X'.config('global.PRODUCT_IMG_HEIGHT').DIRECTORY_SEPARATOR.$productDetails['default_images'];
@@ -234,8 +239,9 @@ class CartController extends Master
     public function updateCart(Request $request){
         if ($request->isMethod('post')) {
         	$userId = Auth::user()->id;
-            $rowId=$request->get('item_id');
-            $qnty=$request->get('qnty');
+        	// dd($request->all());
+            $rowId=$request->get('item_id'); 
+            $qnty=$request->get('qntyy');
             $updateArr =array(
             	'quantity' => array(
 								'relative' => false,
