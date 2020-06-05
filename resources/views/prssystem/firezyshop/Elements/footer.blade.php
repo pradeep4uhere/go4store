@@ -24,7 +24,7 @@
   	<?php foreach($footeMenu['FIRST'] as $menukey=>$menuUrl){ ?>
       <?php if($menuUrl=='sitemap'){ ?>
       <li>
-        <a id="link-product-page-prices-drop-3" class="cms-page-link" href="https://www.go4sshop.online/public/sitemap.xml" title="Our special products">
+        <a id="link-product-page-prices-drop-3" class="cms-page-link" href="https://www.go4shop.online/public/sitemap.xml" title="Our special products">
           {{$menukey}}
         </a>
         </li>
