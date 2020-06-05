@@ -23,6 +23,55 @@ if it's not present, don't show loader */
 }
 
 @media (max-width: 480px){
+    .swal-title {
+        font-weight: 400;
+        padding: 0px 2px;
+        font-size: 20px;
+        line-height: normal;
+        text-align: center;
+    }
+    
+    .swal-icon--error__line {
+        position: absolute;
+        height: 3px;
+        width: 18px;
+        background-color: #f27474;
+        display: block;
+        top: 25px;
+        border-radius: 2px;
+    }
+    
+    .swal-icon--success__ring {
+        width: 54px;
+        height: 54px;
+        
+    }
+    
+    .swal-icon--success__line--long {
+        width: 29px;
+        right: 2px;
+        top: 24px;
+        
+    }
+    
+    .swal-icon--success__line--tip {
+        width: 18px;
+        left: 9px;
+        top: 31px;
+        
+    }
+    
+    .swal-icon {
+        width: 50px;
+        height: 52px;
+        border-width: 4px;
+        border-style: solid;
+        border-radius: 50%;
+        padding: 0;
+        position: relative;
+        box-sizing: content-box;
+        margin: 23px auto;
+    }
 	#tm_toplink {
     	top: 45px;
     	left: 24px;

@@ -212,7 +212,7 @@ class HomeController extends Master
         $amount = $request->get('amount');
         
         if($amount>25000){
-            $BANKIT_URL=env('BANKITR_URL');
+            $BANKIT_URL=env('BANKIT_URL');
         }else{
             $BANKIT_URL=env('BANKIT_URL');  
         }

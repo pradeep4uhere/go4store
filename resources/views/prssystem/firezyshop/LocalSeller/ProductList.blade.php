@@ -5,11 +5,7 @@
 @include('prssystem.firezyshop.Elements.header')
 <script type="text/javascript" src="https://platform-api.sharethis.com/js/sharethis.js#property=5eba1f237525e90012616dfb&product=inline-share-buttons" async="async"></script>
 <!--Header Section Ends-->
-        <?php //dd($seller);?>
-<aside id="notifications">
-  <div class="container">&nbsp;&nbsp;</div>
-</aside>
-
+<?php //dd($seller);?>
 <!-- slider -->
 <!-- include('prssystem.firezyshop.Elements.homeSlider') -->
 <!-- slider-->
@@ -82,10 +78,11 @@
     border: 4px solid rgba(255, 255, 255, 0.8);
 }*/
 
-.header{
+.storeheader{
     color : #808080;
     margin-left:10%;
     margin-top:16px;
+    min-height: 195px;
 }
 
 .picture{
@@ -131,21 +128,96 @@
     }
 }
 
+
+.G4SbottomHeader{
+    margin-bottom: 0px; vertical-align: baseline;
+}
+
+.caption_small_img{
+    display:none
+}
+
+@media (max-width: 480px) {
+    .g4sSellerLogo{
+       height:150px;
+       width:150px;
+       position:absolute;
+       left:25%;   
+    }
+    .follow_btn {
+        text-decoration: none;
+        position: absolute;
+        left: 12%;
+        top: 9.5%;
+        width: 65%;
+        height: 15%;
+        background-color: #007FBE;
+        padding: 10px;
+        padding-top: 6px;
+        color: #fff;
+        text-align: center;
+        font-size: 20px;
+        border: 4px solid #007FBE;
+    }
+    .g4sSellerLogHeader{
+        min-height:0px;
+    }
+    .G4SbottomHeader{
+        margin-bottom: 30px; vertical-align: baseline;
+    }
+    .caption_small_img{
+       display:block;
+    }
+    .caption_large_img{
+        display:none;
+    }
+    .well {
+    margin-top:0px;
+    padding: 8px;
+    border-radius: 0px !important;
+}
+
+.well:hover {
+    margin-top:0px;;
+    padding: 8px;
+    
+}
+
+
+}
+
+</style>
+<style>
+    @media (max-width: 480px){
+	.g4SproductImgClass {
+        min-height: 164px;
+        max-height:164px
+	}
+	.pagination_row{
+	    font-size:12px;
+	    font-weight:400;
+	}
+
+}
+.g4SproductImgClass {
+        min-height: 240px;
+        max-height:240px
+	}
 </style>
 <div class="container" style="margin-top: 0px; margin-bottom: 0px;">
 	<div class="row panel">
 		<div class="col-md-4 bg_blur ">
-    	    <a href="#" class="follow_btn hidden-xs">{{$seller->StoreType->name}}</a>
+    	    <a href="#" class="follow_btn hidden-xs ">{{$seller->StoreType->name}}</a>
+            <img src="{{$image}}" class=" caption_small_img img-thumbnail picture hidden-xs g4sSellerLogo" />
 		</div>
         <div class="col-md-8  col-xs-12">
-           <img src="{{$image}}" class="img-thumbnail picture hidden-xs" />
-          
-           <div class="header" style="min-height: 195px;">
+    	     <img src="{{$image}}" class=" caption_large_img img-thumbnail picture hidden-xs g4sSellerLogo" />
+           <div class="storeheader g4sSellerLogHeader" >
                 <h1>{{$seller->business_name}} ({{$seller->StoreType->name}})</h1>
                 <h6 style="font-size: 14px;"><i class="fa fa-map-marker fa-sm"> </i> {{$seller->address_1}}, {{$seller->location}}, {{$seller->district}}, {{$seller->pincode}}</h6>
                 <span>{!!$seller->about_me!!}</span>
            </div>
-            <div style="margin-bottom: 0px; vertical-align: baseline;">
+            <div class="G4SbottomHeader">
                  <div class="sharethis-inline-share-buttons"></div>
             </div>
         </div>

@@ -1,4 +1,20 @@
+<style>
+    @media (max-width: 480px){
+	.g4SproductImgClass {
+        min-height: 164px;
+        max-height:164px
+	}
+	.pagination_row{
+	    font-size:12px;
+	    font-weight:400;
+	}
 
+}
+.g4SproductImgClass {
+        min-height: 240px;
+        max-height:240px
+	}
+</style>
 <?php $noImage = env('NO_IMAGE'); 
 if(!empty($prodObj)){ 
   $seller_id = $prodObj['UserProduct']['seller_id'];  
@@ -7,10 +23,10 @@ if(!empty($prodObj)){
 ?>
 <li class="item col-xs-12 col-sm-6 col-md-6 col-lg-3">
 <article class="product-miniature js-product-miniature"  itemtype="http://schema.org/Product">
-<div class="thumbnail-container" style="min-height: 220px">
+<div class="thumbnail-container" >
 <a href="{{url('detail/'.str_slug($prodObj['UserProduct']['product']['title']).'/'.encrypt($prodObj['UserProduct']['id']))}}" class="thumbnail product-thumbnail">
-<img src="{{$imgStr}}" alt="Image" data-full-size-image-url="{{$imgStr}}" onerror="this.onerror=null;this.src='{{ Config('global.THEME_URL_FRONT_IMAGE')}}/{{$noImage}}'" style="height:250px">
-<img style="height:250px" class="replace-2x img_1 img-responsive" src="{{$imgStr}}" data-full-size-image-url="{{$imgStr}}" alt="Image" onerror="this.onerror=null;this.src='{{ Config('global.THEME_URL_FRONT_IMAGE')}}/{{$noImage}}'">
+<img class="g4SproductImgClass" src="{{$imgStr}}" alt="Image" data-full-size-image-url="{{$imgStr}}" onerror="this.onerror=null;this.src='{{ Config('global.THEME_URL_FRONT_IMAGE')}}/{{$noImage}}'">
+<img class="g4SproductImgClass replace-2x img_1 img-responsive" src="{{$imgStr}}" data-full-size-image-url="{{$imgStr}}" alt="Image" onerror="this.onerror=null;this.src='{{ Config('global.THEME_URL_FRONT_IMAGE')}}/{{$noImage}}'">
 </a>
 </div>
 <div class="product-description">
