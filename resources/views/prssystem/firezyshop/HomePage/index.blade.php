@@ -20,7 +20,7 @@
 <div class="topdiv">
             
 <!-- Block links module -->
-@include('prssystem.firezyshop.Elements.blockLinks',array('storeTypeArr'=>$storeTypeArr))
+@include('prssystem.firezyshop.Elements.HomePageBlockLinks',array('storeTypeArr'=>$storeTypeArr))
 <!-- /Block links module -->
 
 
