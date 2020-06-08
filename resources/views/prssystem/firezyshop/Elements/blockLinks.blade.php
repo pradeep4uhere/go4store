@@ -1,4 +1,4 @@
-<div id="links_block_left" class="block col-md-4 links hb-animate-element bottom-to-top container">
+<div id="links_block_left" class="block col-md-4 links hb-animate-element bottom-to-top container" style="padding-top: 0px;">
 	<h3 class="h3 title_block hidden-md-down">
 					<a href="#" title="go qucikly to  :">go qucikly to  :</a>
 			</h3>

@@ -6,7 +6,14 @@
 <!--Header Section Ends-->
         
 <aside id="notifications">
-  <div class="container"></div>
+  <div class="container">
+  		<marquee style="padding: 5px 1px 1px 0px;
+    color: darkred;
+    font-style: normal;
+    font-weight: 500;">
+  		<?php echo $menu = Helper::getNotificationMessage(); ?>
+  		</marquee>
+  </div>
 </aside>
     
 <section id="wrapper">     
