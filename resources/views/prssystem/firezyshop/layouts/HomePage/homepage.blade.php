@@ -23,7 +23,7 @@
 </main>
 
 <script src="{{config('global.THEME_FRONT_PLUG').'/js/compressed.js'}}"></script>
-<script src="https://kit.fontawesome.com/a651bac95e.js" crossorigin="anonymous"></script>
+<script src="{{config('global.THEME_FRONT_PLUG').'/js/a651bac95e.js'}}" crossorigin="anonymous"></script>
 
 <script type="text/javascript">
   

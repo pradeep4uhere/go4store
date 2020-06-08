@@ -48,7 +48,7 @@
 
 </main>
 <script src="{{config('global.THEME_FRONT_PLUG').'/plugin/jquery.min.js'}}"></script>
-<script src="https://kit.fontawesome.com/a651bac95e.js" crossorigin="anonymous"></script>
+<script src="{{config('global.THEME_FRONT_PLUG').'/js/a651bac95e.js'}}" crossorigin="anonymous"></script>
 <script src="{{config('global.THEME_FRONT_PLUG').'/plugin/owl.carousel.js'}}"></script>
 <script type="text/javascript" src="{{config('global.THEME_FRONT_PLUG').'/js/jquery.flexslider-min.js'}}"></script>
 <script src="{{config('global.THEME_FRONT_PLUG').'/js/lightslider.js'}}"></script> 

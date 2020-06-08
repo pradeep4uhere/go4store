@@ -47,7 +47,7 @@
 
 </main>
 <script src="{{config('global.THEME_FRONT_PLUG').'/plugin/jquery.min.js'}}"></script>
-<script src="https://kit.fontawesome.com/a651bac95e.js" crossorigin="anonymous"></script>
+<script src="{{config('global.THEME_FRONT_PLUG').'/js/a651bac95e.js'}}" crossorigin="anonymous"></script>
 <script src="{{config('global.THEME_FRONT_PLUG').'/plugin/owl.carousel.js'}}"></script>
 <script src="{{config('global.THEME_FRONT_PLUG').'/js/sweetalert.min.js'}}"></script>
 
