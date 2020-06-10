@@ -116,29 +116,6 @@
 .smallScreenDiv{
   display: none;
 }
-.largeScreenDiv{
-  display: block;
-}
-
-@media (min-width: 1024px) {
-  .smallScreenDiv{
-    display: none;
-  }
-   .largeScreenDiv{
-    display: block;
-  }
-
- }
-
- @media (max-width: 1024px) {
-  .smallScreenDiv{
-    display: block;
-  }
-   .largeScreenDiv{
-    display: none;
-  }
-
- }
 
  @media (max-width: 780px) {
   .smallScreen{
@@ -204,6 +181,14 @@
 
 
 }
+
+/*.largeScreenDiv{
+  display: block;
+}
+
+.smallScreenDiv{
+  display: none;
+}*/
 
 
 </style>
