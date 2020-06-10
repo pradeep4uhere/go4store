@@ -120,7 +120,17 @@
   display: block;
 }
 
-@media (max-width: 1024px) {
+@media (min-width: 1024px) {
+  .smallScreenDiv{
+    display: none;
+  }
+   .largeScreenDiv{
+    display: block;
+  }
+
+ }
+
+ @media (max-width: 1024px) {
   .smallScreenDiv{
     display: block;
   }
