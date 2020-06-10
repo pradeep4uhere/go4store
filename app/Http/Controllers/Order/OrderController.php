@@ -104,6 +104,10 @@ class OrderController extends Master
 					$orderNewObj->seller_id = $sellerId;
 					if($orderNewObj->save()){
 							session(['order_id' => $lastOrderId]);
+							if(decrypt($paymentType) == 100){
+								$this->updatePaymentRecordOnCashOnDeliveryStatus($lastOrderId);
+								return redirect()->route('thanks', ['token'=>Session::get('_token'),'id'=>encrypt($lastOrderId)]);
+							}
 							// \Cart::clear();
 							// \Cart::session($userId)->clear();
 							//\Cart::where('id','=',$cart_id)->delete();
@@ -132,9 +136,7 @@ class OrderController extends Master
 							$successUrl = route('success', ['token'=>Session::get('_token'),'id'=>encrypt($transxId)]);
 							$failedUrl = route('failed', ['token'=>Session::get('_token'),'id'=>encrypt($transxId)]);
 							$PAYU_BASE_URL = env('PAYU_BASE_URL');
-							if(decrypt($paymentType) == 100){
-								return redirect()->route('thanks', ['token'=>Session::get('_token'),'id'=>encrypt($lastOrderId)]);
-							}
+							
     	
 							
 					}
@@ -170,6 +172,73 @@ class OrderController extends Master
 		)); 
     }
 
+
+     //Create Payment Recirds for CASH ON DILEVERY
+     public function updatePaymentRecordOnCashOnDeliveryStatus($OrderId){
+     		if($OrderId!=''){
+	     		$orderDetails = Order::find($OrderId);
+
+	     	    $net_amount_debit = $orderDetails['totalAmount'];
+	            $AgentId          = '99999';
+	            $Status           = $orderDetails['payment_status'];
+	            $Message          = 'Cash On DILEVERY';
+	            $OrderIdStr       = $orderDetails['orderID'];
+	            $Amount           = $orderDetails['totalAmount'];
+	            $Mode             = 'COD';
+	            $BankitTxnId      = $orderDetails['id'].$orderDetails['user_id'].time();
+
+	            $payment = Payment::where('order_id','=',$orderDetails['orderID'])->first();
+	            if(empty($payment)){
+	            	$payment =  new Payment();
+	            }else{
+	            	$payment->id = $payment->id;	
+	            }	
+	            
+	            $payment->merchent_id 		= $AgentId;
+	            $payment->mode 				= $Mode;
+	            $payment->order_id 			= $OrderIdStr;
+	            $payment->status 			= $Status;
+	            $payment->unmappedstatus	= $Status;
+	            $payment->txnid 			= $BankitTxnId;
+	            $payment->amount 			= $Amount;
+	            $payment->payment_date 		= $this->getCreatedDate();
+	            $payment->bank_ref_num 		= $BankitTxnId;
+	            $payment->error 			= "";
+	            $payment->error_Message 	= $Message;
+	            $payment->payuMoneyId 		=	"";
+	            $payment->payment_details 	= json_encode($orderDetails);
+	            $payment->net_amount_debit 	= ($net_amount_debit!='')?$net_amount_debit:'0.00';
+	            $payment->created_at 		= $this->getCreatedDate();
+	            $lastPaymentId 				= $payment->save();
+	            
+	            if($payment->id>0){
+	            	//Send Email to Seller
+	            	$lastPaymentId = $payment->id;
+					$orderDetailsArr =Order::with('OrderDetail','Payment','Seller')->where('id','=',$OrderId)->get()->toArray();
+					 Master::sendEmailToSeller('newOrder',$orderDetailsArr);
+					 Master::sendEmailToUser('newOrder',NULL,$orderDetailsArr);
+					 //Send SMS to Seller For New Order
+		         	 //Master::sendSMSMessageToSeller('seller_order_recived',$lastPaymentId);
+		             //dd('msgSent');
+		                //Send SMS to User For New Order
+		         //Master::sendSMSMessageToUser('user_payment_recived',$lastPaymentId);
+		                
+		                //Send Order Item List To User
+		         //Master::sendSMSMessageToUser('user_order_item',$lastPaymentId);
+		                
+		                //Send Order Item List To Seller
+		         //Master::sendSMSMessageToSeller('seller_order_item',$lastPaymentId);
+
+
+	                return true;
+	            }else{
+	                return false;
+	            }
+	        }else{
+        		return false;	
+        	}
+            //dd($payment);
+    }
 
     /*
      *@Author : Pradeep Kumar
@@ -246,14 +315,25 @@ class OrderController extends Master
 			//DD($address);
 
 			if($payment_status=='success'){
-
-
 				$payment_status = "<font color='green'><b>SUCCESS</b></font>";
 			}else{
-				//Send Email to Seller
-				$orderDetailsArr =Order::with('OrderDetail','Payment','Seller')->where('id','=',$ordeId)->get()->toArray();
-				Master::sendEmailToSeller('newOrder',$orderDetailsArr);
-				Master::sendEmailToUser('newOrder',NULL,$orderDetailsArr);
+				
+
+				//Send SMS to Seller For New Order
+                //Master::sendSMSMessageToSeller('seller_order_recived',$lastPaymentId);
+                
+                //Send SMS to User For New Order
+                //Master::sendSMSMessageToUser('user_payment_recived',$lastPaymentId);
+                
+                //Send Order Item List To User
+                //Master::sendSMSMessageToUser('user_order_item',$lastPaymentId);
+                
+                //Send Order Item List To Seller
+                //Master::sendSMSMessageToSeller('seller_order_item',$lastPaymentId);
+                
+
+
+
 				$payment_status = "<font color='red'><b>".$payment_status."</b></font>";
 			}
     		return view(Master::loadFrontTheme('firezyshop.Payment.ThanksPage'),

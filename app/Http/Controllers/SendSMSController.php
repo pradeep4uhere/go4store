@@ -36,12 +36,12 @@ class SendSMSController extends Master
             // echo $temp->basename(path)ody;
             $smsTemplate[$temp->title]=$temp->body;
         }
-        //echo "<pre>";
-        //print_r($smsTemplate);
-        //die;
+        // echo "<pre>";
+        // print_r($smsTemplate);
+        // die;
         try {
             $result = $textlocal->sendSms($mobileNumber, $message, $sender);
-            //print_r($result);
+            // print_r($result); die;
             Log::channel('sms')->info('Request', array('data'=>json_encode($result))); 
         } catch (Exception $e) {
             die('Error: ' . $e->getMessage());
@@ -191,7 +191,7 @@ class SendSMSController extends Master
         
         
         //Get User Order Item Template
-        $mobile = '91'.$mobileNumber;
+        $mobile = '91'.$mobileNumber; 
         $orderItemTemplate  =   config('sms.seller_order_recived');
         $orderItemParams = [
                 "[BUSINESSNAME]"        =>  $userName, 

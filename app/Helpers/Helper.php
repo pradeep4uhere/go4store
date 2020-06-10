@@ -68,7 +68,7 @@ class Helper {
     }
 
 
-
+    
     public static function getSingleSellerCheckoutNotificationMessage() {
         if(!Self::isSingleSellerCheckout()){
             return "<div class='notificationError'><strong>Multiple Seller Item Error !</strong>, You have item in cart with Different Seller, Please checkout with only single seller at a time.</div>";

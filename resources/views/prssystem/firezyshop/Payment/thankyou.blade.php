@@ -74,7 +74,7 @@
 
 .invoice-price .invoice-price-right {
     width: 25%;
-    background: #2d353c;
+    background: #c31354;
     color: #fff;
     font-size: 28px;
     text-align: right;
@@ -88,7 +88,8 @@
     position: absolute;
     top: 10px;
     left: 10px;
-    font-size: 12px
+    font-size: 15px;
+    font-weight: 600;
 }
 
 .invoice-footer {
@@ -112,11 +113,94 @@
     background: #fff;
     border-color: #d9dfe3;
 }
+.smallScreenDiv{
+  display: none;
+}
+.largeScreenDiv{
+  display: block;
+}
+
+@media (max-width: 1024px) {
+  .smallScreenDiv{
+    display: block;
+  }
+   .largeScreenDiv{
+    display: none;
+  }
+
+ }
+
+ @media (max-width: 780px) {
+  .smallScreen{
+    text-align: left; 
+    padding-left: 0px;
+  }
+  .smallScreenDiv{
+    display: block;
+  }
+  .largeScreenDiv{
+    display: none;
+  }
+ }
+
+@media (max-width: 480px) {
+  .smallScreen{
+    text-align: left; 
+    padding-left: 0px;
+  }
+  .smallScreenDiv{
+    display: block;
+  }
+  .largeScreenDiv{
+    display: none;
+  }
+  .jumbotron text-center{
+    font-size: 13px;
+  }
+  .lead {
+    font-size: .9rem;
+    font-weight: 300;
+  }
+  .thanksImg{
+    width: 35%
+  }
+  .display-3 {
+    font-size: 1.11rem;
+    font-weight: 500;
+  }
+  .hidden-print{
+    display: none;
+  }
+  .invoice-company{
+    display: none;
+  }
+  .invoice {
+    background: #fff;
+    padding: 0px;
+  }
+  .invoice-price-left {
+    width: 200px;
+    float: left;
+  }
+
+  
+
+  .invoice-price .invoice-price-right {
+    width: 100%;
+    background: #c31354;
+  }
+
+
+
+
+}
+
+
 </style>
 <div class="row">
 <div class="col-md-12">
 <center>
-    <img src="{{config('global.THEME_URL_FRONT_IMAGE')}}/order_placed.png" class="img-fluid" alt="#"></br>
+    <img src="{{config('global.THEME_URL_FRONT_IMAGE')}}/order_placed.png" class="img-fluid thanksImg" alt="#"></br>
 </center>
 </div>
 </div>
@@ -135,6 +219,7 @@
 <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
 <div class="container">
    <div class="col-md-12">
+      
       <div class="invoice">
          <!-- begin invoice-company -->
          <div class="invoice-company text-inverse f-w-600">
@@ -147,6 +232,7 @@
          <!-- end invoice-company -->
          <!-- begin invoice-header -->
          <div class="invoice-header">
+          <div class="col-sm-12 col-md-4 col-lg-4 smallScreenDiv">
             <div class="invoice-from">
                <small>From</small>
                <address class="m-t-5 m-b-5">
@@ -158,7 +244,9 @@
                   
                </address>
             </div>
-            <div class="invoice-to">
+          </div>
+          <div class="col-sm-12 col-md-4 col-lg-4 smallScreenDiv">
+             <div class="invoice-to">
                <small>To</small>
                <address class="m-t-5 m-b-5">
                   <strong class="text-inverse">{{$address['full_name']}}</strong><br>
@@ -169,7 +257,43 @@
                   Mobile No: +91-9015446567
                </address>
             </div>
-            <div class="invoice-date">
+          </div>
+
+          <div class="col-sm-12 col-md-4 col-lg-4 smallScreenDiv">
+            <div class="invoice-date smallScreen">
+               <small>Invoice / {{date("M",strtotime($orderDate))}} Period</small>
+               <div class="date text">{{$orderDate}}</div>
+               <div class="invoice-detail">
+                  #{{$orderID}}<br>
+               </div>
+               <div class="date text m-t-5">Total Amount: ₹{{$totalAmount}}</div>
+               <div class="date text m-t-5">Payment Status: {!! $payment_status !!}</div>
+            </div>
+          </div>
+
+            <div class="invoice-from largeScreenDiv">
+               <small>From</small>
+               <address class="m-t-5 m-b-5">
+                  <strong class="text-inverse">{{$seller->business_name}}</strong><br>
+                  {{$seller->address_1}}<br>
+                  {{$seller->location}}, {{$seller->district}}<br>
+                  Pin: {{$seller->pincode}}, {{$seller->state}}<br>
+                  Phone: {{$seller->contact_number}}<br>
+                  
+               </address>
+            </div>
+            <div class="invoice-to largeScreenDiv">
+               <small>To</small>
+               <address class="m-t-5 m-b-5">
+                  <strong class="text-inverse">{{$address['full_name']}}</strong><br>
+                  {{$address['address_1']}},<br/>
+                  {{$address['address_2']}}, {{$address['landmarks']}}<br/>
+
+                  Pin-{{$address['pincode']}}, {{$address['country']}}<br/>
+                  Mobile No: +91-9015446567
+               </address>
+            </div>
+            <div class="invoice-date largeScreenDiv">
                <small>Invoice / {{date("M",strtotime($orderDate))}} Period</small>
                <div class="date text-inverse m-t-5">{{$orderDate}}</div>
 
