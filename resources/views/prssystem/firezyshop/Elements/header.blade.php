@@ -238,11 +238,11 @@ if it's not present, don't show loader */
 	<div class="cart-image">
 	<div id="bgimage"></div>
 		<i class="material-icons shopping-cart">shopping_cart</i>
-		<span class="cart-products-count">{{session('countItem')}}</span>
+		<span class="cart-products-count">{{Helper::getCartItem()}}</span>
 	</div>
 	<div class="cart-price">
 	<span class="hidden-md-down cart">My cart</span>
-		<span class="hidden-md-down value"><i class="fa fa-inr"></i>0.00</span>
+		<span class="hidden-md-down value"><i class="fa fa-inr"></i>{{Helper::getCartItem('total')}}</span>
 		</div>
 		</a>
       </div>

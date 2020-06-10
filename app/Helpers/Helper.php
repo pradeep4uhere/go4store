@@ -3,6 +3,7 @@ namespace App\Helpers;
  
 use Illuminate\Support\Facades\DB;
 use App\Menu;
+use Auth;
 
 class Helper {
 	
@@ -24,5 +25,45 @@ class Helper {
     public static function getAllSideBarMenu() {
     	$menuList = Menu::with('childMenu')->where('parent_id','=',0)->get()->toArray(); 
         return $menuList;
+    }
+
+     /**
+     * 
+     * @return string
+     */
+    public static function getStar(){
+        $starCount = 4;
+        $str="<div class='star_content clearfix'>";
+        for($i=1;$i<$starCount;$i++){
+            $str.="<i class='fa fa-star' style='color:gold'></i>";
+        }
+        $str.="<i class='fa fa-star'></i>";
+        $str.="<i class='fa fa-star'></i>";
+        
+        $str.="</div>";
+        return $str;
+    }
+
+
+
+
+     /**
+     * @return array
+     */
+    public static function getCartItem($type='count') {
+        if (Auth::check()) {
+        $userId = Auth::user()->id;
+        $cartCollection = \Cart::session(Auth::user()->id);
+        $cartCollections = \Cart::getContent();
+        $cartItem = $cartCollections->toArray();
+        $item = $cartCollections->count();
+        $total =\Cart::session($userId)->getTotal();
+        if($type=='count'){ $itemResult = $item;}
+        if($type=='total'){ $itemResult = number_format($total,2);}
+        
+        }else{
+            $itemResult = 0;    
+        }
+        return $itemResult;
     }
 }

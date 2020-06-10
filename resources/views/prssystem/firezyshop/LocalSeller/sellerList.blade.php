@@ -1,3 +1,20 @@
+<style>
+    @media (max-width: 480px){
+  .g4SproductImgClass {
+        min-height: 164px;
+        max-height:164px
+  }
+  .pagination_row{
+      font-size:12px;
+      font-weight:400;
+  }
+
+}
+.g4SproductImgClass {
+        min-width: 250;
+        min-height:250px  !important;
+  }
+</style>
 <section id="wrapper">     
 <div class="container"> 
 <div id="columns_inner">
@@ -24,6 +41,7 @@
     All Store Type<i class="fa fa-chevron-down pull-xs-right" style="padding-top: 5px; padding-right: 5px"></i>&nbsp;&nbsp;&nbsp;
   </a>
   <div class="dropdown-menu sortingDiv" style="display: none;">
+      <a class="select-list js-search-link" rel="nofollow" href="{{url('/seller/'.$pincode['pincode'])}}">All</a>
            <?php if(!empty($storeTypeArr)){ ?>
       <?php foreach($storeTypeArr as $item){ ?>
       

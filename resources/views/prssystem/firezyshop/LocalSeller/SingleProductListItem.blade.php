@@ -31,13 +31,7 @@ if(!empty($prodObj)){
 </div>
 <div class="product-description">
 <div class="comments_note">
-<div class="star_content clearfix">
-  <i class="fa fa-star"></i>
-  <i class="fa fa-star"></i>
-  <i class="fa fa-star"></i>
-  <i class="fa fa-star"></i>
-  <i class="fa fa-star"></i>
-</div>
+{!!Helper::getStar()!!}
 </div>
 <span class="h2 product-title" itemprop="name">
 <a href="{{route('details',['slug'=>str_slug($prodObj['UserProduct']['product']['title']),'id'=>encrypt($prodObj['UserProduct']['id'])])}}">            
