@@ -86,7 +86,11 @@
 <div class="checkout cart-detailed-actions card-block">
     @if(Auth::check()) 
     <div class="text-xs-center">
+        <?php if(Helper::isSingleSellerCheckout()){ ?>
         <a href="javascript:$('#cartCheckout').submit()" class="btn btn-primary">Proceed to checkout</a>
+        <?php }else{ ?>
+        <a href="javascript:void(0)" onclick="return getAlert('Multiple Seller Not Allowed.','Please checkout with single seller item, you have 2 or more seller\'s item in your cart.','error')" class="btn btn-primary">Proceed to checkout</a>
+        <?php } ?>
     </div>
      @else
       <div class="text-xs-center">

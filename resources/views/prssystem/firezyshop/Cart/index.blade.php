@@ -3,9 +3,22 @@
 <!--Header Section Start-->
 @include('prssystem.firezyshop.Elements.header')
 <!--Header Section Ends-->
-        
+<style type="text/css">
+	.notificationError{
+		padding: 0.5rem;
+		margin-bottom: 0.5rem;
+		margin-top: 0.5rem;
+		border: 1px solid transparent;
+		border-radius: 0;
+		-webkit-border-radius: 0;
+		background-color: #f2dede;
+	    border-color: #ebcccc;
+	    color: #a94442;
+
+	}
+</style>
 <aside id="notifications">
-  <div class="container">&nbsp;&nbsp;</div>
+  <div class="container">{!!Helper::getSingleSellerCheckoutNotificationMessage()!!}</div>
 </aside>
 
  <!--Main Container Start Here-->   

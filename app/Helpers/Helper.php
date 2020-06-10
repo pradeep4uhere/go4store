@@ -52,12 +52,12 @@ class Helper {
      */
     public static function getCartItem($type='count') {
         if (Auth::check()) {
-        $userId = Auth::user()->id;
-        $cartCollection = \Cart::session(Auth::user()->id);
-        $cartCollections = \Cart::getContent();
-        $cartItem = $cartCollections->toArray();
-        $item = $cartCollections->count();
-        $total =\Cart::session($userId)->getTotal();
+            $userId = Auth::user()->id;
+            $cartCollection = \Cart::session(Auth::user()->id);
+            $cartCollections = \Cart::getContent();
+            $cartItem = $cartCollections->toArray();
+            $item = $cartCollections->count();
+            $total =\Cart::session($userId)->getTotal();
         if($type=='count'){ $itemResult = $item;}
         if($type=='total'){ $itemResult = number_format($total,2);}
         
@@ -65,5 +65,36 @@ class Helper {
             $itemResult = 0;    
         }
         return $itemResult;
+    }
+
+
+
+    public static function getSingleSellerCheckoutNotificationMessage() {
+        if(!Self::isSingleSellerCheckout()){
+            return "<div class='notificationError'><strong>Multiple Seller Item Error !</strong>, You have item in cart with Different Seller, Please checkout with only single seller at a time.</div>";
+        }
+    }
+
+
+    public static function isSingleSellerCheckout(){
+        $seller = [];
+        $isSingle = false;
+        if (Auth::check()) {
+            $userId = Auth::user()->id;
+            $cartCollection = \Cart::session(Auth::user()->id);
+            $cartCollections = \Cart::getContent();
+            $cartItem = $cartCollections->toArray();
+            $item = $cartCollections->count();
+            if($item>0){
+                foreach($cartItem as $itemData){
+                    $seller[$itemData['attributes']['seller_id']] = $itemData['attributes']['seller_id'];
+                }
+                if(count($seller)==1){
+                    $isSingle = true;
+                }
+            }
+
+        }
+        return $isSingle;
     }
 }
