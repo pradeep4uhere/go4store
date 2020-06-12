@@ -275,7 +275,7 @@ if it's not present, don't show loader */
       </a>
     </div>
      <div class="head-compare">
-      <a class="ap-btn-compare dropdown-item" href="#" title="Compare" rel="nofollow">
+      <a class="ap-btn-compare dropdown-item" href="{{route('myorder')}}" title="Compare" rel="nofollow">
         <i class="fa fa-shopping-cart"></i>&nbsp;
         <span>My Order</span>
 <!-- <span class="ap-total-compare ap-total"></span> -->

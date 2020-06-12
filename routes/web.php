@@ -76,6 +76,11 @@
 
 
     Route::group(['middleware' => 'auth'], function () {
+
+        //User Profile
+        
+        Route::get('/myorder', 'User\UserController@myorder')->name('myorder'); 
+        
         Route::post('/cart/{id}', 'Product\CartController@addToCart')->name('addtoCart');
         Route::get('/cart', 'Product\CartController@index')->name('cart');
         //Route::get('/cart/{_id}', 'Product\CartController@index')->name('cart');
@@ -92,7 +97,8 @@
         Route::post('/failed', 'Order\OrderController@paymentFailed')->name('failed');
         Route::post('/success', 'Order\OrderController@paymentSuccess')->name('success');
 
-        Route::get('/updateprofile', 'User\UserController@profile')->name('updateProfile');        
+        Route::get('/updateprofile', 'User\UserController@profile')->name('updateProfile');   
+
         Route::get('/profile', 'User\UserController@dashboard')->name('dashboard'); 
         Route::get('/home', 'User\UserController@dashboard')->name('home'); 
         Route::get('/logout', 'User\UserController@logout')->name('logout'); 
