@@ -74,7 +74,7 @@
             <td>{{$count}}</td>
             <td><a href="#">{{$order['orderID']}}</a></td>
             <td>{{Helper::getDateFormate($order['created_at'])}}</td>
-            <td>{{$order['Seller']['business_name']}}</td>
+            <td><a href="{{url('seller/'.$order['Seller']['pincode'].'/'.$order['Seller']['businessusername'])}}" target="_blank">{{$order['Seller']['business_name']}}</a></td>
             <td>{{count($order['OrderDetail'])}}</td>
             <td class="text-success">₹{{number_format($order['totalAmount'],2)}}</td>
             <td class="text-error">{{$order['payment_status']}}</td>
