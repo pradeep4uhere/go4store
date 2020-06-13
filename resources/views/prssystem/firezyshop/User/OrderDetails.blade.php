@@ -21,7 +21,7 @@
           <div id="columns_inner">
                 @include('prssystem.firezyshop.User.ProfileLeftBlock')
             <nav data-depth="1" class="breadcrumb hidden-sm-down">
-               <div class="container"><h1 class="h1"><i class="fa fa-user"></i>&nbsp;My Profile</h1>
+               <div class="container"><h1 class="h1"><i class="fa fa-user"></i>&nbsp;My Order History</h1>
               <ol itemscope="" itemtype="http://schema.org/BreadcrumbList">
                   <li itemprop="itemListElement" itemscope="" itemtype="http://schema.org/ListItem">
                     <a itemprop="item" href="{{route('home')}}">
@@ -47,69 +47,67 @@
     
 
     
-  <section id="content" class="page-content">
+  <section id="content">
     
       
         
-<aside id="notifications">
-  <div class="container">
-    
-    
-    
-      </div>
-</aside>
-      
-    
-    
   <div class="row">
-    <div class="links">
+   <div class="container">
+    <table class="table table-condensed"  id="myTable">
+    <thead>
+        <tr>
+            <th>#</th>
+            <th>Order ID</th>
+            <th>Order Date</th>
+            <th>Seller</th>
+            <th>Items</th>
+            <th>Amount</th>
+            <th>Payment</th>
+            <th>Order</th>
+            <th >Action</th>
+        </tr>
+    </thead>
+    <tbody class="panel">
+        <?php if($orderDetails->count()>0){ $count=1; ?>
+          <?php foreach($orderDetails as $order){ //dd($order);?>
+        <tr data-toggle="collapse" data-target="#demo{{$count}}" data-parent="#myTable">
+            <td>{{$count}}</td>
+            <td><a href="#">{{$order['orderID']}}</a></td>
+            <td>{{Helper::getDateFormate($order['created_at'])}}</td>
+            <td>{{$order['Seller']['business_name']}}</td>
+            <td>{{count($order['OrderDetail'])}}</td>
+            <td class="text-success">₹{{number_format($order['totalAmount'],2)}}</td>
+            <td class="text-error">{{$order['payment_status']}}</td>
+            <td class="text-success">{{$order['order_status']}}</td>
+            <td align="center">
+                <?php if($order['order_status']!='Confirm'){ ?>
+                  <a href="#" class="text-danger"><strong>Cancel</strong></a>
+                <?php }else{ ?>
+                <a href="#">Invoice</a>
+                <?php } ?>
+            </td>
+        </tr>
+        <tr id="demo{{$count}}" class="collapse">
+            <td colspan="8" class="hiddenRow"><div>Demo1</div> </td>
+        </tr>
+      <?php $count++;} ?>
+      <?php } ?>
 
-      <a class="col-lg-4 col-md-4 col-sm-6 col-xs-6 iconBox" id="identity-link" href="#">
-        <span class="link-item" >
-          <i class="material-icons"></i><br/>
-          Profile
-        </span>
-      </a>
+    </tbody>
+</table>
+</div>
 
-             
-      
-              <a class="col-lg-4 col-md-4 col-sm-6 col-xs-6 iconBox" id="history-link" href="#">
-          <span class="link-item">
-            <i class="fa fa-shopping-cart" style="font-size: 25px;"></i><br/>
-            My Order History
-          </span>
-        </a>
-      
-              <a class="col-lg-4 col-md-4 col-sm-6 col-xs-6 iconBox" id="order-slips-link" href="#">
-          <span class="link-item">
-            <i class="material-icons"></i><br/>
-            Account Setting
-          </span>
-        </a>
-        <a class="col-lg-4 col-md-6 col-sm-6 col-xs-6 iconBox" id="mywishlist-link" href="#">
-          <span class="link-item">
-            <i class="material-icons"></i><br/>
-            My Wishlist
-          </span>
-        </a>
-
-         <a class="col-lg-4 col-md-4 col-sm-6 col-xs-6 iconBox" id="address-link" href="#">
-          <span class="link-item">
-            <i class="material-icons"></i><br/>
-            Add Shipping Address
-          </span>
-        </a>
-
-        <a class="col-lg-4 col-md-4 col-sm-6 col-xs-6 iconBox"  href="#">
-          <span class="link-item">
-            <i class="fa fa-inr" style="font-size: 25px;"></i><br/>
-            Refer & Earn
-          </span>
-        </a>
-
-
-       
-    </div>
+<?php $perPageItem = env('PER_PAGE_ITEM');
+  if($orderDetails->total()>0){ ?>
+  <nav class="pagination row">
+  <div class="col-md-3">
+    Showing 1-{{$perPageItem}} of {{$orderDetails->total()}} item(s)
+  </div>
+  <div class="col-md-9 pull-left">
+    {{ $orderDetails->links('prssystem.firezyshop.pagination') }}
+  </div>
+</nav>
+<?php } ?>
   </div>
   </section>
 

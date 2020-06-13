@@ -97,4 +97,10 @@ class Helper {
         }
         return $isSingle;
     }
+
+
+
+    public static function getDateFormate($from_date){
+        return \Carbon\Carbon::parse($from_date)->format('d M Y');
+    }
 }

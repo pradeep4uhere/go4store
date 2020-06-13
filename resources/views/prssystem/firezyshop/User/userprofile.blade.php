@@ -10,7 +10,7 @@
 
  <!--Main Container Start Here-->   
 <div class="container">
-@include('prssystem.firezyshop.User.OrderDetails',array('orderDetails'=>$orderDetails))
+@include('prssystem.firezyshop.User.profileDashboard')
 </div>
 @stop
 <!--Footer Section Start-->

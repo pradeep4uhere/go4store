@@ -79,7 +79,11 @@
 
         //User Profile
         
+        Route::get('/userprofile', 'User\UserController@userprofile')->name('userprofile'); 
         Route::get('/myorder', 'User\UserController@myorder')->name('myorder'); 
+        Route::get('/myprofile', 'User\UserController@myprofile')->name('myprofile'); 
+        Route::get('/referearn', 'User\UserController@userprofile')->name('referearn'); 
+        Route::post('/updateprofile', 'User\UserController@update')->name('updateprofile');   
         
         Route::post('/cart/{id}', 'Product\CartController@addToCart')->name('addtoCart');
         Route::get('/cart', 'Product\CartController@index')->name('cart');

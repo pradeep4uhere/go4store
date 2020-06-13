@@ -268,7 +268,7 @@ if it's not present, don't show loader */
       </a>
     
     <div class="head-wishlist">
-      <a class="ap-btn-wishlist dropdown-item" href="{{url('user/profile')}}" title="Wishlist" rel="nofollow">
+      <a class="ap-btn-wishlist dropdown-item" href="{{route('userprofile')}}" title="My Profile" rel="nofollow">
         <i class="fa fa-user"></i>&nbsp;
         <span>Profile</span>
 		<!-- <span class="ap-total-wishlist ap-total"></span> -->

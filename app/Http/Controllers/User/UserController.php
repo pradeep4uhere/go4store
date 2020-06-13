@@ -10,6 +10,8 @@ use App\User;
 use Session;
 use App\City;
 use App\DeliveryAddress;
+use App\Order;
+use App\OrderDetail;
 
 class UserController extends Master
 {
@@ -77,9 +79,22 @@ class UserController extends Master
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request)
     {
-        //
+        //dd($request->all());
+        if ($request->isMethod('post')) {
+            $data=$request->all();
+            $data['id']=Auth::user()->id;
+            $validator = $this->validator($request->all());
+            if($validator->fails()) {
+                $error=$validator->errors()->all();
+                Session::flash('error', $error);
+            }else{
+                $this->updateUser($data);
+            }
+        }
+        $user=User::find(Auth::user()->id);
+        return redirect()->back();
     }
 
     /**
@@ -138,8 +153,12 @@ class UserController extends Master
         $user->first_name =$data['first_name'];
         $user->last_name =$data['last_name'];
         $user->address_1 =$data['address1'];
-        $user->address_2 =$data['address2'];
-        $user->address_3 =$data['address3'];
+        if(array_key_exists('address2', $data)){
+            $user->address_2 =$data['address2'];
+        }
+        if(array_key_exists('address3', $data)){
+            $user->address_3 =$data['address3'];
+        }
         $user->pincode =$data['pincode'];
         $user->mobile =$data['mobile'];
         $user->email =$data['email'];
@@ -278,7 +297,7 @@ class UserController extends Master
 
 
 
-    function myorder(Request $request){
+    function userprofile(Request $request){
         $pincode = $this->getPinCode();
         $metaTitle = "Go4Shop- Your Own Online Shop";
         $metaDesc = 'Go4shop offer you to sell your own products online. The best online local near you store in India. Best way buy or sell your products here.';
@@ -305,10 +324,91 @@ class UserController extends Master
         $metaTags['urlimage']     =$pageImage;
         $metaTags['url']          =$pageUrl.'/user/register';
         $metaTags['sitename']     =self::getAppName();
-        return view(Master::loadFrontTheme('firezyshop.User.myorder'),array(
+        return view(Master::loadFrontTheme('firezyshop.User.userprofile')
+                ,array(
+                        'metaTags'=>$metaTags,
+                        'pincode'=>$pincode
+                    )
+                 );
+        }
+
+
+
+
+    public function myprofile(Request $request){
+        $pincode = $this->getPinCode();
+        $metaTitle = "Go4Shop- Your Own Online Shop";
+        $metaDesc = 'Go4shop offer you to sell your own products online. The best online local near you store in India. Best way buy or sell your products here.';
+        $metaKeywords = 'online grocery,vegetable store, Furniture shops, online local seller in Noida, Greater Noida, delhi, buy groceries, vegitables and many more from local shop';
+        $pageImage = self::getLogo();
+        $pageUrl = self::getURL();
+        $section      = 'Buy and Sell';
+        $category     = 'Online Supermarket';
+        $tag          = 'Online, Supermarket,Seller, Buyer';
+        $article      = 'Near Online Supermarket';
+
+        $metaTags['title']        =$metaTitle;
+        $metaTags['description']  =$metaDesc;
+        $metaTags['keywords']     =$metaKeywords;
+        $metaTags['pageimage']    =$pageImage;
+        $metaTags['pageurl']      =$pageUrl;
+        $metaTags['section']      =$section;
+        $metaTags['category']     =$category;
+        $metaTags['tag']          =$tag;
+        $metaTags['article']      =$article;
+        $metaTags['publishedTime']='';
+        $metaTags['modifiedTime'] ='';
+        $metaTags['twittersite']  ='';
+        $metaTags['urlimage']     =$pageImage;
+        $metaTags['url']          =$pageUrl.'/user/register';
+        $metaTags['sitename']     =self::getAppName();
+        return view(Master::loadFrontTheme('firezyshop.User.myprofile'),array(
             'metaTags'=>$metaTags,
             'pincode'=>$pincode
         ));
+
     }
 
+
+
+
+    public function myorder(Request $request){
+        $pincode = $this->getPinCode();
+        $metaTitle = "Go4Shop- Your Own Online Shop";
+        $metaDesc = 'Go4shop offer you to sell your own products online. The best online local near you store in India. Best way buy or sell your products here.';
+        $metaKeywords = 'online grocery,vegetable store, Furniture shops, online local seller in Noida, Greater Noida, delhi, buy groceries, vegitables and many more from local shop';
+        $pageImage = self::getLogo();
+        $pageUrl = self::getURL();
+        $section      = 'Buy and Sell';
+        $category     = 'Online Supermarket';
+        $tag          = 'Online, Supermarket,Seller, Buyer';
+        $article      = 'Near Online Supermarket';
+
+        $metaTags['title']        =$metaTitle;
+        $metaTags['description']  =$metaDesc;
+        $metaTags['keywords']     =$metaKeywords;
+        $metaTags['pageimage']    =$pageImage;
+        $metaTags['pageurl']      =$pageUrl;
+        $metaTags['section']      =$section;
+        $metaTags['category']     =$category;
+        $metaTags['tag']          =$tag;
+        $metaTags['article']      =$article;
+        $metaTags['publishedTime']='';
+        $metaTags['modifiedTime'] ='';
+        $metaTags['twittersite']  ='';
+        $metaTags['urlimage']     =$pageImage;
+        $metaTags['url']          =$pageUrl.'/user/register';
+        $metaTags['sitename']     =self::getAppName();
+
+        //Get All Order List of the user
+        $id = Auth::user()->id;
+        $orderDetails = Order::with('OrderDetail','DeliveryAddress','Seller')->where('user_id','=',$id)->orderBy('id','DESC')->paginate(8);
+        //dd($orderDetails);
+        return view(Master::loadFrontTheme('firezyshop.User.myorder'),array(
+            'metaTags'=>$metaTags,
+            'pincode'=>$pincode,
+            'orderDetails'=>$orderDetails
+        ));
+
+    }
 }
