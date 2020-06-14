@@ -225,7 +225,7 @@
  <a href="{{$data['site_url']}}" style="mso-line-height-rule: exactly;
  -ms-text-size-adjust: 100%; -webkit-text-size-adjust: 100%; color: #2a2a2a;
  font-weight: normal; text-decoration: none" target="_blank" title="Go4shop Logo Image">
-                                  <img align="none" alt="Image" height="32" src="https://photos.google.com/share/AF1QipO4-WLFcqGEOSiua6Fey1XzSA2S4ilYLCm3CPW416htOCReSQxR0ORmR0yjX9V8cg/photo/AF1QipOhbb0pxzzjmD-L5yH1zs-vWopsWSa1TlJjwV1p?key=cjRSSHVta0lPV2tjaTNETnJRczU1ZTUtaHh2YkZB" style="-ms-interpolation-mode: bicubic; border: 0; outline: none;
+                                  <img align="none" alt="Image" height="32" src="https://go4shop.online/public/theme/prssystem/img/front/logo.png" style="-ms-interpolation-mode: bicubic; border: 0; outline: none;
  text-decoration: none; height: auto; width: 107px; height: 32px; margin: 0px;" width="107" /> <h2>Go4shop.online</h2>
                                 </a>
                               </td>
@@ -369,7 +369,7 @@
  exactly; -ms-text-size-adjust: 100%; -webkit-text-size-adjust: 100%;
  font-family: 'Asap', Helvetica, sans-serif; font-size: 16px; padding-top:24px;
  padding-right:48px; padding-bottom:24px; padding-left:48px;" valign="middle">
-                                        <a class="mcnButton " href="{{$data['reset_password_link']}}" style="mso-line-height-rule: exactly;
+                                        <a class="mcnButton " href="https://go4shop.online/{{$data['reset_password_link']}}" style="mso-line-height-rule: exactly;
  -ms-text-size-adjust: 100%; -webkit-text-size-adjust: 100%; display: block; color: #f57153;
  font-weight: normal; text-decoration: none; font-weight: normal;letter-spacing:
  1px;line-height: 100%;text-align: center;text-decoration: none;color:
@@ -432,7 +432,7 @@
  font-size: 20px; font-style: normal; font-weight: normal; line-height: 125%;
  letter-spacing: normal; text-align: center; display: block; margin: 0; padding:
  0; text-align: left; width: 100%; font-size: 16px; font-weight: bold; '>What
- is RduraXP?</h3>
+ is Go4Shop?</h3>
 
                               <p style='margin: 10px 0; padding: 0; mso-line-height-rule: exactly;
  -ms-text-size-adjust: 100%; -webkit-text-size-adjust: 100%; color: #2a2a2a;

@@ -325,8 +325,8 @@ class ProductController extends Master
               $constraint->upsize();                 
           });
           $img->stream(); // <-- Key point
-          $res = Storage::disk('public')->put('uploads/'.$directoryName.'/'.$thubmName.'/'.$fileName, $img, 'public');
-          return $fileName;
+          $res=Storage::disk('public')->put('uploads/'.$directoryName.'/'.$thubmName.'/'.$fileName, $img, 'public');
+             return $fileName;
           }else{
             Session::flash('message', 'Invalid File Extension!');
             return Redirect::back()->with('msg', 'Invalid File Extension!');
@@ -431,7 +431,7 @@ class ProductController extends Master
                 
                 //Save data into product user table
                 if($lastId){
-                    $data['productQuantity']=100;
+                    $data['productQuantity']=1;
                     $userProduct =  new \App\UserProduct();
                     $userProduct->product_id=$lastId;
                     $userProduct->seller_id=$sellerId;
@@ -455,7 +455,7 @@ class ProductController extends Master
                     
                     //Working for Image if Image is updated
                     $image = $request->file('logo');
-                    IF(!empty($image)){
+                    if(!empty($image)){
                         $this->imageName=$this->saveProductImage($request,$image,$sellerId);
                         $userProduct->default_images =$this->imageName;
                         $userProduct->default_thumbnail =$this->imageName;

@@ -21,6 +21,7 @@
       <a class="list-group-item list-group-item-action" id="list-profile-list" data-toggle="list" href="{{route('myorder')}}" role="tab" aria-controls="profile"><i class="fa fa-shopping-cart" style="font-size: 14px;"></i>&nbsp;My Orders</a>
        <a class="list-group-item list-group-item-action" id="list-settings-list" data-toggle="list" href="{{route('referearn')}}" role="tab" aria-controls="settings"><i class="fa fa-share"></i>&nbsp;Refer & Earn</a>
       <a class="list-group-item list-group-item-action" id="list-messages-list" data-toggle="list" href="#list-messages" role="tab" aria-controls="messages"><i class="fa fa-map-marker"></i>&nbsp;Shipping Address</a>
+      <a class="list-group-item list-group-item-action" id="list-settings-list" data-toggle="list" href="{{route('changepassword')}}" role="tab" aria-controls="settings"><i class="fa fa-key"></i>&nbsp;Change Password</a>
       <a class="list-group-item list-group-item-action" id="list-settings-list" data-toggle="list" href="{{route('userprofile')}}" role="tab" aria-controls="settings"><i class="fa fa-gear"></i>&nbsp;Settings</a>
        <a class="list-group-item list-group-item-action" id="list-settings-list" data-toggle="list" href="{{route('logout')}}" role="tab" aria-controls="settings"><i class="fa fa-sign-out"></i>&nbsp;Sign Out</a>
     </div>
