@@ -21,7 +21,7 @@
           <div id="columns_inner">
                 @include('prssystem.firezyshop.User.ProfileLeftBlock')
             <nav data-depth="1" class="breadcrumb hidden-sm-down">
-               <div class="container"><h1 class="h1"><i class="fa fa-user"></i>&nbsp;My Order History</h1>
+               <div class="container"><h1 class="h1"><i class="fa fa-shopping-cart"></i>&nbsp;My Order History</h1>
               <ol itemscope="" itemtype="http://schema.org/BreadcrumbList">
                   <li itemprop="itemListElement" itemscope="" itemtype="http://schema.org/ListItem">
                     <a itemprop="item" href="{{route('home')}}">

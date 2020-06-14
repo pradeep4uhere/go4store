@@ -493,7 +493,7 @@ class ProductController extends Master
             'sub_category_id'=>'required|string|max:255',
             'brand_id' => 'required|string|max:255',
             'title' => 'required|string|max:255',
-            'description' => 'required|string|max:255',
+            'description' => 'required|string|max:25500',
             'unit_id' => 'required|string|min:1',
             'quantity' => 'required|string|max:10',
             'product_in_stock' => 'required|string|min:1',

@@ -6,8 +6,8 @@
      margin: 0;
 }
  .demo ul li img {
-     height: 458px;
-     width: 400px;
+      display: block;
+      margin: 0 auto;
 }
  .demo .demo .itemSlider {
      margin-bottom: 60px;
@@ -35,12 +35,12 @@
                     @if($img['status']==1)
                     <?php if($img['is_default']==1){ ?> 
                     <li data-thumb="{{config('global.PRODUCTS_NEW_STORAGE_DIR')}}/{{$productDetails['seller_id']}}/{{config('global.PRODUCT_IMG_WIDTH')}}X{{config('global.PRODUCT_IMG_HEIGHT')}}/{{$img['image_name']}}" class="active"> 
-                    <img src="{{config('global.PRODUCTS_NEW_STORAGE_DIR')}}/{{$productDetails['seller_id']}}/{{config('global.PRODUCT_IMG_WIDTH')}}X{{config('global.PRODUCT_IMG_HEIGHT')}}/{{$img['image_name']}}" onerror="this.onerror=null;this.src='{{ Config('global.THEME_URL_FRONT_IMAGE') }}/default250x250.jpg';" height="450px" />
+                    <img src="{{config('global.PRODUCTS_NEW_STORAGE_DIR')}}/{{$productDetails['seller_id']}}/{{config('global.PRODUCT_IMG_WIDTH')}}X{{config('global.PRODUCT_IMG_HEIGHT')}}/{{$img['image_name']}}" onerror="this.onerror=null;this.src='{{ Config('global.THEME_URL_FRONT_IMAGE') }}/default250x250.jpg';"  />
                     </li>
                     <?php }else{ ?>
 
                     <li data-thumb="{{config('global.PRODUCTS_NEW_STORAGE_DIR')}}/{{$productDetails['seller_id']}}/{{config('global.PRODUCT_IMG_WIDTH')}}X{{config('global.PRODUCT_IMG_HEIGHT')}}/{{$img['image_name']}}" > 
-                    <img src="{{config('global.PRODUCTS_NEW_STORAGE_DIR')}}/{{$productDetails['seller_id']}}/{{config('global.PRODUCT_IMG_WIDTH')}}X{{config('global.PRODUCT_IMG_HEIGHT')}}/{{$img['image_name']}}" onerror="this.onerror=null;this.src='{{ Config('global.THEME_URL_FRONT_IMAGE') }}/default250x250.jpg';" height="450px" />
+                    <img src="{{config('global.PRODUCTS_NEW_STORAGE_DIR')}}/{{$productDetails['seller_id']}}/{{config('global.PRODUCT_IMG_WIDTH')}}X{{config('global.PRODUCT_IMG_HEIGHT')}}/{{$img['image_name']}}" onerror="this.onerror=null;this.src='{{ Config('global.THEME_URL_FRONT_IMAGE') }}/default250x250.jpg';" />
                      </li>
 
                     <?php } ?>
