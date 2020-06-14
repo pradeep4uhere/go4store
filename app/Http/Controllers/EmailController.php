@@ -31,7 +31,7 @@ class EmailController extends Controller
         $setting = self::getSetting(); 
         $data = array(
             'site_url'=>config('app.site_url'),
-            'reset_password_link'=>config('app.site_url').config('app.reset_password_link').encrypt($user['email']),
+            'reset_password_link'=>config('app.site_url').'/changepassword/'.encrypt($user['email']),
             'user_email'=>$user['email'],
             'user_name'=>$user['first_name'],
             'admin_email'=>$setting[4]['value']
