@@ -206,7 +206,7 @@ if it's not present, don't show loader */
 <div id="tm_vertical_menu_top" class="tmvm-contener clearfix col-lg-12  hb-animate-element top-to-bottom">
 	
 <div class="block-title">
-		<a href="becomeseller">
+		<a href="{{route('register')}}">
 		<div class="menu-icon"></div>
 		<div class="menu-title">Become</div>
 		<div class="menu-title1">Seller Now</div>

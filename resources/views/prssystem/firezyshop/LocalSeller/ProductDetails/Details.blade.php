@@ -66,9 +66,9 @@
 <span style="display: block;margin-right: 10px;"> 45% Review(s)&nbsp;</span>
 </div>
 </div>
-<?php if($productDetails['description']!=''){ ?>
+<?php if($productDetails['product']['description']!=''){ ?>
 <div id="product-description-short-1" itemprop="description">
-  <p>Descriptions: {{$productDetails['description']}}</p>
+  <p>Descriptions: {{$productDetails['product']['description']}}</p>
 </div>
 <?php } ?>
                     

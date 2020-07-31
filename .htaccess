@@ -9,8 +9,11 @@
     RewriteCond %{HTTPS} off [OR]
 	RewriteCond %{HTTP_HOST} !^www\. [NC]
 	RewriteCond %{HTTP_HOST} ^(.*)$  [NC]
+RewriteCond %{REQUEST_URI} !^/\.well-known/acme-challenge/[0-9a-zA-Z_-]+$
+RewriteCond %{REQUEST_URI} !^/\.well-known/cpanel-dcv/[0-9a-zA-Z_-]+$
+RewriteCond %{REQUEST_URI} !^/\.well-known/pki-validation/(?:\ Ballot169)?
+RewriteCond %{REQUEST_URI} !^/\.well-known/pki-validation/[A-F0-9]{32}\.txt(?:\ Comodo\ DCV)?$
 	RewriteRule (.*) https://www.%1/$1 [R=301,L]
-
 
     # Handle Authorization Header
     #RewriteCond %{HTTP:Authorization} .
@@ -75,7 +78,6 @@ Header set Cache-Control "max-age=290304000, public"
 <FilesMatch "\.(xml|txt)$">
 Header set Cache-Control "max-age=172800, public, must-revalidate"
 </FilesMatch>
-
 
 <ifModule mod_gzip.c>
   mod_gzip_on Yes

@@ -228,7 +228,7 @@ class HomeController extends Master
         $Mode       = $mdoe;
         $EmailId    = $email;
         $mobile     = $mobile;
-        $callback   = env('APP_URL').'/orderconfirm';
+        $callback   = 'https://www.go4shop.online/orderconfirm';
         $OrderId    = 'ORD'.date('Ymd').time();
         $hasStr = $AgentId.'|'.$Amount.'|'.$Mode.'|'.$EmailId.'|'.$mobile.'|'.$OrderId.'|'.$callback;
         $SecureHash = $hasStr;
